@@ -19,7 +19,7 @@ The package comes with linter files to maintain code style and you are encourage
 1. Set up a local WordPress instance. [Local by Flywheel](https://localbyflywheel.com/) could be helpful.
 2. Make necessary changes to composer.json and gulpconfig.js.
 3. If this is a fresh set-up, run `npm run setup` in the terminal to get the dev dependencies and WordPress ready; otherwise run `npm install && gulp build && composer install`.
-4. Set up config credentials in different environment’s config files if necessary.
+4. Set up config credentials in for different environments if necessary.
 
 ## Development
 

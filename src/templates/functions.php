@@ -64,3 +64,9 @@ require 'functions-widgets.php';
   add_filter( 'wp_revisions_to_keep', function( $num, $post ) {
     return 10;
   }, 10, 2 );
+
+/* SECURITY HEADERS */
+  add_filter( 'wp_headers', function( $headers ) {
+    $headers['Strict-Transport-Security'] = 'max-age=63072000; includeSubDomains; preload';
+    $headers['X-Content-Type-Options'] = 'nosniff';
+  } );

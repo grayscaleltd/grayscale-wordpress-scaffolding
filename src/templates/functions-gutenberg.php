@@ -23,9 +23,9 @@
     add_theme_support( 'disable-custom-colors' );
     add_theme_support( 'disable-custom-font-sizes' );
     add_theme_support( 'disable-custom-gradients' );
-    add_theme_support( 'editor-color-palette' );
+    add_theme_support( 'editor-color-palette', array() );
     add_theme_support( 'editor-font-sizes' );
-    add_theme_support( 'editor-gradient-presets' );
+    add_theme_support( 'editor-gradient-presets', array() );
     remove_theme_support( 'core-block-patterns' );
   } );
 
@@ -52,4 +52,3 @@
   // ==========================================================================
   remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
   remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
-

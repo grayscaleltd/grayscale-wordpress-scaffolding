@@ -28,7 +28,9 @@ wp.domReady(function() {
     ['core/columns', 'two-columns-two-thirds-one-third'],
     ['core/columns', 'three-columns-equal'],
     ['core/columns', 'three-columns-wider-center'],
+    ['core/group', 'group'],
     ['core/group', 'group-row'],
+    ['core/group', 'group-stack'],
   ];
 
   // Display statuses of Core Blocks, Styles, and Variations

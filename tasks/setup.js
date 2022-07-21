@@ -1,7 +1,7 @@
 import config from '../gulpconfig.js';
 
 import chalk from 'chalk';
-import del from 'del';
+import {deleteAsync} from 'del';
 import download from 'download';
 import gulp from 'gulp';
 import gulpStringReplace from 'gulp-string-replace';
@@ -167,7 +167,7 @@ function downloadDepdencies(cb) {
 }
 
 function wpRemoveThemes() {
-  return del([
+  return deleteAsync([
     config.setup.dest + '/wp-content/themes/**',
     '!' + config.setup.dest + '/wp-content/themes',
     '!' + config.setup.dest + '/wp-content/themes/index.php',

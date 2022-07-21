@@ -1,9 +1,9 @@
 import config from '../gulpconfig.js';
 
-import del from 'del';
+import {deleteAsync} from 'del';
 
 function clean() {
-  return del(config.utility.clean);
+  return deleteAsync(config.utility.clean);
 }
 
 export {clean};

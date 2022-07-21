@@ -11,7 +11,7 @@
 
         <?php get_search_form(); ?>
 
-        <p><a href="<?php echo home_url(); ?>"><?php echo __( '&larr;', 'grayscale' ) . ' ' . __( 'Return Home', 'grayscale' ); ?></a></p>
+        <p><a href="<?php echo home_url(); ?>"><?php _e( '&larr; Return Home', 'grayscale' ); ?></a></p>
 
       </main>
 

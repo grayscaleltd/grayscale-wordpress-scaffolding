@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 html {
   box-sizing: border-box;
   background: var(--client--color--bg);

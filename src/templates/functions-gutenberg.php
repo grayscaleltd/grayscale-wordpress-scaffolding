@@ -24,7 +24,7 @@
     add_theme_support( 'disable-custom-font-sizes' );
     add_theme_support( 'disable-custom-gradients' );
     add_theme_support( 'editor-color-palette', array() );
-    add_theme_support( 'editor-font-sizes' );
+    add_theme_support( 'editor-font-sizes', array() );
     add_theme_support( 'editor-gradient-presets', array() );
     remove_theme_support( 'core-block-patterns' );
   } );

@@ -38,6 +38,8 @@
     $editor_settings['__experimentalFeatures']['typography']['letterSpacing'] = false;
     $editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
     $editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['radius'] = false;
+    $editor_settings['canLockBlocks'] = current_user_can( 'activate_plugins' );
+    $editor_settings['codeEditingEnabled'] = current_user_can( 'activate_plugins' );
     return $editor_settings;
   } );
 

@@ -6,6 +6,10 @@
   border-radius: 50%;
   background: $color-white;
   transform: translate(-50%, -50%);
+
+  @at-root .gform_wrapper {
+    position: relative;
+  }
 }
 
 .gform_submission_error {

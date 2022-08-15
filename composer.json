@@ -12,10 +12,10 @@
   "require": {
     "wpackagist-plugin/duplicate-post": "^4",
     "wpackagist-plugin/favicon-by-realfavicongenerator": "^1",
-    "wpackagist-plugin/imagify": "^1",
+    "wpackagist-plugin/imagify": "^2",
     "wpackagist-plugin/imsanity": "^2",
     "wpackagist-plugin/svg-support": "^2",
-    "wpackagist-plugin/wordpress-seo": "^18",
+    "wpackagist-plugin/wordpress-seo": "^19",
     "wpackagist-plugin/wp-sweep": "^1"
   },
   "repositories": [

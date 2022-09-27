@@ -19,11 +19,6 @@ require 'functions-widgets.php';
     return $endpoints;
   } );
 
-/* CONTENT */
-  if ( !isset( $content_width ) ) {
-    $content_width = 1200;
-  }
-
 /* ENQUEUE */
   add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_style(

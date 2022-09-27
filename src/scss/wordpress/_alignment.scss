@@ -1,81 +1,15 @@
-@if $is-frontend {
-  // ==========================================================================
-  // Text alignments; Block alignments; Justification.
-  // https://github.com/WordPress/gutenberg/blob/wp/6.3/packages/block-library/src/common.scss
-  // ==========================================================================
-  .has-text-align-center {
+figcaption {
+  .alignfull & {
+    padding-left: 1em;
+    padding-right: 1em;
     text-align: center;
   }
 
-  .has-text-align-left {
-    /*rtl:ignore*/
-    text-align: left;
-  }
-
-  .has-text-align-right {
-    /*rtl:ignore*/
-    text-align: right;
-  }
-
-  .aligncenter {
-    clear: both;
-  }
-
-  .alignwide {
-    margin-left: calc(25% - 25vw);
-    margin-right: calc(25% - 25vw);
-    width: calc(50% + 50vw);
-    max-width: 100vw;
-  }
-
-  .alignfull {
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    width: 100vw;
-    max-width: 100vw;
-  }
-
-  .items-justified-left {
-    justify-content: flex-start;
-  }
-
-  .items-justified-center {
-    justify-content: center;
-  }
-
-  .items-justified-right {
-    justify-content: flex-end;
-  }
-
-  .items-justified-space-between {
-    justify-content: space-between;
-  }
-}
-
-.is-layout-flow {
-  > .alignleft {
-    float: left;
-    margin-inline-start: 0;
-    margin-inline-end: 2em;
-  }
-
-  > .alignright {
-    float: right;
-    margin-inline-start: 2em;
-    margin-inline-end: 0;
-  }
-}
-
-:where(.is-layout-flex) {
-  gap: 0.5em;
-}
-
-.is-layout-flex {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  > * {
-    margin: 0;
+  @if $is-frontend == false {
+    [data-align='full'] & {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
   }
 }

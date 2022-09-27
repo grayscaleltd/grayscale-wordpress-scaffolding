@@ -12,32 +12,5 @@ $breakpoints: (
   'xxlarge':  1440,
 );
 
-// Colours
-$color-black: #222;
-$color-white: #fff;
-$color-shade: color.adjust($color-black, $lightness: 80%);
-
-$color-major: #181231;
-$color-minor: #7c01fd;
-
-$color-background: $color-white;
-$color-foreground: $color-black;
-$color-alert: #f06;
-
-// Font Family
-$font-heading: sans-serif; // 700
-$font-content: sans-serif; // 400
-
-// Font Sizes
-$font-size-roots: (
-  16px,
-  16px,
-  16px,
-  16px,
-  16px,
-);
-
-$font-line-height: 1.5;
-
 // Project Specific
 $wrapper-max-width: 60rem;

@@ -1,12 +1,6 @@
 <?php
 
 /* ENQUEUE */
-  add_action( 'wp_enqueue_scripts', function() {
-    if ( !is_admin() ) {
-      wp_dequeue_style( 'wp-block-library' );
-    }
-  }, 99 );
-
   add_action( 'enqueue_block_editor_assets', function() {
     wp_enqueue_script(
       'blocks-core',
@@ -19,13 +13,6 @@
 /* FEATURES */
   add_action( 'after_setup_theme', function() {
     add_editor_style( 'editor.css' );
-    add_theme_support( 'align-wide' );
-    add_theme_support( 'disable-custom-colors' );
-    add_theme_support( 'disable-custom-font-sizes' );
-    add_theme_support( 'disable-custom-gradients' );
-    add_theme_support( 'editor-color-palette', array() );
-    add_theme_support( 'editor-font-sizes', array() );
-    add_theme_support( 'editor-gradient-presets', array() );
     remove_theme_support( 'core-block-patterns' );
   } );
 
@@ -51,14 +38,6 @@
   }, 10, 2 );
 
   add_filter( 'block_editor_settings_all', function ( $editor_settings ) {
-    $editor_settings['__experimentalFeatures']['color']['customDuotone'] = false;
-    $editor_settings['__experimentalFeatures']['color']['duotone'] = [];
-    $editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
-    $editor_settings['__experimentalFeatures']['typography']['fontStyle'] = false;
-    $editor_settings['__experimentalFeatures']['typography']['fontWeight'] = false;
-    $editor_settings['__experimentalFeatures']['typography']['letterSpacing'] = false;
-    $editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
-    $editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['radius'] = false;
     $editor_settings['canLockBlocks'] = current_user_can( 'activate_plugins' );
     $editor_settings['codeEditingEnabled'] = current_user_can( 'activate_plugins' );
     return $editor_settings;

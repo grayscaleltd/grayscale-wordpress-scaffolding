@@ -7,13 +7,6 @@
 // CORE
 // ==========================================================================
 @import 'settings';
-@import 'var';
-
-:where(.wp-block-post-content) {
-  font-family: $font-content;
-  font-size: list.nth($font-size-roots, 3);
-  line-height: $font-line-height;
-}
 
 // ==========================================================================
 // WORDPRESS & EDITOR
@@ -23,30 +16,5 @@ $is-frontend: false;
 @import 'wordpress/wordpress';
 
 // ==========================================================================
-// PROJECT SPECIFIC
-// ==========================================================================
-@import 'typography';
-
-// ==========================================================================
 // EDITOR SPECIFIC
 // ==========================================================================
-.wp-block {
-  max-width: $wrapper-max-width;
-}
-
-[data-align='wide'] {
-  max-width: $wrapper-max-width * 1.2;
-}
-
-[data-align='full'] {
-  max-width: none;
-}
-
-[data-align='wide'], [data-align='full'] {
-  margin-left: auto;
-  margin-right: auto;
-
-  img {
-    width: 100%;
-  }
-}

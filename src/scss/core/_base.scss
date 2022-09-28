@@ -1,14 +1,5 @@
-@use 'sass:math';
-
 html {
   box-sizing: border-box;
-  background: var(--client--color--bg);
-  color: var(--client--color--text);
-  font-family: $font-content;
-  @include gs-breakpoint-loop($font-size-roots) using ($item) {
-    font-size: math.div($item, 16px) * 100%;
-  }
-  line-height: $font-line-height; /* stylelint-disable-line */
   overflow-x: hidden;
 }
 
@@ -27,7 +18,6 @@ button, input, select, textarea {
   border: 1px solid currentcolor;
   background: inherit;
   color: inherit;
-  accent-color: $color-major;
   font: inherit;
 }
 

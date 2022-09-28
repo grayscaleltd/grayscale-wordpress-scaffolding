@@ -12,6 +12,8 @@
 :root {
   --wp--preset--color--major: #{$color-major};
   --wp--preset--color--minor: #{$color-minor};
+  --wp--preset--color--background: #{$color-background};
+  --wp--preset--color--foreground: #{$color-foreground};
   --wp--preset--color--black: #{$color-black};
   --wp--preset--color--white: #{$color-white};
   // --wp--preset--color--cyan-bluish-gray: #abb8c3;

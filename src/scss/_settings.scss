@@ -20,8 +20,8 @@ $color-shade: color.adjust($color-black, $lightness: 80%);
 $color-major: #181231;
 $color-minor: #7c01fd;
 
-$color-bg: $color-white;
-$color-text: $color-black;
+$color-background: $color-white;
+$color-foreground: $color-black;
 $color-alert: #f06;
 
 // Font Family

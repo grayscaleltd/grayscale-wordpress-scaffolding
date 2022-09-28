@@ -1,3 +1,14 @@
+@use 'sass:math';
+
+html {
+  color: var(--wp--preset--color--foreground, $color-foreground);
+  font-family: $font-content;
+  @include gs-breakpoint-loop($font-size-roots) using ($item) {
+    font-size: math.div($item, 16px) * 100%;
+  }
+  line-height: $font-line-height; /* stylelint-disable-line */
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   font-family: $font-heading;
@@ -25,4 +36,8 @@ h5 {
 
 h6 {
   font-size: 0.67rem;
+}
+
+[type='checkbox'], [type='radio'] {
+  accent-color: $color-major;
 }

@@ -6,7 +6,7 @@ require 'functions-widgets.php';
 
 /* ACCESS CONTROL */
   add_filter( 'rest_endpoints', function( $endpoints ) {
-    if ( ! is_user_logged_in() ) {
+    if ( !is_user_logged_in() ) {
       if ( isset( $endpoints['/wp/v2/users'] ) ) {
         unset( $endpoints['/wp/v2/users'] );
       }
@@ -20,7 +20,7 @@ require 'functions-widgets.php';
   } );
 
 /* CONTENT */
-  if ( ! isset( $content_width ) ) {
+  if ( !isset( $content_width ) ) {
     $content_width = 1200;
   }
 

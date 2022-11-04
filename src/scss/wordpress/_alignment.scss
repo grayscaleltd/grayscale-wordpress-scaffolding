@@ -1,7 +1,7 @@
 @if $is-frontend {
   // ==========================================================================
   // Text alignments; Block alignments; Justification.
-  // https://github.com/WordPress/gutenberg/blob/wp/6.0/packages/block-library/src/common.scss
+  // https://github.com/WordPress/gutenberg/blob/wp/6.1/packages/block-library/src/common.scss
   // ==========================================================================
   .has-text-align-center {
     text-align: center;
@@ -19,8 +19,6 @@
 
   .aligncenter {
     clear: both;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .alignwide {
@@ -54,23 +52,30 @@
   }
 }
 
-figcaption {
-  margin-top: 0.5em;
-  text-align: initial;
-
-  .alignfull & {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1em;
-    padding-right: 1em;
-    text-align: center;
+.is-layout-flow {
+  > .alignleft {
+    float: left;
+    margin-inline-start: 0;
+    margin-inline-end: 2em;
   }
 
-  @if $is-frontend == false {
-    [data-align='full'] & {
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
+  > .alignright {
+    float: right;
+    margin-inline-start: 2em;
+    margin-inline-end: 0;
+  }
+}
+
+:where(.is-layout-flex) {
+  gap: 0.5em;
+}
+
+.is-layout-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  > * {
+    margin: 0;
   }
 }

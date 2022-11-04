@@ -1,6 +1,6 @@
 // ==========================================================================
 // Blocks
-// https://github.com/WordPress/gutenberg/tree/wp/6.0/packages/block-library/src
+// https://github.com/WordPress/gutenberg/tree/wp/6.1/packages/block-library/src
 // ==========================================================================
 @import 'wordpress/a11y';
 @import 'wordpress/alignment';
@@ -16,3 +16,29 @@
 @import 'wordpress/gform';
 @import 'wordpress/image';
 @import 'wordpress/media-text';
+
+// ==========================================================================
+// Figcaption
+// https://github.com/WordPress/gutenberg/tree/wp/6.1/packages/base-styles/_mixins.scss
+// ==========================================================================
+:where(figcaption) {
+  margin-top: 0.5em;
+
+  .aligncenter & {
+    text-align: center;
+  }
+
+  .alignfull & {
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+  }
+
+  @if $is-frontend == false {
+    font-size: 90%;
+
+    [data-align='full'] & {
+      text-align: center;
+    }
+  }
+}

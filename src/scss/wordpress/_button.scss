@@ -4,25 +4,17 @@ $blocks-block__margin: 0.5em;
 // Prefer the link selector instead of the regular button classname
 // to support the previous markup in addition to the new one.
 .wp-block-button__link {
-  color: var(--wp--preset--color--white);
-  background-color: var(--wp--preset--color--major);
-  border: 0;
-  border-radius: 0;
-  // box-shadow: none;
   cursor: pointer;
   display: inline-block;
-  font-size: inherit;
-  padding: 0.25em 0.75em;
   text-align: center;
-  text-decoration: none;
   word-break: break-word; // overflow-wrap doesn't work well if a link is wrapped in the div, so use word-break here.
-
-  // &:hover,
-  // &:focus,
-  // &:active,
-  // &:visited {
-  //   color: inherit;
-  // }
+  // box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  background: var(--wp--preset--color--foreground);
+  color: var(--wp--preset--color--white);
+  font-size: inherit;
+  line-height: 1;
 
   &.aligncenter {
     text-align: center;
@@ -32,6 +24,14 @@ $blocks-block__margin: 0.5em;
     /*rtl:ignore*/
     text-align: right;
   }
+}
+
+// These rules are set to zero specificity to keep the default styles for buttons.
+// They are needed for backwards compatibility.
+:where(.wp-block-button__link) {
+  // This needs a low specificity so it won't override the rules from the button element if defined in theme.json.
+  // box-shadow: none;
+  text-decoration: none;
 }
 
 // Increased specificity needed to override margins.

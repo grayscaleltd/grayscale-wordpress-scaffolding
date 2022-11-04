@@ -1,14 +1,6 @@
 @if $is-frontend {
-  article {
-    footer::before {
-      content: '';
-      display: block;
-      clear: both;
-    }
-
-    &.sticky {
-      background: $color-shade;
-    }
+  .post.sticky {
+    background: $color-shade;
   }
 
   .wp-article-links {

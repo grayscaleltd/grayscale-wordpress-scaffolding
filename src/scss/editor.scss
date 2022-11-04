@@ -9,14 +9,10 @@
 @import 'settings';
 @import 'var';
 
-body {
+:where(.wp-block-post-content) {
   font-family: $font-content;
   font-size: list.nth($font-size-roots, 3);
   line-height: $font-line-height;
-
-  [data-type='core/paragraph'] p {
-    line-height: $font-line-height;
-  }
 }
 
 // ==========================================================================
@@ -53,8 +49,4 @@ $is-frontend: false;
   img {
     width: 100%;
   }
-}
-
-.editor-post-title__block .editor-post-title__input {
-  @extend h1;
 }

@@ -12,6 +12,7 @@ wp.domReady(function() {
     'core/heading',
     'core/image',
     'core/list',
+    'core/list-item',
     'core/media-text',
     'core/missing',
     'core/paragraph',

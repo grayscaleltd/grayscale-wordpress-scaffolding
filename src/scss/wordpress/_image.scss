@@ -1,16 +1,14 @@
 .wp-block-image {
-  margin-bottom: 1.5em;
-
   img {
     // height: auto;
     // max-width: 100%;
     vertical-align: bottom;
+    // box-sizing: border-box;
   }
 
-  // &:not(.is-style-rounded) {
-  //   > a,
+  // &.has-custom-border {
   //   img {
-  //     border-radius: inherit;
+  //     box-sizing: border-box;
   //   }
   // }
 
@@ -72,14 +70,6 @@
   // }
 }
 
-.wp-caption {
-  @extend figure !optional;
-}
-
-.wp-caption-text {
-  @extend figcaption;
-}
-
-.wp-block-image figure {
-  margin: 0;
-}
+// .wp-block-image figure {
+//   margin: 0;
+// }

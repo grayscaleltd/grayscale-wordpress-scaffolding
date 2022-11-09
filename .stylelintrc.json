@@ -5,7 +5,6 @@
   ],
   "rules": {
     "at-rule-empty-line-before": null,
-    "custom-property-pattern": "client--|wp--.+",
     "max-nesting-depth": 4,
     "no-descending-specificity": null,
     "no-invalid-position-at-import-rule": null,

@@ -1,3 +1,5 @@
+/* global wp */
+
 wp.domReady(function() {
   const whitelistedCoreBlocks = [
     'core/block',

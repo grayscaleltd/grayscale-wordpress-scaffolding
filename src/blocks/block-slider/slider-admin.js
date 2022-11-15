@@ -69,7 +69,7 @@ registerBlockType( 'client/slider', {
     const ACCEPT_MEDIA_TYPES = 'image/*';
 
     return (
-      <div className={ classnames( 'client-gutenberg-slider', className ) }>
+      <div className={ classnames( className ) }>
         <MediaUploadCheck>
           {
             ! sliderImages ? (
@@ -114,7 +114,7 @@ registerBlockType( 'client/slider', {
     } = props.attributes;
 
     return (
-      <div className={ classnames( 'client-gutenberg-slider' ) }>
+      <div>
         {
           ! sliderImages ? (
             null

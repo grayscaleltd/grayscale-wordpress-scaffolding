@@ -157,7 +157,7 @@ registerBlockType( 'client/testimonial', {
                 allowedTypes={ ALLOWED_MEDIA_TYPES }
                 value={ testimonialImgID }
                 onSelect={ setImage }
-                render={ ( { open } ) => (
+                render={ () => (
                   <figure
                     className="block-image"
                     style={ { position: 'relative' } }

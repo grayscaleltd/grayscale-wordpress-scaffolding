@@ -205,6 +205,10 @@ registerBlockType( 'client/accordion-item', {
       accordionTitle, accordionAnchor, isOpen,
     } = props.attributes;
 
+    if ( ! accordionTitle ) {
+      return;
+    }
+
     return (
       <li
         className={ classnames(
@@ -216,7 +220,9 @@ registerBlockType( 'client/accordion-item', {
         <a
           href={ ( accordionAnchor ) ?
             '#' + accordionAnchor :
-            '#' + accordionTitle[ 0 ].replace( /[^0-9|A-Z|a-z]/g, '-' )
+            '#' + encodeURI( accordionTitle[ 0 ] )
+              .replace( /[^%0-9A-Za-z]/g, '-' )
+              .replace( /%/g, '' )
               .replace( /-+/g, '-' )
               .toLowerCase()
           }
@@ -227,7 +233,9 @@ registerBlockType( 'client/accordion-item', {
         <div
           id={ ( accordionAnchor ) ?
             accordionAnchor :
-            accordionTitle[ 0 ].replace( /[^0-9|A-Z|a-z]/g, '-' )
+            encodeURI( accordionTitle[ 0 ] )
+              .replace( /[^%0-9A-Za-z]/g, '-' )
+              .replace( /%/g, '' )
               .replace( /-+/g, '-' )
               .toLowerCase()
           }

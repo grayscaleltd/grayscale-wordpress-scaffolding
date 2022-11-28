@@ -29,6 +29,25 @@
     remove_theme_support( 'core-block-patterns' );
   } );
 
+  add_filter( 'allowed_block_types_all', function( $block_editor_context, $editor_context ) {
+    if ( $editor_context->name === 'core/edit-widgets' ) {
+      return array(
+        'core/button',
+        'core/buttons',
+        'core/freeform',
+        'core/group',
+        'core/heading',
+        'core/image',
+        'core/list',
+        'core/list-item',
+        'core/missing',
+        'core/paragraph',
+      );
+    }
+
+    return $block_editor_context;
+  }, 10, 2 );
+
   add_filter( 'block_editor_settings_all', function ( $editor_settings ) {
     $editor_settings['__experimentalFeatures']['color']['customDuotone'] = false;
     $editor_settings['__experimentalFeatures']['color']['duotone'] = [];

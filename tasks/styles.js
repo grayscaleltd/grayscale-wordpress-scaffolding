@@ -44,6 +44,12 @@ function stylesDefault() {
       ]))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.dest))
+      .pipe(gulpIf((args.notify), gulpNotify({
+        actions: 'Dismiss',
+        message: 'CSS compilation done.',
+        onLast: true,
+        sound: 'Ping',
+      })))
       .pipe(gulpTouchCmd());
 }
 

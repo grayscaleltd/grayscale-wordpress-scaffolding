@@ -17,6 +17,7 @@ export default {
       dist + '/wp-content/themes/' + project + '/**',
       '!**/*.map',
     ],
+    logFileChanges: false,
     open: false,
     proxy: 'localhost:8888',
     reloadDelay: 2000,

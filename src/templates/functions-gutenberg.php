@@ -38,10 +38,12 @@
         'core/group',
         'core/heading',
         'core/image',
+        'core/legacy-widget',
         'core/list',
         'core/list-item',
         'core/missing',
         'core/paragraph',
+        'core/widget-group',
       );
     }
 

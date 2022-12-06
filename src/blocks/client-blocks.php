@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Client Blocks
  * Description: Gutenberg blocks used by the custom theme.
- * Version: 1.0.0
+ * Version: #{$version}
  * Author: Team Grayscale
  * Author URI: https://grayscale.com.hk/
  * License: GNU General Public License v3 or later

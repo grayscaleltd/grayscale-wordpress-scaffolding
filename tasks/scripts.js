@@ -1,10 +1,10 @@
 import config from '../gulpconfig.js';
 
 import chalk from 'chalk';
+import {fileURLToPath} from 'node:url';
 import glob from 'glob';
 import gulp from 'gulp';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
 import webpack from 'webpack';
 import yargs from 'yargs';
 

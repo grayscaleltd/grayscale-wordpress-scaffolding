@@ -66,9 +66,19 @@ require 'functions-widgets.php';
   }, 10, 2 );
 
 /* SECURITY HEADERS */
-  add_filter( 'wp_headers', function( $headers ) {
-    $headers['Strict-Transport-Security'] = 'max-age=63072000; includeSubDomains; preload';
-    $headers['X-Content-Type-Options'] = 'nosniff';
+add_filter( 'wp_headers', function( $headers ) {
+  $csp = [
+    "default-src 'self' https: data:",
+    "script-src https: 'unsafe-inline' 'unsafe-eval'",
+    "style-src https: 'unsafe-inline'",
+  ];
 
-    return $headers;
-  } );
+  $headers['Content-Security-Policy'] = implode( ';', $csp );
+  $headers['Permissions-Policy'] = 'camera=(), microphone=()';
+  $headers['Referrer-Policy'] = 'strict-origin-when-cross-origin';
+  $headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains; preload';
+  $headers['X-Content-Type-Options'] = 'nosniff';
+  $headers['X-Frame-Options'] = 'SAMEORIGIN';
+
+  return $headers;
+} );

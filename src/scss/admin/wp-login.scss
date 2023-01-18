@@ -33,7 +33,7 @@ $gs-error: #f06;
     background: url('../assets/images/logo-grayscale.svg') center no-repeat;
   }
 
-  [name='loginform'] {
+  form {
     border: 0;
   }
 
@@ -47,6 +47,12 @@ $gs-error: #f06;
 
   .message, .success {
     border-left-color: $gs-minor;
+
+    a {
+      @extend %admin-link-style;
+
+      color: $gs-minor;
+    }
   }
 
   #login_error {

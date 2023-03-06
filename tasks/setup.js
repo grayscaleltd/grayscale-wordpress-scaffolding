@@ -98,6 +98,11 @@ function setProjectIdentifiers() {
             gulpStringReplaceOption
         ))
         .pipe(gulpStringReplace(
+            /Theme tailor-made for Grayscale/g,
+            `Theme tailor-made for ${projectName}`,
+            gulpStringReplaceOption
+        ))
+        .pipe(gulpStringReplace(
             /: grayscale/g,
             `: ${projectSlug}`,
             gulpStringReplaceOption

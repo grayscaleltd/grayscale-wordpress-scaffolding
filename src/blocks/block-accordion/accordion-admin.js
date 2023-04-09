@@ -221,6 +221,7 @@ registerBlockType( 'client/accordion-item', {
           href={ ( accordionAnchor ) ?
             '#' + accordionAnchor :
             '#' + encodeURI( accordionTitle[ 0 ] )
+              .replace( /%20/g, '-' )
               .replace( /[^%0-9A-Za-z]/g, '-' )
               .replace( /%/g, '' )
               .replace( /-+/g, '-' )
@@ -234,6 +235,7 @@ registerBlockType( 'client/accordion-item', {
           id={ ( accordionAnchor ) ?
             accordionAnchor :
             encodeURI( accordionTitle[ 0 ] )
+              .replace( /%20/g, '-' )
               .replace( /[^%0-9A-Za-z]/g, '-' )
               .replace( /%/g, '' )
               .replace( /-+/g, '-' )

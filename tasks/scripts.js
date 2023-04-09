@@ -2,7 +2,7 @@ import config from '../gulpconfig.js';
 
 import chalk from 'chalk';
 import {fileURLToPath} from 'node:url';
-import glob from 'glob';
+import {globSync} from 'glob';
 import gulp from 'gulp';
 import path from 'node:path';
 import webpack from 'webpack';
@@ -25,19 +25,19 @@ export function scriptsDefault(cb) {
     entry: () => {
       const entries = {};
 
-      if (glob.sync(config.scripts.src).length) {
+      if (globSync(config.scripts.src).length) {
         entries[`${config.scripts.dest}/application`] =
-            glob.sync(config.scripts.src);
+            globSync(config.scripts.src, {dotRelative: true});
       }
 
-      if (glob.sync(config.scripts.blocksSrc).length) {
+      if (globSync(config.scripts.blocksSrc).length) {
         entries[`${config.scripts.blocksDest}/client-blocks`] =
-            glob.sync(config.scripts.blocksSrc);
+            globSync(config.scripts.blocksSrc, {dotRelative: true});
       }
 
-      if (glob.sync(config.scripts.blocksAdminSrc).length) {
+      if (globSync(config.scripts.blocksAdminSrc).length) {
         entries[`${config.scripts.blocksDest}/client-blocks-editor`] =
-            glob.sync(config.scripts.blocksAdminSrc);
+            globSync(config.scripts.blocksAdminSrc, {dotRelative: true});
       }
 
       return entries;

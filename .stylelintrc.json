@@ -6,11 +6,16 @@
   "rules": {
     "at-rule-empty-line-before": null,
     "custom-property-pattern": null,
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        "ignoreShorthands": ["grid-template"]
+      }
+    ],
     "max-nesting-depth": 4,
     "no-descending-specificity": null,
     "no-invalid-position-at-import-rule": null,
     "selector-class-pattern": null,
-    "selector-list-comma-newline-after": null,
     "selector-max-compound-selectors": 4,
     "selector-no-qualifying-type": [
       true,
@@ -19,9 +24,6 @@
         "severity": "warning"
       }
     ],
-    "string-quotes": "single",
-    "order/order": null,
-    "order/properties-alphabetical-order": null,
     "scss/at-extend-no-missing-placeholder": [
       true,
       {

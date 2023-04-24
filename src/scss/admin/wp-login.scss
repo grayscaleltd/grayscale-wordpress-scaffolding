@@ -52,7 +52,9 @@ $gs-error: #f06;
       @extend %admin-link-style;
 
       color: $gs-minor;
+    }
 
+    :is(a) {
       &:hover, &:focus, &:active {
         color: $gs-minor;
       }

@@ -7,8 +7,9 @@ import gulp from 'gulp';
 import path from 'node:path';
 import webpack from 'webpack';
 import yargs from 'yargs';
+import {hideBin} from 'yargs/helpers';
 
-const args = yargs(process.argv.slice(2)).argv;
+const args = yargs(hideBin(process.argv)).argv;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export function scriptsDefault(cb) {

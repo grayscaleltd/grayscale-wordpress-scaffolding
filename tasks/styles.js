@@ -15,8 +15,9 @@ import gulpSourcemaps from 'gulp-sourcemaps';
 import gulpTouchCmd from 'gulp-touch-cmd';
 import postcssCalc from 'postcss-calc';
 import yargs from 'yargs';
+import {hideBin} from 'yargs/helpers';
 
-const args = yargs(process.argv.slice(2)).argv;
+const args = yargs(hideBin(process.argv)).argv;
 const packageJSON = JSON.parse(await fs.readFile('package.json'));
 const sass = gulpSass(dartSass);
 

@@ -29,7 +29,7 @@ function stylesDefault() {
       .pipe(gulpSassVariables({
         $version: packageJSON.version,
       }))
-      .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
+      .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
       .pipe(sass.sync({
         includePaths: config.styles.includePaths,
         outputStyle: 'compressed',
@@ -43,7 +43,7 @@ function stylesDefault() {
           precision: 2,
         }),
       ]))
-      .pipe(gulpIf(!(args.production), gulpSourcemaps.write('./')))
+      .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.dest))
       .pipe(gulpIf((args.notify), gulpNotify({
         actions: 'Dismiss',

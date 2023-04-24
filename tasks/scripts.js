@@ -14,8 +14,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export function scriptsDefault(cb) {
   webpack({
-    mode: (args.production) ? 'production' : 'development',
-    devtool: (args.production) ? false : 'eval-source-map',
+    mode: (args.production || args.p) ? 'production' : 'development',
+    devtool: (args.production || args.p) ? false : 'eval-source-map',
     module: {
       rules: [{
         test: /\.(js|jsx)$/,

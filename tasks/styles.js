@@ -15,8 +15,9 @@ import gulpSourcemaps from 'gulp-sourcemaps';
 import gulpTouchCmd from 'gulp-touch-cmd';
 import postcssCalc from 'postcss-calc';
 import yargs from 'yargs';
+import {hideBin} from 'yargs/helpers';
 
-const args = yargs(process.argv.slice(2)).argv;
+const args = yargs(hideBin(process.argv)).argv;
 const packageJSON = JSON.parse(await fs.readFile('package.json'));
 const sass = gulpSass(dartSass);
 
@@ -28,7 +29,7 @@ function stylesDefault() {
       .pipe(gulpSassVariables({
         $version: packageJSON.version,
       }))
-      .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
+      .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
       .pipe(sass.sync({
         includePaths: config.styles.includePaths,
         outputStyle: 'compressed',
@@ -42,7 +43,7 @@ function stylesDefault() {
           precision: 2,
         }),
       ]))
-      .pipe(gulpIf(!(args.production), gulpSourcemaps.write('./')))
+      .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.dest))
       .pipe(gulpIf((args.notify), gulpNotify({
         actions: 'Dismiss',

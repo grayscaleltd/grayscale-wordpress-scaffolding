@@ -65,6 +65,7 @@ export default {
       '**/.DS_Store',
       '**/Thumbs.db',
       dist + '/**/*.map',
+      '!**/wpe-cache-plugin/**',
     ],
   },
 };

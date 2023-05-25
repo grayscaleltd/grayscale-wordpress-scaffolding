@@ -80,7 +80,7 @@ function stylesBlocks() {
       .pipe(gulpPlumber({
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
       }))
-      .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
+      .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
       .pipe(sass.sync({
         outputStyle: 'compressed',
       }))
@@ -93,7 +93,7 @@ function stylesBlocks() {
           precision: 2,
         }),
       ]))
-      .pipe(gulpIf(!(args.production), gulpSourcemaps.write('./')))
+      .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.blocksDest))
       .pipe(gulpTouchCmd());
 }

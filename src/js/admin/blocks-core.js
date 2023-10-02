@@ -8,6 +8,7 @@ wp.domReady(function() {
     'core/column',
     'core/columns',
     'core/embed',
+    'core/footnotes',
     'core/freeform',
     'core/gallery',
     'core/group',

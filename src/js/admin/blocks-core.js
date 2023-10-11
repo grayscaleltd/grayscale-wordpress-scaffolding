@@ -19,6 +19,7 @@ wp.domReady(function() {
     'core/media-text',
     'core/missing',
     'core/paragraph',
+    'core/post-featured-image',
     'core/quote',
   ];
 

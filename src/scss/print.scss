@@ -1,5 +1,4 @@
-@import 'settings';
-@import 'core/print';
+@use 'core/print';
 
 .wp-article-links {
   display: none;

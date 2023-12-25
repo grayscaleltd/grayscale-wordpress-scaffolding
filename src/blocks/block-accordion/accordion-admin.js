@@ -121,8 +121,8 @@ registerBlockType( 'client/accordion-item', {
   styles: [],
   attributes: {
     accordionTitle: {
-      type: 'array',
-      source: 'children',
+      type: 'string',
+      source: 'html',
       selector: '.accordion-title',
     },
     accordionAnchor: {
@@ -183,7 +183,6 @@ registerBlockType( 'client/accordion-item', {
           tagName="a"
           placeholder={ __( 'Accordion Title', 'grayscale' ) }
           keepPlaceholderOnFocus="true"
-          multiline="false"
           allowedFormats="false"
         />
         <div className="accordion-content" data-tab-content>
@@ -220,7 +219,7 @@ registerBlockType( 'client/accordion-item', {
         <a
           href={ ( accordionAnchor ) ?
             '#' + accordionAnchor :
-            '#' + encodeURI( accordionTitle[ 0 ] )
+            '#' + encodeURI( accordionTitle )
               .replace( /%20/g, '-' )
               .replace( /[^%0-9A-Za-z]/g, '-' )
               .replace( /%/g, '' )
@@ -234,7 +233,7 @@ registerBlockType( 'client/accordion-item', {
         <div
           id={ ( accordionAnchor ) ?
             accordionAnchor :
-            encodeURI( accordionTitle[ 0 ] )
+            encodeURI( accordionTitle )
               .replace( /%20/g, '-' )
               .replace( /[^%0-9A-Za-z]/g, '-' )
               .replace( /%/g, '' )

@@ -16,8 +16,8 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
 
-      - name: Install Semantic Release extra plugins
-        run: npm install -D @semantic-release/git
+      - name: Install extra plugins & specific changelog version to bypass error
+        run: npm install -D @semantic-release/git conventional-changelog-conventionalcommits@6
 
       - name: Semantic Release
         env:

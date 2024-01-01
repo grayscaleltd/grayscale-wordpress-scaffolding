@@ -35,10 +35,6 @@
   }, 20 );
 
 /* ENABLE/DISABLE FEATURES */
-  // Disable Emojis
-  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-  remove_action( 'wp_print_styles', 'print_emoji_styles' );
-
   // Enable Excerpt on Page
   add_action( 'init', function() {
     add_post_type_support( 'page', 'excerpt' );

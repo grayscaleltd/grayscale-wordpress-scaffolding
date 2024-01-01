@@ -2,7 +2,7 @@ import config from '../gulpconfig.js';
 
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import dartSass from 'sass';
+import * as dartSass from 'sass';
 import fs from 'node:fs/promises';
 import gulp from 'gulp';
 import gulpIf from 'gulp-if';
@@ -19,6 +19,15 @@ import {hideBin} from 'yargs/helpers';
 
 const args = yargs(hideBin(process.argv)).argv;
 const packageJSON = JSON.parse(await fs.readFile('package.json'));
+const postcssPlugins = [
+  autoprefixer({
+    grid: 'autoplace',
+  }),
+  cssnano({safe: true}),
+  postcssCalc({
+    precision: 2,
+  }),
+];
 const sass = gulpSass(dartSass);
 
 function stylesDefault() {
@@ -34,15 +43,7 @@ function stylesDefault() {
         includePaths: config.styles.includePaths,
         outputStyle: 'compressed',
       }))
-      .pipe(gulpPostCSS([
-        autoprefixer({
-          grid: 'autoplace',
-        }),
-        cssnano({safe: true}),
-        postcssCalc({
-          precision: 2,
-        }),
-      ]))
+      .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.dest))
       .pipe(gulpIf((args.notify), gulpNotify({
@@ -62,15 +63,7 @@ function stylesAdmin() {
       .pipe(sass.sync({
         outputStyle: 'compressed',
       }))
-      .pipe(gulpPostCSS([
-        autoprefixer({
-          grid: 'autoplace',
-        }),
-        cssnano({safe: true}),
-        postcssCalc({
-          precision: 2,
-        }),
-      ]))
+      .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulp.dest(config.styles.adminDest))
       .pipe(gulpTouchCmd());
 }
@@ -84,15 +77,7 @@ function stylesBlocks() {
       .pipe(sass.sync({
         outputStyle: 'compressed',
       }))
-      .pipe(gulpPostCSS([
-        autoprefixer({
-          grid: 'autoplace',
-        }),
-        cssnano({safe: true}),
-        postcssCalc({
-          precision: 2,
-        }),
-      ]))
+      .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.blocksDest))
       .pipe(gulpTouchCmd());

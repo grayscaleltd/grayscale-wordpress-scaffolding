@@ -55,6 +55,6 @@ if ( !defined( 'ABSPATH' ) ) {
       plugins_url( 'client-blocks.js', __FILE__ ),
       array( 'jquery' ),
       ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time(),
-      true
+      array( 'strategy' => 'defer' )
     );
   } );

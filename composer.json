@@ -15,7 +15,7 @@
     "wpackagist-plugin/imagify": "^2",
     "wpackagist-plugin/imsanity": "^2",
     "wpackagist-plugin/svg-support": "^2",
-    "wpackagist-plugin/wordpress-seo": "^20",
+    "wpackagist-plugin/wordpress-seo": "^21",
     "wpackagist-plugin/wp-sweep": "^1"
   },
   "repositories": [

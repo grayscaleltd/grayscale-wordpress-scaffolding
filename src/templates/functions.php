@@ -46,7 +46,7 @@ require 'functions-widgets.php';
       get_template_directory_uri() . '/application.js',
       array( 'jquery' ),
       ( wp_get_environment_type() === 'production' ) ? wp_get_theme()->get( 'Version' ) : time(),
-      true
+      array( 'strategy' => 'defer' )
     );
   } );
 

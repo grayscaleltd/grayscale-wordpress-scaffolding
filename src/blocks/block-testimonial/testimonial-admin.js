@@ -35,13 +35,13 @@ registerBlockType( 'client/testimonial', {
   styles: [],
   attributes: {
     testimonialContent: {
-      type: 'array',
-      source: 'children',
+      type: 'string',
+      source: 'html',
       selector: '.block-content',
     },
     testimonialEndorser: {
-      type: 'array',
-      source: 'children',
+      type: 'string',
+      source: 'html',
       selector: 'cite',
     },
     testimonialImgID: {

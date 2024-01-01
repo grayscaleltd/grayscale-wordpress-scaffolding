@@ -1,6 +1,6 @@
 {
   "name": "grayscale-wordpress-scaffolding",
-  "version": "2.13.0",
+  "version": "2.14.0",
   "author": "K Chan <k.chan@grayscale.com.hk> (https://grayscale.com.hk)",
   "license": "GPL-3.0",
   "repository": "github:grayscaleltd/grayscale-wordpress-scaffolding",
@@ -24,6 +24,7 @@
     "browser-sync": "^3.0.2",
     "chalk": "^5.3.0",
     "classnames": "^2.5.1",
+    "conventional-changelog-conventionalcommits": "^6.1.0",
     "cssnano": "^6.0.2",
     "del": "^7.1.0",
     "download": "^8.0.0",

@@ -212,7 +212,7 @@
     height: 100%;
     position: absolute;
     z-index: 2000000;
-    // `!important` is added to as we are not using theme.json
+    // `!important` is added as we are not using theme.json
     // https://github.com/WordPress/gutenberg/blob/3c7e4ce75dd3650479e8a673c64663a4757e8afc/packages/block-library/src/image/index.php#L294
     background-color: var(--wp--preset--color--background) !important;
     opacity: 0.9;

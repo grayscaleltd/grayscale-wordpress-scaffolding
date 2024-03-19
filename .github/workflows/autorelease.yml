@@ -11,13 +11,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
 
-      - name: Install extra plugins & specific changelog version to bypass error
-        run: npm install -D @semantic-release/git conventional-changelog-conventionalcommits@6
+      - name: Install extra plugins
+        run: npm install -D @semantic-release/git
 
       - name: Semantic Release
         env:

@@ -70,7 +70,7 @@
     "> 0.25% and not dead"
   ],
   "scripts": {
-    "setup": "npm install && npm audit fix && gulp setup && gulp build && composer install",
+    "setup": "npm install && gulp setup && gulp build && composer install && npm audit fix",
     "prepare": "husky",
     "serve": "gulp watch",
     "build": "gulp build --production"

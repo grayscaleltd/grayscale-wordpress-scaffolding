@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcae93daa5e3b7c21dd04928a7d9b289",
+    "content-hash": "7cafa6384451c14d7b7c03728d0de4a4",
     "packages": [
         {
             "name": "composer/installers",
@@ -189,15 +189,15 @@
         },
         {
             "name": "wpackagist-plugin/imagify",
-            "version": "2.2.0.1",
+            "version": "2.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/imagify/",
-                "reference": "tags/2.2.0.1"
+                "reference": "tags/2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/imagify.2.2.0.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/imagify.2.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -243,15 +243,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "22.2",
+            "version": "22.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/22.2"
+                "reference": "tags/22.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.22.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.22.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"

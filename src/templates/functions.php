@@ -56,7 +56,7 @@ require 'functions-widgets.php';
 /* PRINT QR CODE */
   add_action( 'wp_head', function() {
     if ( is_singular() && !is_front_page() ) {
-      echo '<style>html::after{content:url("https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=' . get_the_permalink() . '&choe=UTF-8&chld=L|0");position:absolute;top:0;right:0;z-index:-1;padding:0 0 1rem 1rem;background:#fff;line-height:0;opacity:0}@media print{html::after{z-index:999;opacity:1}}</style>';
+      echo '<style>html::after{content:url("https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=' . get_the_permalink() . '");position:absolute;top:0;right:0;z-index:-1;padding:0 0 1rem 1rem;background:#fff;line-height:0;opacity:0}@media print{html::after{z-index:999;opacity:1}}</style>';
     }
   }, 20 );
 

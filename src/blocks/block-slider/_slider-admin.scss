@@ -1,0 +1,11 @@
+.wp-block-client-slider {
+  .block-editor-block-list__layout {
+    overflow: auto;
+    white-space: nowrap;
+  }
+
+  [data-type='client/slider-item'] {
+    display: inline-block;
+    width: 95%;
+  }
+}

@@ -44,7 +44,6 @@
     "gulp-string-replace": "^1.1.2",
     "gulp-touch-cmd": "0.0.1",
     "husky": "^9.0.11",
-    "lodash-es": "^4.17.21",
     "inquirer": "^9.2.23",
     "node-fetch": "^3.3.2",
     "normalize.css": "^8.0.1",

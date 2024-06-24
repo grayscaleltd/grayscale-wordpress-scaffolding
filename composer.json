@@ -29,7 +29,7 @@
     "wpackagist-plugin/imagify": "^2.2.2",
     "wpackagist-plugin/imsanity": "^2.8.4",
     "wpackagist-plugin/svg-support": "^2.5.5",
-    "wpackagist-plugin/wordpress-seo": "^22.7",
+    "wpackagist-plugin/wordpress-seo": "^22.9",
     "wpackagist-plugin/wp-sweep": "^1.1.8"
   }
 }

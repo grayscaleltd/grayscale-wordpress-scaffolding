@@ -4,6 +4,23 @@ require 'functions-core.php';
 require 'functions-gutenberg.php';
 require 'functions-widgets.php';
 
+/* !! ENVIRONMENT DECLARATION !! */
+  add_action( 'admin_init', function() {
+    global $wp_rewrite;
+
+    insert_with_markers( get_home_path() . '.htaccess', 'WordPress', array_merge(
+      array(
+        '<IfModule mod_rewrite.c>',
+        'RewriteEngine On',
+        'RewriteCond %{HTTP_HOST} .local$',
+        'RewriteRule .? - [E=WP_ENVIRONMENT_TYPE:local]',
+        'RewriteCond %{HTTP_HOST} (stg)|(staging)',
+        'RewriteRule .? - [E=WP_ENVIRONMENT_TYPE:staging]',
+        '</IfModule>'
+      ), explode( "\n", $wp_rewrite->mod_rewrite_rules() )
+    ) );
+  } );
+
 /* ACCESS CONTROL */
   add_filter( 'rest_endpoints', function( $endpoints ) {
     if ( !is_user_logged_in() ) {
@@ -56,7 +73,7 @@ require 'functions-widgets.php';
 /* PRINT QR CODE */
   add_action( 'wp_head', function() {
     if ( is_singular() && !is_front_page() ) {
-      echo '<style>html::after{content:url("https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=' . get_the_permalink() . '&choe=UTF-8&chld=L|0");position:absolute;top:0;right:0;z-index:-1;padding:0 0 1rem 1rem;background:#fff;line-height:0;opacity:0}@media print{html::after{z-index:999;opacity:1}}</style>';
+      echo '<style>html::after{content:url("https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=' . get_the_permalink() . '");position:absolute;top:0;right:0;z-index:-1;padding:0 0 1rem 1rem;background:#fff;line-height:0;opacity:0}@media print{html::after{z-index:999;opacity:1}}</style>';
     }
   }, 20 );
 

@@ -1,0 +1,18 @@
+.wp-block-client-slider {
+  --swiper-theme-color: var(--wp--preset--color--major);
+  --swiper-navigation-size: 2rem;
+  --swiper-navigation-color: var(--swiper-theme-color);
+  --swiper-pagination-bullet-size: 1rem;
+
+  :where(.swiper-slide) {
+    background: var(--wp--preset--color--background);
+  }
+
+  .swiper-slide {
+    height: auto;
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -227,7 +227,7 @@
       animation: both turn-on-visibility 0.35s;
     }
   }
-  &.hideanimationenabled {
+  &.show-closing-animation {
     &:not(.active) {
       animation: both turn-off-visibility 0.35s;
       img {
@@ -253,7 +253,7 @@
           animation: turn-on-visibility 0.4s forwards;
         }
       }
-      &.hideanimationenabled {
+      &.show-closing-animation {
         &:not(.active) {
           animation: none;
           .lightbox-image-container {
@@ -298,7 +298,7 @@
 
 @keyframes lightbox-zoom-in {
   0% {
-    transform: translate(calc(-50vw + var(--wp--lightbox-initial-left-position)), calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));
+    transform: translate(calc((-100vw + var(--wp--lightbox-scrollbar-width)) / 2 + var(--wp--lightbox-initial-left-position)), calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));
   }
   100% {
     transform: translate(-50%, -50%) scale(1, 1);
@@ -315,6 +315,6 @@
   }
   100% {
     visibility: hidden;
-    transform: translate(calc(-50vw + var(--wp--lightbox-initial-left-position)), calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));
+    transform: translate(calc((-100vw + var(--wp--lightbox-scrollbar-width)) / 2 + var(--wp--lightbox-initial-left-position)), calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));
   }
 }

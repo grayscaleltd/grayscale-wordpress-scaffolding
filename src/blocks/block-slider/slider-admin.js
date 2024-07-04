@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import { pick } from 'lodash-es';
 
 /**
  * WordPress dependencies
@@ -10,21 +9,22 @@ import { pick } from 'lodash-es';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const {
-  MediaPlaceholder,
-  MediaUpload,
-  MediaUploadCheck,
+  InspectorControls,
+  InnerBlocks,
 } = wp.blockEditor;
 const {
-  Button,
+  PanelBody,
+  PanelRow,
+  ToggleControl,
 } = wp.components;
 
 /*
  * Register block
  */
 registerBlockType( 'client/slider', {
-  title: __( 'Image Slider', 'grayscale' ),
+  title: __( 'Slider', 'grayscale' ),
   description: __(
-    'Slideshow of images.',
+    'Slideshow of items.',
     'grayscale'
   ),
   category: 'widgets',
@@ -32,8 +32,17 @@ registerBlockType( 'client/slider', {
   keywords: [ __( 'carousel' ) ],
   styles: [],
   attributes: {
-    sliderImages: {
-      type: 'array',
+    autoplay: {
+      type: 'boolean',
+      default: false,
+    },
+    navigation: {
+      type: 'boolean',
+      default: true,
+    },
+    pagination: {
+      type: 'boolean',
+      default: false,
     },
   },
   variations: [],
@@ -46,97 +55,120 @@ registerBlockType( 'client/slider', {
   edit: ( props ) => {
     const {
       attributes: {
-        sliderImages,
+        autoplay,
+        navigation,
+        pagination,
       },
       className,
       setAttributes,
     } = props;
 
-    const setImages = ( img ) => setAttributes( {
-      sliderImages: img.map(
-        ( image ) => {
-          return pick( image, [
-            'id',
-            'url',
-            'alt',
-            'caption',
-          ] );
-        }
-      ),
-    } );
-
-    const ALLOWED_MEDIA_TYPES = [ 'image' ];
-    const ACCEPT_MEDIA_TYPES = 'image/*';
-
     return (
-      <div className={ classnames( className ) }>
-        <MediaUploadCheck>
-          {
-            ! sliderImages ? (
-              <MediaPlaceholder
-                accept={ ACCEPT_MEDIA_TYPES }
-                allowedTypes={ ALLOWED_MEDIA_TYPES }
-                icon="format-gallery"
-                labels={ {
-                  title: __( 'Image Slider', 'grayscale' ),
-                  instructions: __( 'Upload or select images.', 'grayscale' ),
-                } }
-                multiple="true"
-                onSelect={ setImages }
-              >
-              </MediaPlaceholder>
-            ) : (
-              <div className="components-placeholder">
-                <MediaUpload
-                  allowedTypes={ ALLOWED_MEDIA_TYPES }
-                  multiple="true"
-                  value={ sliderImages.map( ( image ) => image.id ) }
-                  onSelect={ setImages }
-                  gallery="true"
-                  render={
-                    ( { open } ) => (
-                      <Button isSecondary="true" onClick={ open }>
-                        { __( 'Edit Slider', 'grayscale' ) }
-                      </Button>
-                    )
-                  }
-                />
-              </div>
-            )
-          }
-        </MediaUploadCheck>
-      </div>
+      <>
+        <InspectorControls>
+          <PanelBody title={ __( 'Slider Settings', 'grayscale' ) }>
+            <PanelRow>
+              <ToggleControl
+                label={ __( 'Autoplay', 'grayscale' ) }
+                checked={ autoplay }
+                onChange={ () => setAttributes( {
+                  autoplay: ! autoplay,
+                } ) }
+              />
+            </PanelRow>
+            <PanelRow>
+              <ToggleControl
+                label={ __( 'Navigation', 'grayscale' ) }
+                checked={ navigation }
+                onChange={ () => setAttributes( {
+                  navigation: ! navigation,
+                } ) }
+              />
+            </PanelRow>
+            <PanelRow>
+              <ToggleControl
+                label={ __( 'Pagination', 'grayscale' ) }
+                checked={ pagination }
+                onChange={ () => setAttributes( {
+                  pagination: ! pagination,
+                } ) }
+              />
+            </PanelRow>
+          </PanelBody>
+        </InspectorControls>
+        <div className={ classnames( className ) }>
+          <InnerBlocks allowedBlocks={ [ 'client/slider-item' ] } />
+        </div>
+      </>
     );
   },
   save: ( props ) => {
     const {
-      sliderImages,
+      autoplay,
+      navigation,
+      pagination,
     } = props.attributes;
+    return (
+      <div
+        className={ classnames( 'swiper' ) }
+        data-autoplay={ autoplay ? 'true' : 'false' }
+        data-navigation={ navigation ? 'true' : 'false' }
+        data-pagination={ pagination ? 'true' : 'false' }
+      >
+        <div className="swiper-wrapper">
+          <InnerBlocks.Content />
+        </div>
+        {
+          pagination ? (
+            <div className="swiper-pagination"></div>
+          ) : null
+        }
+        {
+          navigation ? (
+            <>
+              <div className="swiper-button-prev"></div>
+              <div className="swiper-button-next"></div>
+            </>
+          ) : null
+        }
+      </div>
+    );
+  },
+} );
+
+registerBlockType( 'client/slider-item', {
+  title: __( 'Slider Item', 'grayscale' ),
+  description: __(
+    'Slide within the Slider.',
+    'grayscale'
+  ),
+  category: 'widgets',
+  icon: 'tablet',
+  keywords: [],
+  styles: [],
+  attributes: {},
+  variations: [],
+  supports: {
+    anchor: true,
+    align: [],
+    multiple: true,
+  },
+  parent: [ 'client/slider' ],
+  edit: ( props ) => {
+    const {
+      className,
+    } = props;
 
     return (
-      <div>
-        {
-          ! sliderImages ? (
-            null
-          ) : (
-            sliderImages.map( ( img ) => {
-              return (
-                <figure key={ 'random' + img.id } className="block-image">
-                  <img
-                    src={ img.url }
-                    alt={ img.alt }
-                    className={ `wp-image-${ img.id }` }
-                  />
-                  {
-                    ( img.caption ) ? (
-                      <figcaption>{ img.caption }</figcaption>
-                    ) : null
-                  }
-                </figure>
-              );
-            } )
-          )
-        }
+      <div className={ classnames( className ) }>
+        <InnerBlocks />
+      </div>
+    );
+  },
+  save: () => {
+    return (
+      <div className={ classnames( 'swiper-slide' ) }>
+        <InnerBlocks.Content />
       </div>
     );
   },

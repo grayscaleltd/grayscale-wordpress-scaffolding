@@ -32,22 +32,30 @@
     ],
     "scss/comment-no-empty": null,
     "scss/dollar-variable-empty-line-before": null,
-    "scss/dollar-variable-pattern": null,
-    "scss/double-slash-comment-empty-line-before": null
+    "scss/double-slash-comment-empty-line-before": null,
+    "@stylistic/selector-list-comma-newline-after": null
   },
   "overrides": [
     {
       "files": ["src/scss/wordpress/*.scss"],
       "rules": {
+        "alpha-value-notation": null,
         "comment-empty-line-before": null,
         "comment-whitespace-inside": null,
-        "no-duplicate-selectors": [
+        "declaration-block-no-redundant-longhand-properties": [
           true,
           {
-            "severity": "warning"
+            "ignoreShorthands": ["margin", "margin-inline"]
           }
         ],
-        "rule-empty-line-before": null
+        "declaration-empty-line-before": null,
+        "declaration-property-value-disallowed-list": null,
+        "max-nesting-depth": null,
+        "rule-empty-line-before": null,
+        "selector-max-id": null,
+        "selector-not-notation": null,
+        "selector-no-qualifying-type": null,
+        "scss/dollar-variable-pattern": null
       }
     }
   ]

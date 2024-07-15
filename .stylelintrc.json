@@ -45,7 +45,7 @@
         "declaration-block-no-redundant-longhand-properties": [
           true,
           {
-            "ignoreShorthands": ["margin", "margin-inline"]
+            "ignoreShorthands": ["inset", "margin", "margin-inline"]
           }
         ],
         "declaration-empty-line-before": null,

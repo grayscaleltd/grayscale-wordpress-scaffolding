@@ -9,11 +9,16 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: grayscale
 */
 
+@use 'sass:meta';
+
 // ==========================================================================
 // CORE
 // ==========================================================================
-@use 'normalize';
 @use 'core/base';
+
+@layer normalize {
+  @meta.load-css('normalize');
+}
 
 @import 'settings';
 @import 'var';

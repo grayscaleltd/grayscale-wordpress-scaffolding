@@ -8,14 +8,14 @@
  * License: GNU General Public License v3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: grayscale
-*/
+ */
 
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
 /* REGISTER */
-  add_action( 'init', function() {
+  add_action( 'init', function () {
     register_block_type( 'client/accordion' );
     register_block_type( 'client/accordion-item' );
     register_block_type( 'client/slider' );
@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) {
   } );
 
 /* BACK-END CLIENT BLOCKS ASSETS */
-  add_action( 'enqueue_block_editor_assets', function() {
+  add_action( 'enqueue_block_editor_assets', function () {
     wp_enqueue_style(
       'client-blocks-editor',
       plugins_url( 'client-blocks-editor.css', __FILE__ ),
@@ -41,9 +41,9 @@ if ( !defined( 'ABSPATH' ) ) {
   } );
 
 /* FRONT-END CLIENT BLOCKS ASSETS */
-  $blockRegistry = WP_Block_Type_Registry::get_instance();
+  $block_registry = WP_Block_Type_Registry::get_instance();
 
-  add_action( 'enqueue_block_assets', function() use ( $blockRegistry ) {
+  add_action( 'enqueue_block_assets', function () use ( $block_registry ) {
     wp_enqueue_style(
       'client-blocks',
       plugins_url( 'client-blocks.css', __FILE__ ),
@@ -51,7 +51,7 @@ if ( !defined( 'ABSPATH' ) ) {
       ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time()
     );
 
-    if ( $blockRegistry->get_registered( 'client/slider' ) ) {
+    if ( $block_registry->get_registered( 'client/slider' ) ) {
       wp_enqueue_style(
         'client-blocks-slider',
         '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
@@ -61,7 +61,7 @@ if ( !defined( 'ABSPATH' ) ) {
     }
   } );
 
-  add_action( 'wp_enqueue_scripts', function() use ( $blockRegistry ) {
+  add_action( 'wp_enqueue_scripts', function () use ( $block_registry ) {
     wp_enqueue_script(
       'client-blocks',
       plugins_url( 'client-blocks.js', __FILE__ ),
@@ -70,7 +70,7 @@ if ( !defined( 'ABSPATH' ) ) {
       array( 'strategy' => 'defer' )
     );
 
-    if ( $blockRegistry->get_registered( 'client/slider' ) ) {
+    if ( $block_registry->get_registered( 'client/slider' ) ) {
       wp_enqueue_script(
         'client-blocks-slider',
         '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',

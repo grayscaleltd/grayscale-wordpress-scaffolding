@@ -5,7 +5,7 @@ require 'functions-gutenberg.php';
 require 'functions-widgets.php';
 
 /* !! ENVIRONMENT DECLARATION !! */
-  add_action( 'admin_init', function() {
+  add_action( 'admin_init', function () {
     global $wp_rewrite;
 
     insert_with_markers( get_home_path() . '.htaccess', 'WordPress', array_merge(
@@ -16,14 +16,14 @@ require 'functions-widgets.php';
         'RewriteRule .? - [E=WP_ENVIRONMENT_TYPE:local]',
         'RewriteCond %{HTTP_HOST} (stg)|(staging)',
         'RewriteRule .? - [E=WP_ENVIRONMENT_TYPE:staging]',
-        '</IfModule>'
+        '</IfModule>',
       ), explode( "\n", $wp_rewrite->mod_rewrite_rules() )
     ) );
   } );
 
 /* ACCESS CONTROL */
-  add_filter( 'rest_endpoints', function( $endpoints ) {
-    if ( !is_user_logged_in() ) {
+  add_filter( 'rest_endpoints', function ( $endpoints ) {
+    if ( ! is_user_logged_in() ) {
       if ( isset( $endpoints['/wp/v2/users'] ) ) {
         unset( $endpoints['/wp/v2/users'] );
       }
@@ -37,12 +37,12 @@ require 'functions-widgets.php';
   } );
 
 /* CONTENT */
-  if ( !isset( $content_width ) ) {
+  if ( ! isset( $content_width ) ) {
     $content_width = 1200;
   }
 
 /* ENQUEUE */
-  add_action( 'wp_enqueue_scripts', function() {
+  add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style(
       'client-theme',
       get_template_directory_uri() . '/style.css',
@@ -71,24 +71,24 @@ require 'functions-widgets.php';
   add_filter( 'gform_disable_form_theme_css', '__return_true' );
 
 /* PRINT QR CODE */
-  add_action( 'wp_head', function() {
-    if ( is_singular() && !is_front_page() ) {
-      echo '<style>html::after{content:url("https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=' . get_the_permalink() . '");position:absolute;top:0;right:0;z-index:-1;padding:0 0 1rem 1rem;background:#fff;line-height:0;opacity:0}@media print{html::after{z-index:999;opacity:1}}</style>';
+  add_action( 'wp_head', function () {
+    if ( is_singular() && ! is_front_page() ) {
+      echo '<style>html::after{content:url("https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=' . esc_url( get_the_permalink() ) . '");position:absolute;top:0;right:0;z-index:-1;padding:0 0 1rem 1rem;background:#fff;line-height:0;opacity:0}@media print{html::after{z-index:999;opacity:1}}</style>';
     }
   }, 20 );
 
 /* REVISIONS */
-  add_filter( 'wp_revisions_to_keep', function( $num, $post ) {
+  add_filter( 'wp_revisions_to_keep', function () {
     return 10;
   }, 10, 2 );
 
 /* SECURITY HEADERS */
-  add_filter( 'wp_headers', function( $headers ) {
-    $csp = [
+  add_filter( 'wp_headers', function ( $headers ) {
+    $csp = array(
       "default-src 'self' https: data:",
       "script-src https: 'unsafe-inline' 'unsafe-eval'",
       "style-src https: 'unsafe-inline'",
-    ];
+    );
 
     $headers['Content-Security-Policy'] = implode( ';', $csp );
     $headers['Permissions-Policy'] = 'camera=(), microphone=()';

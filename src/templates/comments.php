@@ -8,7 +8,7 @@
 
   <div id="comments" class="comments">
 
-    <h2><?php _e( 'Comments', 'grayscale' ); ?> (<?php echo get_comments_number(); ?>)</h2>
+    <h2><?php esc_html_e( 'Comments', 'grayscale' ); ?> (<?php esc_html_e( get_comments_number() ); ?>)</h2>
 
     <ul class="comment-list">
 
@@ -40,9 +40,9 @@
 
   <div id="respond" class="comment-respond">
 
-    <h2 id="reply-title" class="comment-reply-title"><?php _e( 'Leave a Reply', 'grayscale' ); ?></h2>
+    <h2 id="reply-title" class="comment-reply-title"><?php esc_html_e( 'Leave a Reply', 'grayscale' ); ?></h2>
 
-    <p><?php _e( 'Comments are closed.', 'grayscale' ); ?></p>
+    <p><?php esc_html_e( 'Comments are closed.', 'grayscale' ); ?></p>
 
   </div>
 

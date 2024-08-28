@@ -7,6 +7,7 @@ wp.domReady(function() {
     'core/buttons',
     'core/column',
     'core/columns',
+    'core/details',
     'core/embed',
     'core/footnotes',
     'core/freeform',

@@ -16,15 +16,16 @@ Text Domain: grayscale
 // ==========================================================================
 @use 'core/base';
 
-@layer normalize {
-  @meta.load-css('normalize');
-}
+@use 'var';
 
 @import 'settings';
-@import 'var';
+
+@layer normalize {
+  @include meta.load-css('normalize');
+}
 
 // ==========================================================================
-// WORDPRESS & EDITOR
+// WORDPRESS
 // ==========================================================================
 $is-frontend: true;
 

@@ -5,9 +5,9 @@
     <div class="content-block">
       <div class="wrapper">
 
-        <?php if ( $pseudoArchivePage = get_page_by_path( get_query_var( 'post_type' ) ) ) : ?>
+        <?php if ( $pseudo_archive_page = get_page_by_path( get_query_var( 'post_type' ) ) ) : ?>
 
-          <?php setup_postdata( $post = $pseudoArchivePage ); ?>
+          <?php setup_postdata( $post = $pseudo_archive_page ); ?>
 
           <?php the_title( '<h1>', '</h1>' ); ?>
 
@@ -31,7 +31,8 @@
                 <small>
                   <?php
                     $date = '<time datetime="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</time>';
-                    printf( __( 'Posted by %s on %s', 'grayscale' ), esc_html( get_the_author() ), $date );
+                    // translators: %1$s represents the author name, %2$s represents the date
+                    printf( esc_html__( 'Posted by %1$s on %2$s', 'grayscale' ), get_the_author(), esc_html( $date ) );
                   ?>
                 </small>
               </p>
@@ -39,7 +40,7 @@
               <?php the_excerpt(); ?>
 
               <ul class="wp-article-links">
-                <li><a href="<?php the_permalink(); ?>"><?php _e( 'Continue Reading &rarr;', 'grayscale' ); ?></a></li>
+                <li><a href="<?php the_permalink(); ?>"><?php esc_html_e( 'Continue Reading &rarr;', 'grayscale' ); ?></a></li>
                 <?php if ( comments_open() || get_comments_number() ) : ?>
                   <li><a href="<?php comments_link(); ?>"><?php comments_number( 'No Comments', '1 Comment', '% Comments' ); ?></a></li>
                 <?php endif; ?>
@@ -59,7 +60,7 @@
 
         <?php else : ?>
 
-          <p><?php _e( 'Sorry, we cannot find what you are looking for.', 'grayscale' ); ?></p>
+          <p><?php esc_html_e( 'Sorry, we cannot find what you are looking for.', 'grayscale' ); ?></p>
 
         <?php endif; ?>
 

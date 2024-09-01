@@ -1,7 +1,6 @@
 @use 'sass:color';
 
-@use 'core/helpers';
-
+@import 'core/helpers';
 @import 'core/mixins';
 
 // Breakpoints

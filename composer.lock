@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "511e4dbf11bc7a8e4ddb4398226116ad",
+    "content-hash": "c2864a9a355893f72cd6e3fae79be66e",
     "packages": [
         {
             "name": "composer/installers",
@@ -226,15 +226,15 @@
         },
         {
             "name": "wpackagist-plugin/svg-support",
-            "version": "2.5.7",
+            "version": "2.5.8",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/svg-support/",
-                "reference": "tags/2.5.7"
+                "reference": "tags/2.5.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/svg-support.2.5.7.zip"
+                "url": "https://downloads.wordpress.org/plugin/svg-support.2.5.8.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -244,15 +244,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "23.1",
+            "version": "23.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/23.1"
+                "reference": "tags/23.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.23.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.23.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"

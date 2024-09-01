@@ -9,28 +9,28 @@
   add_action( 'admin_head', 'add_wp_login_styles' );
 
   // Custom Admin Login Logo URL
-  add_filter( 'login_headerurl', function() {
+  add_filter( 'login_headerurl', function () {
     return 'https://grayscale.com.hk';
   } );
 
   // Custom Admin Login Logo Title
-  add_filter( 'login_headertext', function() {
+  add_filter( 'login_headertext', function () {
     return 'Grayscale web design and web development Hong Kong';
   } );
 
 /* COMMENTS */
-  add_action( 'wp_print_scripts', function() {
-    if ( !is_admin() && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+  add_action( 'wp_print_scripts', function () {
+    if ( ! is_admin() && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
       wp_enqueue_script( 'comment-reply' );
     }
   } );
 
 /* CUSTOM TRACKING */
-  add_action( 'after_setup_theme', function() {
+  add_action( 'after_setup_theme', function () {
     add_option( 'client_tracking' );
   } );
 
-  add_action( 'wp_footer', function() {
+  add_action( 'wp_footer', function () {
     echo get_option( 'client_tracking' );
   }, 20 );
 
@@ -40,12 +40,12 @@
   remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
   // Enable Excerpt on Page
-  add_action( 'init', function() {
+  add_action( 'init', function () {
     add_post_type_support( 'page', 'excerpt' );
   } );
 
 /* MENUS */
-  add_action( 'init', function() {
+  add_action( 'init', function () {
     register_nav_menus( array(
       'main' => __( 'Main Menu', 'grayscale' ),
       'footer' => __( 'Footer Menu', 'grayscale' ),
@@ -54,7 +54,7 @@
   } );
 
 /* THEME SUPPORT */
-  add_action( 'after_setup_theme', function() {
+  add_action( 'after_setup_theme', function () {
     // Enable Translation
     load_theme_textdomain( 'grayscale' );
 
@@ -70,7 +70,7 @@
 
 /* UPDATE THEME DEFAULT OPTIONS */
   // Check options at https://codex.wordpress.org/Option_Reference
-  add_action( 'after_switch_theme', function() {
+  add_action( 'after_switch_theme', function () {
     update_option( 'default_comment_status', 'closed' );
     update_option( 'default_ping_status', 'closed' );
     update_option( 'default_pingback_flag', 0 );
@@ -93,29 +93,29 @@
   // Comment (Reference: https://teamtreehouse.com/community/wordpress-user-comments)
   class GS_Comment extends Walker_Comment {
     public $tree_type = 'comment';
-    public $db_fields = array ( 'parent' => 'comment_parent', 'id' => 'comment_ID' );
+    public $db_fields = array( 'parent' => 'comment_parent', 'id' => 'comment_ID' );
 
     public function start_el( &$output, $comment, $depth = 0, $args = array(), $id = 0 ) {
       $depth++;
       $GLOBALS['comment_depth'] = $depth;
       $GLOBALS['comment'] = $comment;
 
-      if ( !empty( $args['callback'] ) ) {
+      if ( ! empty( $args['callback'] ) ) {
         ob_start();
         call_user_func( $args['callback'], $comment, $args, $depth );
         $output .= ob_get_clean();
         return;
       }
 
-      $tag = ( $args['style'] == 'div' ) ? 'div' : 'li';
+      $tag = ( $args['style'] === 'div' ) ? 'div' : 'li';
 
-      if ( ( $comment->comment_type == 'pingback'  || $comment->comment_type == 'trackback' ) && $args['short_ping'] ) {
+      if ( ( $comment->comment_type === 'pingback' || $comment->comment_type === 'trackback' ) && $args['short_ping'] ) {
         $output .= '<' . $tag . ' id="comment-' . get_comment_ID() . '" ' . comment_class( '', $comment, null, false ) . '>';
         $output .= '<div class="comment-body">';
         $output .= __( 'Pingback:', 'grayscale' ) . ' ' . get_comment_author_link( $comment ) . ' ' . edit_comment_link( __( 'Edit', 'grayscale' ), ' | ', '' );
         $output .= '</div>';
       } else {
-        $output .= '<' . $tag . ' id="comment-' . get_comment_ID() . '" ' .  comment_class( $this->has_children ? 'parent' : '', $comment, null, false ) . '>';
+        $output .= '<' . $tag . ' id="comment-' . get_comment_ID() . '" ' . comment_class( $this->has_children ? 'parent' : '', $comment, null, false ) . '>';
         $output .= '<div id="div-comment-' . get_comment_ID() . '">';
 
         $output .= '<header class="comment-meta">';
@@ -127,7 +127,7 @@
         $output .= '<div class="comment-metadata">';
         $output .= '<p>';
         $output .= '<span class="comment-author">' . get_comment_author_link( $comment ) . '</span><br>';
-        $output .= '<time datetime="' .  get_comment_time( 'c' ) . '">' . sprintf( __( '%1$s at %2$s', 'grayscale' ), get_comment_date( '', $comment ), get_comment_time() ) . '</time>';
+        $output .= '<time datetime="' . get_comment_time( 'c' ) . '">' . sprintf( __( '%1$s at %2$s', 'grayscale' ), get_comment_date( '', $comment ), get_comment_time() ) . '</time>';
         $output .= ' | <a href="' . esc_url( get_comment_link( $comment, $args ) ) . '">#</a>';
         $output .= ( current_user_can( 'edit_comment', $comment->comment_ID ) ) ? ' | <a href="' . get_edit_comment_link() . '">' . __( 'Edit', 'grayscale' ) . '</a>' : '';
         $output .= ( $comment->comment_approved == '0' ) ? ' | ' . __( 'Your comment is awaiting moderation.', 'grayscale' ) : '';
@@ -151,14 +151,14 @@
     }
 
     public function end_el( &$output, $comment, $depth = 0, $args = array() ) {
-      if ( !empty( $args['end-callback'] ) ) {
+      if ( ! empty( $args['end-callback'] ) ) {
         ob_start();
         call_user_func( $args['end-callback'], $comment, $args, $depth );
         $output .= ob_get_clean();
         return;
       }
 
-      if ( $args['style'] == 'div' ) {
+      if ( $args['style'] === 'div' ) {
         $output .= "</div><!-- #comment-## -->\n";
       } else {
         $output .= "</li><!-- #comment-## -->\n";
@@ -177,15 +177,15 @@
       $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
       $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-      $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args, $depth );
+      $id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth );
       $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
-      $output .= $indent . '<li' . $id . $class_names .'>';
+      $output .= $indent . '<li' . $id . $class_names . '>';
 
       $title = apply_filters( 'the_title', $item->title, $item->ID );
 
       if ( strpos( $title, '|' ) !== false ) {
-        $title_words = explode ( '|' , $title );
+        $title_words = explode( '|', $title );
         $title = '';
 
         foreach ( $title_words as $index => $title_word ) {
@@ -210,11 +210,11 @@
       }
 
       $item_output = $args->before;
-      $item_output .= '<a'. $attributes .'>';
+      $item_output .= '<a' . $attributes . '>';
       $item_output .= $args->link_before . $title . $args->link_after;
       $item_output .= '</a>';
       $item_output .= $args->after;
-      $item_output .= ( !empty( $item->description ) ) ? '<p class="menu-item-description">' . $item->description . '</p>' : '';
+      $item_output .= ( ! empty( $item->description ) ) ? '<p class="menu-item-description">' . $item->description . '</p>' : '';
 
       $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }

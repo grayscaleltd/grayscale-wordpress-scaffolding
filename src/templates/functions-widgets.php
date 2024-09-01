@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'widgets_init', function() {
+add_action( 'widgets_init', function () {
   register_sidebar( array(
     'name' => __( 'Sidebar', 'grayscale' ),
     'id' => 'sidebar',

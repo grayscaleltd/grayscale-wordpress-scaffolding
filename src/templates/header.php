@@ -11,7 +11,7 @@
 
   <?php wp_body_open(); ?>
 
-  <a href="#main" class="screen-reader-text"><?php _e( 'Skip to content', 'grayscale' ); ?></a>
+  <a href="#main" class="screen-reader-text"><?php esc_html_e( 'Skip to content', 'grayscale' ); ?></a>
 
   <div class="view">
 

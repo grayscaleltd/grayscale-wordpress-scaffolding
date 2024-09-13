@@ -42,6 +42,9 @@ function stylesDefault() {
       .pipe(sass.sync({
         includePaths: config.styles.includePaths,
         outputStyle: 'compressed',
+        silenceDeprecations: [
+          'mixed-decls',
+        ],
       }))
       .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))

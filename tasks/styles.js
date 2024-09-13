@@ -2,7 +2,6 @@ import config from '../gulpconfig.js';
 
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import * as dartSass from 'sass';
 import fs from 'node:fs/promises';
 import gulp from 'gulp';
 import gulpIf from 'gulp-if';
@@ -14,6 +13,7 @@ import gulpSassVariables from 'gulp-sass-variables';
 import gulpSourcemaps from 'gulp-sourcemaps';
 import gulpTouchCmd from 'gulp-touch-cmd';
 import postcssCalc from 'postcss-calc';
+import * as dartSass from 'sass-embedded';
 import yargs from 'yargs';
 import {hideBin} from 'yargs/helpers';
 
@@ -41,7 +41,7 @@ function stylesDefault() {
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
       .pipe(sass.sync({
         includePaths: config.styles.includePaths,
-        outputStyle: 'compressed',
+        style: 'compressed',
       }))
       .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
@@ -61,7 +61,7 @@ function stylesAdmin() {
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
       }))
       .pipe(sass.sync({
-        outputStyle: 'compressed',
+        style: 'compressed',
       }))
       .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulp.dest(config.styles.adminDest))
@@ -75,7 +75,7 @@ function stylesBlocks() {
       }))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
       .pipe(sass.sync({
-        outputStyle: 'compressed',
+        style: 'compressed',
       }))
       .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))

@@ -24,15 +24,10 @@
         "severity": "warning"
       }
     ],
-    "scss/at-extend-no-missing-placeholder": [
-      true,
-      {
-        "severity": "warning"
-      }
-    ],
     "scss/comment-no-empty": null,
     "scss/dollar-variable-empty-line-before": null,
     "scss/double-slash-comment-empty-line-before": null,
+    "scss/percent-placeholder-pattern": null,
     "@stylistic/selector-list-comma-newline-after": null
   },
   "overrides": [

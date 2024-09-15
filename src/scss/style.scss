@@ -16,9 +16,8 @@ Text Domain: grayscale
 // ==========================================================================
 @use 'core/base';
 
-@use 'var';
-
 @import 'settings';
+@import 'var';
 
 @layer normalize {
   @include meta.load-css('normalize');

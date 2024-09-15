@@ -1,9 +1,5 @@
 @use 'sass:color';
 
-@import 'core/helpers';
-@import 'core/mixins';
-
-// Breakpoints
 $breakpoints: (
   'small':    0,
   'medium':   640,
@@ -12,23 +8,27 @@ $breakpoints: (
   'xxlarge':  1440,
 );
 
-// Colours
-$color-black: #222;
-$color-white: #fff;
-$color-shade: color.adjust($color-black, $lightness: 80%);
+$color-palette: (
+  'black': #222,
+  'white': #fff,
+  'shade': color.adjust(#222, $lightness: 80%),
+  'major': #181231,
+  'minor': #7c01fd,
+  'background': var(--wp--preset--color--white),
+  'foreground': var(--wp--preset--color--black),
+  'alert': #f06,
+);
 
-$color-major: #181231;
-$color-minor: #7c01fd;
+$custom-properties: (
+  'line-height--body': 1.5,
+  'wrapper--max-width': 80rem,
+);
 
-$color-background: $color-white;
-$color-foreground: $color-black;
-$color-alert: #f06;
+$font-families: (
+  'heading': sans-serif, // 700
+  'body': sans-serif, // 400
+);
 
-// Font Family
-$font-heading: sans-serif; // 700
-$font-content: sans-serif; // 400
-
-// Font Sizes
 $font-size-roots: (
   16px,
   16px,
@@ -37,7 +37,9 @@ $font-size-roots: (
   16px,
 );
 
-$font-line-height: 1.5;
-
-// Project Specific
-$wrapper-max-width: 60rem;
+$font-sizes: (
+  'x-small': clamp(12px, 0.75em, 14px),
+  'small': 0.8125em,
+  'medium': 1.25em,
+  'large': 2.25em,
+);

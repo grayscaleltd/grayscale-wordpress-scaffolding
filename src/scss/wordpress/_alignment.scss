@@ -1,3 +1,5 @@
+$is-frontend: true !default;
+
 @if $is-frontend {
   // ==========================================================================
   // Text alignments; Block alignments; Justification.

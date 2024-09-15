@@ -1,3 +1,5 @@
+@use '../core/mixins';
+
 .wp-block-media-text {
   // This block's direction should not be manipulated by rtl, as the mediaPosition control does.
   /*!rtl:begin:ignore*/
@@ -106,7 +108,7 @@
 * If the style were set on mobile first, on desktop styles,
 * we would have no way of setting the style again to the inline style.
 */
-@include gs-breakpoint(small, only) {
+@include mixins.gs-breakpoint(small, only) {
   .wp-block-media-text.is-stacked-on-mobile {
     grid-template-columns: 100% !important;
     > .wp-block-media-text__media {

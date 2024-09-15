@@ -1,0 +1,60 @@
+$is-frontend: true !default;
+
+@use '../settings' as *;
+
+// ==========================================================================
+// Blocks
+// https://github.com/WordPress/gutenberg/tree/wp/6.6/packages/block-library/src
+// ==========================================================================
+@use 'a11y' with ($is-frontend: $is-frontend);
+@use 'alignment' with ($is-frontend: $is-frontend);
+@use 'article' with ($is-frontend: $is-frontend);
+@use 'button';
+@use 'buttons';
+@use 'colors';
+@use 'columns';
+@use 'comment' with ($is-frontend: $is-frontend);
+@use 'details';
+@use 'embed' with ($is-frontend: $is-frontend);
+@use 'fonts';
+@use 'gallery';
+@use 'gform';
+@use 'image';
+@use 'media-text';
+@use 'post-featured-image';
+
+// ==========================================================================
+// Custom Properties
+// https://developer.wordpress.org/themes/global-settings-and-styles/settings/custom/
+// ==========================================================================
+:root {
+  @each $name, $value in $custom-properties {
+    --wp--custom--#{$name}: #{$value};
+  }
+}
+
+// ==========================================================================
+// Figcaption
+// https://github.com/WordPress/gutenberg/tree/wp/6.6/packages/base-styles/_mixins.scss
+// ==========================================================================
+:where(figcaption) {
+  margin-top: 0.5em;
+
+  .aligncenter & {
+    text-align: center;
+  }
+
+  .alignfull & {
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+  }
+
+  @if $is-frontend == false {
+    font-size: 90%;
+
+    [data-align='full'] & {
+      text-align: center;
+    }
+  }
+}

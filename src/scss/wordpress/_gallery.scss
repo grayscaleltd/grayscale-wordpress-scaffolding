@@ -1,5 +1,7 @@
 @use 'sass:math';
 
+@use '../core/mixins';
+
 // Import styles for rendering the static content of deprecated gallery versions.
 // @import "./deprecated.scss";
 
@@ -46,9 +48,9 @@ figure.wp-block-gallery.has-nested-images {
     }
 
     figcaption {
-      background: linear-gradient(0deg, rgba($color: $color-black, $alpha: 0.7) 0, rgba($color: $color-black, $alpha: 0.3) 70%, transparent);
+      background: linear-gradient(0deg, rgb(0 0 0 / 0.7) 0, rgb(0 0 0 / 0.3) 70%, transparent);
       bottom: 0;
-      color: $color-white;
+      color: var(--wp--preset--color--white);
       // font-size: $default-font-size;
       left: 0;
       margin-bottom: 0;
@@ -127,7 +129,7 @@ figure.wp-block-gallery.has-nested-images {
   }
 
   // Beyond mobile viewports, we allow up to 8 columns.
-  @include gs-breakpoint(medium, up) {
+  @include mixins.gs-breakpoint(medium, up) {
     @for $i from 3 through 8 {
       &.columns-#{ $i } figure.wp-block-image:not(#individual-image) {
         width: calc(#{math.div(100%, $i)} - (var(--wp--style--unstable-gallery-gap, 1rem) * #{math.div($i - 1, $i)}));
@@ -155,7 +157,7 @@ figure.wp-block-gallery.has-nested-images {
   // Apply max-width to floated items that have no intrinsic width.
   &.alignleft,
   &.alignright {
-    max-width: $wrapper-max-width * 0.5;
+    max-width: calc(var(--wp--custom--wrapper--max-width) * 0.5);
     width: 100%;
   }
 

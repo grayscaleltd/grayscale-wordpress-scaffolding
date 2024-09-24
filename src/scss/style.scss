@@ -9,29 +9,20 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: grayscale
 */
 
-@use 'sass:meta';
-
 // ==========================================================================
 // CORE
 // ==========================================================================
-@use 'core/base';
+@use 'core/normalize';
 
-@import 'settings';
-@import 'var';
-
-@layer normalize {
-  @include meta.load-css('normalize');
-}
+@use 'settings';
 
 // ==========================================================================
 // WORDPRESS
 // ==========================================================================
-$is-frontend: true;
-
-@import 'wordpress/wordpress';
+@use 'wordpress/wordpress' with ($is-frontend: true);
 
 // ==========================================================================
 // PROJECT SPECIFIC
 // ==========================================================================
-@import 'page';
-@import 'typography';
+@use 'page';
+@use 'typography';

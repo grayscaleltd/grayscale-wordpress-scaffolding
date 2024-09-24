@@ -1,0 +1,69 @@
+@use 'sass:meta';
+
+@layer normalize {
+  @include meta.load-css('../../../node_modules/normalize.css/normalize');
+
+  html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+
+  address, blockquote, dd, dl, figure, form, ol, p, table, ul {
+    margin: 0 0 1.5em;
+    word-wrap: break-word;
+  }
+
+  button, input, select, textarea {
+    max-width: 100%;
+    padding: 0.25em 0.75em;
+    border: 1px solid currentcolor;
+    background: inherit;
+    color: inherit;
+    font: inherit;
+  }
+
+  button, [type='button'], [type='reset'], [type='submit'],
+  [for],
+  [type='checkbox'], [type='radio'] {
+    cursor: pointer;
+  }
+
+  canvas, img, svg, video {
+    height: auto;
+    max-width: 100%;
+  }
+
+  figcaption {
+    color: inherit;
+    font-size: 90%;
+  }
+
+  iframe {
+    border: 0;
+    width: 100%;
+  }
+
+  li {
+    margin: 0.75em 0;
+  }
+
+  select {
+    color: inherit;
+    font: inherit;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  td, th {
+    padding: 0.5em;
+    border: 1px solid currentcolor;
+  }
+}

@@ -9,7 +9,7 @@ To run this workflow, you should have the below installed globally. If you are o
 * [npm](https://docs.npmjs.com/getting-started/installing-node)
 * [gulp-cli](https://github.com/gulpjs/gulp-cli)
 
-The package comes with linter files to maintain code style and you are encouraged to have the below linters installed.
+The package comes with linter files to maintain code style and you are encouraged to have the below linters installed in your code editor.
 
 * [ESLint](https://eslint.org/)
 * [Style Lint](https://stylelint.io/)

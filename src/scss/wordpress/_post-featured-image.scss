@@ -22,7 +22,7 @@
   //   &.has-background-dim {
   //     position: absolute;
   //     inset: 0;
-  //     background-color: $color-black;
+  //     background-color: var(--wp--preset--color--black);
 
   //     @at-root .wp-block-post-featured-image {
   //       position: relative;

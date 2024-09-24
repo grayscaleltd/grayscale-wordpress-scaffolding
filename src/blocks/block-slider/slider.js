@@ -10,6 +10,9 @@ jQuery( document ).ready( function( $ ) {
           pauseOnMouseEnter: true,
         } : false,
         effect: 'fade',
+        keyboard: {
+          enabled: true,
+        },
         loop: true,
         navigation: $( el ).data( 'navigation' ) ? {
           nextEl: '.swiper-button-next',

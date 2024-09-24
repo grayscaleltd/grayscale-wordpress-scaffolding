@@ -1,23 +1,25 @@
+$is-frontend: true !default;
+
 // ==========================================================================
 // Blocks
 // https://github.com/WordPress/gutenberg/tree/wp/6.6/packages/block-library/src
 // ==========================================================================
-@import 'a11y';
-@import 'alignment';
-@import 'article';
-@import 'button';
-@import 'buttons';
-@import 'colors';
-@import 'columns';
-@import 'comment';
-@import 'details';
-@import 'embed';
-@import 'font-sizes';
-@import 'gallery';
-@import 'gform';
-@import 'image';
-@import 'media-text';
-@import 'post-featured-image';
+@use 'a11y' with ($is-frontend: $is-frontend);
+@use 'alignment' with ($is-frontend: $is-frontend);
+@use 'article' with ($is-frontend: $is-frontend);
+@use 'button';
+@use 'buttons';
+@use 'colors';
+@use 'columns';
+@use 'comment' with ($is-frontend: $is-frontend);
+@use 'details';
+@use 'embed' with ($is-frontend: $is-frontend);
+@use 'fonts';
+@use 'gallery';
+@use 'gform';
+@use 'image';
+@use 'media-text';
+@use 'post-featured-image';
 
 // ==========================================================================
 // Figcaption

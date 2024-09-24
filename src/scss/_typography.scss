@@ -1,17 +1,20 @@
+@use 'core/mixins';
 @use 'sass:math';
+@use 'settings';
 
 html {
-  color: var(--wp--preset--color--foreground, $color-foreground);
-  font-family: $font-content;
-  @include gs-breakpoint-loop($font-size-roots) using ($item) {
+  color: var(--wp--preset--color--foreground);
+  font-family: var(--wp--preset--font-family--body);
+  line-height: var(--wp--custom--line-height--body);
+
+  @include mixins.gs-breakpoint-loop(settings.$font-size-roots) using ($item) {
     font-size: math.div($item, 16px) * 100%;
   }
-  line-height: $font-line-height; /* stylelint-disable-line */
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  font-family: $font-heading;
+  font-family: var(--wp--preset--font-family--heading);
 }
 
 h1 {

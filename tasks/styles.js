@@ -2,7 +2,7 @@ import config from '../gulpconfig.js';
 
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import * as dartSass from 'sass';
+import * as dartSass from 'sass-embedded';
 import fs from 'node:fs/promises';
 import gulp from 'gulp';
 import gulpIf from 'gulp-if';

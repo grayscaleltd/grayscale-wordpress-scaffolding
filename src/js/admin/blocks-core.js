@@ -37,6 +37,7 @@ wp.domReady(function() {
     ['core/group', 'group'],
     ['core/group', 'group-row'],
     ['core/group', 'group-stack'],
+    ['core/group', 'group-grid'],
   ];
 
   // Display statuses of Core Blocks, Styles, and Variations

@@ -1,3 +1,7 @@
+$is-frontend: true !default;
+
+@use '../core/extend';
+
 @if $is-frontend {
   .screen-reader-text {
     @extend %sr-only;
@@ -12,8 +16,8 @@
       padding: 1rem;
       clip: auto !important;
       clip-path: none;
-      background-color: var(--wp--preset--color--background, $color-background);
-      color: var(--wp--preset--color--foreground, $color-foreground);
+      background-color: var(--wp--preset--color--background);
+      color: var(--wp--preset--color--foreground);
       font-size: 1em;
       line-height: normal;
       text-decoration: none;

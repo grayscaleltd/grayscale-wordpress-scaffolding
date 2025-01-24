@@ -9,14 +9,14 @@ To run this workflow, you should have the below installed globally. If you are o
 * [npm](https://docs.npmjs.com/getting-started/installing-node)
 * [gulp-cli](https://github.com/gulpjs/gulp-cli)
 
-The package comes with linter files to maintain code style and you are encouraged to have the below linters installed.
+The package comes with linter files to maintain code style and you are encouraged to have the below linters installed in your code editor.
 
 * [ESLint](https://eslint.org/)
 * [Style Lint](https://stylelint.io/)
 
 ## Setup
 
-1. Set up a local WordPress instance. [Local by Flywheel](https://localbyflywheel.com/) could be helpful.
+1. Set up a local WordPress instance. [Local](https://localwp.com/) could be helpful.
 2. Make necessary changes to composer.json and gulpconfig.js.
 3. If this is a fresh set-up, run `npm run setup` in the terminal to get the dev dependencies and WordPress ready; otherwise run `npm install && npm audit fix && gulp build && composer install`.
 4. Set up config credentials for different environments if necessary.

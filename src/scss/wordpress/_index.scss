@@ -4,7 +4,7 @@ $is-frontend: true !default;
 
 // ==========================================================================
 // Blocks
-// https://github.com/WordPress/gutenberg/tree/wp/6.6/packages/block-library/src
+// https://github.com/WordPress/gutenberg/tree/wp/6.7/packages/block-library/src
 // ==========================================================================
 @use 'a11y' with ($is-frontend: $is-frontend);
 @use 'alignment' with ($is-frontend: $is-frontend);
@@ -35,7 +35,7 @@ $is-frontend: true !default;
 
 // ==========================================================================
 // Figcaption
-// https://github.com/WordPress/gutenberg/tree/wp/6.6/packages/base-styles/_mixins.scss
+// https://github.com/WordPress/gutenberg/tree/wp/6.7/packages/base-styles/_mixins.scss
 // ==========================================================================
 :where(figcaption) {
   margin-top: 0.5em;

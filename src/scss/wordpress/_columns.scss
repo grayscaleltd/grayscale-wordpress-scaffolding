@@ -63,8 +63,8 @@
     > .wp-block-column {
       // Available space should be divided equally amongst columns.
       flex-basis: 0;
-
       flex-grow: 1;
+
       // Columns with an explicitly-assigned width should maintain their
       // `flex-basis` width and not grow.
       &[style*='flex-basis'] {

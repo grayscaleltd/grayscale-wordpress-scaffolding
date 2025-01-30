@@ -1,8 +1,8 @@
 import config from '../gulpconfig.js';
 
-import fs from 'node:fs/promises';
 import gulp from 'gulp';
 import gulpStringReplace from 'gulp-string-replace';
+import fs from 'node:fs/promises';
 
 const gulpStringReplaceOption = {
   logs: {

@@ -2,7 +2,6 @@ import config from '../gulpconfig.js';
 
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import fs from 'node:fs/promises';
 import gulp from 'gulp';
 import gulpIf from 'gulp-if';
 import gulpNotify from 'gulp-notify';
@@ -12,6 +11,7 @@ import gulpSass from 'gulp-sass';
 import gulpSassVariables from 'gulp-sass-variables';
 import gulpSourcemaps from 'gulp-sourcemaps';
 import gulpTouchCmd from 'gulp-touch-cmd';
+import fs from 'node:fs/promises';
 import postcssCalc from 'postcss-calc';
 import * as dartSass from 'sass-embedded';
 import yargs from 'yargs';

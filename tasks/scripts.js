@@ -1,10 +1,10 @@
 import config from '../gulpconfig.js';
 
 import chalk from 'chalk';
-import {fileURLToPath} from 'node:url';
 import {globSync} from 'glob';
 import gulp from 'gulp';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import webpack from 'webpack';
 import yargs from 'yargs';
 import {hideBin} from 'yargs/helpers';
@@ -64,7 +64,7 @@ export function scriptsDefault(cb) {
     console.error(`[${chalk.blue('webpack')}]`);
     console.error(stats.toString(statOptions));
 
-    if (!!cb) cb();
+    if (cb) cb();
   });
 }
 

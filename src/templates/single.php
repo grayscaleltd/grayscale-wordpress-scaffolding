@@ -18,7 +18,7 @@
                   <?php
                     $date = '<time datetime="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</time>';
                     // translators: %1$s represents the author name, %2$s represents the date
-                    printf( esc_html__( 'Posted by %1$s on %2$s', 'grayscale' ), get_the_author(), esc_html( $date ) );
+                    printf( esc_html__( 'Posted by %1$s on %2$s', 'grayscale' ), get_the_author(), $date );
                   ?>
                 </small>
               </p>

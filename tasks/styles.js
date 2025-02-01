@@ -1,4 +1,5 @@
 import config from '../gulpconfig.js';
+import packageJSON from '../package.json' with {type: 'json'};
 
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
@@ -11,14 +12,12 @@ import gulpSass from 'gulp-sass';
 import gulpSassVariables from 'gulp-sass-variables';
 import gulpSourcemaps from 'gulp-sourcemaps';
 import gulpTouchCmd from 'gulp-touch-cmd';
-import fs from 'node:fs/promises';
 import postcssCalc from 'postcss-calc';
 import * as dartSass from 'sass-embedded';
 import yargs from 'yargs';
 import {hideBin} from 'yargs/helpers';
 
 const args = yargs(hideBin(process.argv)).argv;
-const packageJSON = JSON.parse(await fs.readFile('package.json'));
 const postcssPlugins = [
   autoprefixer({
     grid: 'autoplace',

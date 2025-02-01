@@ -1,15 +1,14 @@
 import config from '../gulpconfig.js';
+import packageJSON from '../package.json' with {type: 'json'};
 
 import gulp from 'gulp';
 import gulpStringReplace from 'gulp-string-replace';
-import fs from 'node:fs/promises';
 
 const gulpStringReplaceOption = {
   logs: {
     enabled: false,
   },
 };
-const packageJSON = JSON.parse(await fs.readFile('package.json'));
 
 function templatesDefault() {
   return gulp.src(config.templates.src)

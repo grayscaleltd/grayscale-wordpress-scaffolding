@@ -2,6 +2,8 @@
 @use 'sass:map';
 @use 'sass:math';
 
+@use '../settings' as *;
+
 // ==========================================================================
 // Breakpoint
 // - Check if the given size name is in the selected $breakpoints
@@ -17,11 +19,6 @@
 // - FALSE:
 //   (7) Render with the given string as is, e.g. 75rem
 // ==========================================================================
-/* stylelint-disable
-    scss/at-if-closing-brace-newline-after,
-    scss/at-if-closing-brace-space-after,
-    scss/at-else-empty-line-before
-*/
 @mixin gs-breakpoint($size-name, $direction: only) {
   @if map.has-key($breakpoints, $size-name) {
     $value: map.get($breakpoints, $size-name);                            // (1)
@@ -32,36 +29,20 @@
     @if $direction == only {
       @if $current-value-index == $value-count {                          // (5)
         @media (width >= (math.div($value, 16) * 1em)) { @content; }
-      }
-
-      @else {
+      } @else {
         $next-value: list.nth($value-list, $current-value-index + 1) - 1;
 
-        /* stylelint-disable
-            media-feature-parentheses-space-inside,
-            media-query-list-comma-newline-after
-        */
         @media (math.div($value, 16) * 1em <= width <= (math.div($next-value, 16) * 1em)) { @content; }
-        /* stylelint-enable
-            media-feature-parentheses-space-inside,
-            media-query-list-comma-newline-after
-        */
       }
-    }
-
-    @else {
+    } @else {
       @if $current-value-index == 1 {                                     // (6)
         @content;
-      }
-
-      @else {
+      } @else {
         @media (width >= (math.div($value, 16) * 1em)) { @content; }
       }
     }
-  }
-
-  @else {
-    @media (width >= $size-name) { @content; }                          // (7)
+  } @else {
+    @media (width >= $size-name) { @content; }                            // (7)
   }
 }
 
@@ -83,9 +64,7 @@
 
     @if $index == 1 {                                                     // (2)
       @content($item);
-    }
-
-    @else if $item != $previous-size {
+    } @else if $item != $previous-size {
       @include gs-breakpoint($size-name, up) {
         @content($item);
       }
@@ -159,8 +138,3 @@
 @mixin gs-transition($attribute: all, $duration: 450ms, $timing: cubic-bezier(0.23, 1, 0.32, 1)) {
   transition: $attribute $duration $timing;
 }
-/* stylelint-enable
-    scss/at-if-closing-brace-newline-after,
-    scss/at-if-closing-brace-space-after,
-    scss/at-else-empty-line-before
-*/

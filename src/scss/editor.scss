@@ -6,37 +6,33 @@
 // ==========================================================================
 // CORE
 // ==========================================================================
-@use 'var';
-
-@import 'settings';
-
-:where(.wp-block-post-content) {
-  font-family: $font-content;
-  font-size: list.nth($font-size-roots, 3);
-  line-height: $font-line-height;
-}
+@use 'settings' as *;
 
 // ==========================================================================
 // WORDPRESS
 // ==========================================================================
-$is-frontend: false;
-
-@import 'wordpress/wordpress';
+@use 'wordpress' with ($is-frontend: false);
 
 // ==========================================================================
 // PROJECT SPECIFIC
 // ==========================================================================
-@import 'typography';
+@use 'typography';
 
 // ==========================================================================
 // EDITOR SPECIFIC
 // ==========================================================================
+:where(.wp-block-post-content) {
+  font-family: var(--wp--preset--font-family--body);
+  font-size: list.nth($font-size-roots, 3);
+  line-height: var(--wp--custom--line-height);
+}
+
 .wp-block {
-  max-width: $wrapper-max-width;
+  max-width: var(--wp--custom--wrapper--max-width);
 }
 
 [data-align='wide'] {
-  max-width: $wrapper-max-width * 1.2;
+  max-width: calc(var(--wp--custom--wrapper--max-width) * 1.2);
 }
 
 [data-align='full'] {

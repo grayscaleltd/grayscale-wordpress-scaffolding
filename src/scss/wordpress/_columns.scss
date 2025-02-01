@@ -1,3 +1,5 @@
+@use '../core/mixins';
+
 .wp-block-columns {
   display: flex;
   // box-sizing: border-box;
@@ -5,13 +7,13 @@
   // Responsiveness: Allow wrapping on mobile.
   flex-wrap: wrap !important;
 
-  @include gs-breakpoint(large, up) {
-    flex-wrap: nowrap !important;
-  }
-
   // Ensure full vertical column stretch when alignment is not set.
   // This overrides the Layout block support's default align-items setting of `center`.
   align-items: initial !important;
+
+  @include mixins.gs-breakpoint(large, up) {
+    flex-wrap: nowrap !important;
+  }
 
   /**
   * All Columns Alignment
@@ -29,14 +31,14 @@
   }
 
   &:not(.is-not-stacked-on-mobile) > .wp-block-column {
-    @include gs-breakpoint(small, only) {
+    @include mixins.gs-breakpoint(small, only) {
       // Responsiveness: Show at most one columns on mobile. This must be
       // important since the Column assigns its own width as an inline style.
       flex-basis: 100% !important;
     }
 
     // At large viewports, show all columns horizontally.
-    @include gs-breakpoint(large, up) {
+    @include mixins.gs-breakpoint(large, up) {
       // Available space should be divided equally amongst columns without an
       // assigned width. This is achieved by assigning a flex basis that is
       // consistent (equal), would not cause the sum total of column widths to
@@ -61,8 +63,8 @@
     > .wp-block-column {
       // Available space should be divided equally amongst columns.
       flex-basis: 0;
-
       flex-grow: 1;
+
       // Columns with an explicitly-assigned width should maintain their
       // `flex-basis` width and not grow.
       &[style*='flex-basis'] {

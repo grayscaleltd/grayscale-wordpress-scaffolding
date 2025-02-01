@@ -37,11 +37,14 @@ wp.domReady(function() {
     ['core/group', 'group'],
     ['core/group', 'group-row'],
     ['core/group', 'group-stack'],
+    ['core/group', 'group-grid'],
   ];
 
   // Display statuses of Core Blocks, Styles, and Variations
   console.group('Gutenberg Core Blocks, Styles, and Variations');
-  wp.blocks.getBlockTypes().forEach((blockType) => {
+  wp.blocks.getBlockTypes().sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  }).forEach((blockType) => {
     const isCoreBlock = blockType.name.includes('core');
     const isWhitelistedBlock = whitelistedCoreBlocks.includes(blockType.name);
 

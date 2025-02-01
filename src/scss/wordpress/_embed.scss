@@ -1,3 +1,7 @@
+$is-frontend: true !default;
+
+@use '../core/mixins';
+
 // Apply max-width to floated items that have no intrinsic width
 // .wp-block[data-align="left"] > [data-type="core/embed"],
 // .wp-block[data-align="right"] > [data-type="core/embed"],
@@ -37,34 +41,34 @@
 
 @if $is-frontend {
   .wp-block-embed__wrapper {
-    @include gs-proportional(2, 1);
+    @include mixins.gs-proportional(2, 1);
   }
 
   .wp-embed-aspect-21-9 .wp-block-embed__wrapper {
-    @include gs-proportional(21, 9);
+    @include mixins.gs-proportional(21, 9);
   }
 
   .wp-embed-aspect-18-9 .wp-block-embed__wrapper {
-    @include gs-proportional(18, 9);
+    @include mixins.gs-proportional(18, 9);
   }
 
   .wp-embed-aspect-16-9 .wp-block-embed__wrapper {
-    @include gs-proportional(16, 9);
+    @include mixins.gs-proportional(16, 9);
   }
 
   .wp-embed-aspect-4-3 .wp-block-embed__wrapper {
-    @include gs-proportional(4, 3);
+    @include mixins.gs-proportional(4, 3);
   }
 
   .wp-embed-aspect-1-1 .wp-block-embed__wrapper {
-    @include gs-proportional(1, 1);
+    @include mixins.gs-proportional(1, 1);
   }
 
   .wp-embed-aspect-9-16 .wp-block-embed__wrapper {
-    @include gs-proportional(9, 16);
+    @include mixins.gs-proportional(9, 16);
   }
 
   .wp-embed-aspect-1-2 .wp-block-embed__wrapper {
-    @include gs-proportional(1, 2);
+    @include mixins.gs-proportional(1, 2);
   }
 }

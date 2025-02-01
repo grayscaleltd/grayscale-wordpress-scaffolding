@@ -11,7 +11,7 @@
 
         <?php get_search_form(); ?>
 
-        <p><a href="<?php esc_url( home_url() ); ?>"><?php esc_html_e( '&larr; Return Home', 'grayscale' ); ?></a></p>
+        <p><a href="<?php echo esc_url( home_url() ); ?>"><?php esc_html_e( '&larr; Return Home', 'grayscale' ); ?></a></p>
 
       </div>
     </div>

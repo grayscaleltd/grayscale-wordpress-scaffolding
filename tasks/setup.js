@@ -4,9 +4,9 @@ import {checkbox, input} from '@inquirer/prompts';
 import chalk from 'chalk';
 import {deleteAsync} from 'del';
 import download from 'download';
-import fs from 'node:fs';
 import gulp from 'gulp';
 import gulpStringReplace from 'gulp-string-replace';
+import fs from 'node:fs';
 import nodeFetch from 'node-fetch';
 import ora from 'ora';
 import through from 'through2';
@@ -86,7 +86,7 @@ async function prepareSetup() {
       {
         name: key,
         value: config.setup.dep[key],
-      }
+      },
     ];
   });
 

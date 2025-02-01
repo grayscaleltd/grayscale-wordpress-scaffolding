@@ -2,16 +2,21 @@ import config from '../gulpconfig.js';
 
 import gulp from 'gulp';
 import gulpChanged from 'gulp-changed';
-import gulpIf from 'gulp-if';
-import gulpImagemin from 'gulp-imagemin';
+import gulpSharpOptimizeImages from 'gulp-sharp-optimize-images';
 import gulpRename from 'gulp-rename';
 
 function assetsDefault() {
   return gulp.src(config.assets.src)
       .pipe(gulpChanged(config.assets.dest))
-      .pipe(gulpIf((file) => { // prevent changing SVGs
-        file.extname !== '.svg';
-      }, gulpImagemin()))
+      .pipe(gulpSharpOptimizeImages({
+        jpg_to_jpg: {
+          progressive: true,
+          mozjpeg: true,
+        },
+        png_to_png: {
+          progressive: true,
+        },
+      }))
       .pipe(gulp.dest(config.assets.dest));
 }
 

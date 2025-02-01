@@ -1,30 +1,30 @@
-@use '../settings' as *;
-
 @import 'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap';
 
-$gs-white: #fff;
-$gs-major: #181231;
-$gs-minor: #7c01fd;
-$gs-error: #f06;
+:root {
+  --wp-admin--color--white: #fff;
+  --wp-admin--color--major: #181231;
+  --wp-admin--color--minor: #7c01fd;
+  --wp-admin--color--error: #f06;
+}
 
-%admin-link-style {
+%wp-admin-link {
   background: left 100% no-repeat;
   background-image: linear-gradient(currentcolor, currentcolor);
   background-size: 0% 1px;
-  color: $gs-white;
+  color: var(--wp-admin--color--white);
   text-decoration: none;
-  @include gs-transition;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
 
   &:hover, &:focus, &:active {
     background-size: 100% 1px;
-    color: $gs-white;
+    color: var(--wp-admin--color--white);
   }
 }
 
 /* stylelint-disable selector-id-pattern, selector-max-id */
 .login, .interim-login.login {
-  background: $gs-major;
-  color: $gs-major;
+  background: var(--wp-admin--color--major);
+  color: var(--wp-admin--color--major);
   font-family: Inter, sans-serif;
 
   h1 a {
@@ -42,43 +42,50 @@ $gs-error: #f06;
     padding: 0;
 
     a {
-      @extend %admin-link-style;
+      @extend %wp-admin-link;
     }
   }
 
   .message, .success {
-    border-left-color: $gs-minor;
+    border-left-color: var(--wp-admin--color--minor);
 
     a {
-      @extend %admin-link-style;
+      @extend %wp-admin-link;
 
-      color: $gs-minor;
+      color: var(--wp-admin--color--minor);
     }
 
     :is(a) {
       &:hover, &:focus, &:active {
-        color: $gs-minor;
+        color: var(--wp-admin--color--minor);
       }
     }
   }
 
   #login_error {
-    border-left-color: $gs-error;
+    border-left-color: var(--wp-admin--color--error);
   }
 }
 
 .privacy-policy-link {
-  @extend %admin-link-style;
+  @extend %wp-admin-link;
 }
 
 #wp-auth-check-wrap {
   #wp-auth-check,
   #wp-auth-check-form {
-    background: $gs-major;
+    background: var(--wp-admin--color--white);
+    color: var(--wp-admin--color--major);
+    font-family: Inter, sans-serif;
   }
 
+  a,
   .wp-auth-check-close {
-    color: $gs-white;
+    color: inherit;
+
+    &:hover, &:focus, &:active {
+      color: var(--wp-admin--color--minor);
+    }
   }
 }
 /* stylelint-enable selector-id-pattern, selector-max-id */

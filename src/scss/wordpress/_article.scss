@@ -1,6 +1,10 @@
+$is-frontend: true !default;
+
+@use '../core/extend';
+
 @if $is-frontend {
   .post.sticky {
-    background: $color-shade;
+    background: var(--wp--preset--color--shade);
   }
 
   .wp-article-links {

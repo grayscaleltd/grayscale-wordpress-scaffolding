@@ -18,8 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
   add_action( 'init', function () {
     register_block_type( 'client/accordion' );
     register_block_type( 'client/accordion-item' );
-    register_block_type( 'client/slider' );
-    register_block_type( 'client/slider-item' );
+    register_block_type( 'client/slick' );
+    register_block_type( 'client/slick-item' );
+    register_block_type( 'client/swiper' );
+    register_block_type( 'client/swiper-item' );
     register_block_type( 'client/testimonial' );
   } );
 
@@ -51,9 +53,18 @@ if ( ! defined( 'ABSPATH' ) ) {
       ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time()
     );
 
-    if ( $block_registry->get_registered( 'client/slider' ) ) {
+    if ( $block_registry->get_registered( 'client/slick' ) ) {
       wp_enqueue_style(
-        'client-blocks-slider',
+        'client-blocks-slick',
+        '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css',
+        null,
+        ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time()
+      );
+    }
+
+    if ( $block_registry->get_registered( 'client/swiper' ) ) {
+      wp_enqueue_style(
+        'client-blocks-swiper',
         '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
         null,
         ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time()
@@ -65,14 +76,24 @@ if ( ! defined( 'ABSPATH' ) ) {
     wp_enqueue_script(
       'client-blocks',
       plugins_url( 'client-blocks.js', __FILE__ ),
-      array( 'client-blocks-slider', 'jquery' ),
+      array( 'jquery' ),
       ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time(),
       array( 'strategy' => 'defer' )
     );
 
-    if ( $block_registry->get_registered( 'client/slider' ) ) {
+    if ( $block_registry->get_registered( 'client/slick' ) ) {
       wp_enqueue_script(
-        'client-blocks-slider',
+        'client-blocks-slick',
+        '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
+        array( 'jquery' ),
+        ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time(),
+        array( 'strategy' => 'defer' )
+      );
+    }
+
+    if ( $block_registry->get_registered( 'client/swiper' ) ) {
+      wp_enqueue_script(
+        'client-blocks-swiper',
         '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',
         array( 'jquery' ),
         ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time(),

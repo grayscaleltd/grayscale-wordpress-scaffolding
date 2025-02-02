@@ -15,16 +15,17 @@ const {
 const {
   PanelBody,
   PanelRow,
+  SelectControl,
   ToggleControl,
 } = wp.components;
 
 /*
  * Register block
  */
-registerBlockType( 'client/slider', {
-  title: __( 'Slider', 'grayscale' ),
+registerBlockType( 'client/slick', {
+  title: __( 'Slick Slider', 'grayscale' ),
   description: __(
-    'Slideshow of items.',
+    'Slideshow of items using Slick.',
     'grayscale'
   ),
   category: 'widgets',
@@ -35,6 +36,10 @@ registerBlockType( 'client/slider', {
     autoplay: {
       type: 'boolean',
       default: false,
+    },
+    effect: {
+      type: 'string',
+      deafult: 'slide',
     },
     navigation: {
       type: 'boolean',
@@ -49,6 +54,9 @@ registerBlockType( 'client/slider', {
   supports: {
     anchor: true,
     align: [],
+    dimensions: {
+      minHeight: true,
+    },
     multiple: true,
   },
   parent: null,
@@ -56,6 +64,7 @@ registerBlockType( 'client/slider', {
     const {
       attributes: {
         autoplay,
+        effect,
         navigation,
         pagination,
       },
@@ -94,10 +103,25 @@ registerBlockType( 'client/slider', {
                 } ) }
               />
             </PanelRow>
+            <PanelRow>
+              <SelectControl
+                label={ __( 'Effect', 'grayscale' ) }
+                value={ effect }
+                options={
+                  [
+                    { label: __( 'Slide', 'grayscale' ), value: 'slide' },
+                    { label: __( 'Fade', 'grayscale' ), value: 'fade' },
+                  ]
+                }
+                onChange={ ( value ) => setAttributes( {
+                  effect: value,
+                } ) }
+              />
+            </PanelRow>
           </PanelBody>
         </InspectorControls>
         <div className={ classnames( className ) }>
-          <InnerBlocks allowedBlocks={ [ 'client/slider-item' ] } />
+          <InnerBlocks allowedBlocks={ [ 'client/slick-item' ] } />
         </div>
       </>
     );
@@ -105,41 +129,27 @@ registerBlockType( 'client/slider', {
   save: ( props ) => {
     const {
       autoplay,
+      effect,
       navigation,
       pagination,
     } = props.attributes;
     return (
       <div
-        className={ classnames( 'swiper' ) }
         data-autoplay={ autoplay ? 'true' : 'false' }
+        data-effect={ effect }
         data-navigation={ navigation ? 'true' : 'false' }
         data-pagination={ pagination ? 'true' : 'false' }
       >
-        <div className="swiper-wrapper">
-          <InnerBlocks.Content />
-        </div>
-        {
-          pagination ? (
-            <div className="swiper-pagination"></div>
-          ) : null
-        }
-        {
-          navigation ? (
-            <>
-              <div className="swiper-button-prev"></div>
-              <div className="swiper-button-next"></div>
-            </>
-          ) : null
-        }
+        <InnerBlocks.Content />
       </div>
     );
   },
 } );
 
-registerBlockType( 'client/slider-item', {
-  title: __( 'Slider Item', 'grayscale' ),
+registerBlockType( 'client/slick-item', {
+  title: __( 'Slick Slider Item', 'grayscale' ),
   description: __(
-    'Slide within the Slider.',
+    'Slide within the Slick Slider.',
     'grayscale'
   ),
   category: 'widgets',
@@ -153,7 +163,7 @@ registerBlockType( 'client/slider-item', {
     align: [],
     multiple: true,
   },
-  parent: [ 'client/slider' ],
+  parent: [ 'client/slick' ],
   edit: ( props ) => {
     const {
       className,
@@ -167,7 +177,7 @@ registerBlockType( 'client/slider-item', {
   },
   save: () => {
     return (
-      <div className={ classnames( 'swiper-slide' ) }>
+      <div className={ classnames( 'slick-slide' ) }>
         <InnerBlocks.Content />
       </div>
     );

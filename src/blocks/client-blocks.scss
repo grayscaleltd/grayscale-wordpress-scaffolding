@@ -1,3 +1,2 @@
-@import '../scss/settings';
-
-@import 'block-slider/slider';
+@use 'block-slick/slick';
+@use 'block-swiper/swiper';

@@ -3,9 +3,9 @@
 @use 'settings' as *;
 
 html {
-  color: var(--wp--preset--color--foreground);
   font-family: var(--wp--preset--font-family--body);
   line-height: var(--wp--custom--line-height--body);
+  color: var(--wp--preset--color--foreground);
 
   @include mixins.gs-breakpoint-loop($font-size-roots) using ($item) {
     font-size: math.div($item, 16px) * 100%;

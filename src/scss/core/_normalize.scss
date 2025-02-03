@@ -4,8 +4,8 @@
   @include meta.load-css('../../../node_modules/normalize.css/normalize');
 
   html {
-    box-sizing: border-box;
     overflow-x: hidden;
+    box-sizing: border-box;
   }
 
   *, *::before, *::after {
@@ -21,9 +21,9 @@
     max-width: 100%;
     padding: 0.25em 0.75em;
     border: 1px solid currentcolor;
-    background: inherit;
-    color: inherit;
     font: inherit;
+    color: inherit;
+    background: inherit;
   }
 
   button, [type='button'], [type='reset'], [type='submit'],
@@ -33,18 +33,18 @@
   }
 
   canvas, img, svg, video {
-    height: auto;
     max-width: 100%;
+    height: auto;
   }
 
   figcaption {
-    color: inherit;
     font-size: 90%;
+    color: inherit;
   }
 
   iframe {
-    border: 0;
     width: 100%;
+    border: 0;
   }
 
   li {
@@ -52,14 +52,14 @@
   }
 
   select {
-    color: inherit;
     font: inherit;
+    color: inherit;
   }
 
   table {
-    width: 100%;
-    border-collapse: collapse;
     border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
   }
 
   td, th {

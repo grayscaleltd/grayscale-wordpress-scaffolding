@@ -9,12 +9,6 @@ $blocks-block__margin: 0.5em;
   text-align: center;
   word-break: break-word; // overflow-wrap doesn't work well if a link is wrapped in the div, so use word-break here.
   // box-sizing: border-box;
-  padding: 0.5rem 1rem;
-  border-radius: 0;
-  background: var(--wp--preset--color--foreground);
-  color: var(--wp--preset--color--white);
-  font-size: inherit;
-  line-height: 1;
 
   &.aligncenter {
     text-align: center;
@@ -32,6 +26,12 @@ $blocks-block__margin: 0.5em;
   // This needs a low specificity so it won't override the rules from the button element if defined in theme.json.
   // box-shadow: none;
   text-decoration: none;
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  background: var(--wp--preset--color--foreground);
+  color: var(--wp--preset--color--white);
+  font-size: inherit;
+  line-height: 1;
 }
 
 // Increased specificity needed to override margins.

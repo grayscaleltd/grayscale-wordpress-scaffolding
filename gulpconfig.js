@@ -42,9 +42,6 @@ export default {
   },
 
   styles: {
-    includePaths: [
-      'node_modules/normalize.css',
-    ],
     src: src + '/scss/**/*.scss',
     dest: dist + '/wp-content/themes/' + project,
     adminSrc: src + '/scss/admin/*.scss',

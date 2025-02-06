@@ -10,6 +10,7 @@ export default {
     'custom-property-pattern': null,
     'max-nesting-depth': 4,
     'no-descending-specificity': null,
+    'selector-class-pattern': null,
     'selector-max-compound-selectors': 4,
     'selector-no-qualifying-type': [
       true,
@@ -63,7 +64,6 @@ export default {
         'declaration-property-value-disallowed-list': null,
         'max-nesting-depth': null,
         'rule-empty-line-before': null,
-        'selector-class-pattern': null,
         'selector-max-id': null,
         'selector-no-qualifying-type': null,
         'selector-not-notation': null,

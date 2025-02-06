@@ -29,7 +29,15 @@ const postcssPlugins = [
 ];
 const sass = gulpSass(dartSass);
 
-function stylesDefault() {
+function configHasSrc(config, src) {
+  return Object.prototype.hasOwnProperty.call(config, src);
+}
+
+function stylesDefault(cb) {
+  if (!configHasSrc(config.styles, 'src')) {
+    return cb();
+  }
+
   return gulp.src(config.styles.src, {ignore: config.styles.adminSrc})
       .pipe(gulpPlumber({
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
@@ -53,7 +61,11 @@ function stylesDefault() {
       .pipe(gulpTouchCmd());
 }
 
-function stylesAdmin() {
+function stylesAdmin(cb) {
+  if (!configHasSrc(config.styles, 'adminSrc')) {
+    return cb();
+  }
+
   return gulp.src(config.styles.adminSrc)
       .pipe(gulpPlumber({
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
@@ -66,7 +78,11 @@ function stylesAdmin() {
       .pipe(gulpTouchCmd());
 }
 
-function stylesBlocks() {
+function stylesBlocks(cb) {
+  if (!configHasSrc(config.styles, 'blocksSrc')) {
+    return cb();
+  }
+
   return gulp.src(config.styles.blocksSrc)
       .pipe(gulpPlumber({
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),

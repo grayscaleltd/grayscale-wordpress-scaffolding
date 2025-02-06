@@ -4,10 +4,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   padding: 5px;
   border-radius: 50%;
   background: var(--wp--preset--color--white);
-  transform: translate(-50%, -50%);
 
   @at-root .gform_wrapper {
     position: relative;
@@ -19,9 +19,9 @@
   align-items: center;
   margin-bottom: 1rem;
   padding: 1rem;
-  background: var(--wp--preset--color--alert);
-  color: var(--wp--preset--color--white);
   font-size: 1rem;
+  color: var(--wp--preset--color--white);
+  background: var(--wp--preset--color--alert);
 
   .gform-icon {
     margin-right: 0.5rem;

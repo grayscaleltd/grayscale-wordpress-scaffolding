@@ -5,7 +5,15 @@ import gulpChanged from 'gulp-changed';
 import gulpSharpOptimizeImages from 'gulp-sharp-optimize-images';
 import gulpRename from 'gulp-rename';
 
-function assetsDefault() {
+function configHasSrc(config, src) {
+  return Object.prototype.hasOwnProperty.call(config, src);
+}
+
+function assetsDefault(cb) {
+  if (!configHasSrc(config.assets, 'src')) {
+    return cb();
+  }
+
   return gulp.src(config.assets.src)
       .pipe(gulpChanged(config.assets.dest))
       .pipe(gulpSharpOptimizeImages({
@@ -20,7 +28,11 @@ function assetsDefault() {
       .pipe(gulp.dest(config.assets.dest));
 }
 
-function assetsBlock() {
+function assetsBlock(cb) {
+  if (!configHasSrc(config.assets, 'blocksSrc')) {
+    return cb();
+  }
+
   return gulp.src(config.assets.blocksSrc)
       .pipe(gulpChanged(config.assets.dest))
       .pipe(gulpRename({dirname: ''}))

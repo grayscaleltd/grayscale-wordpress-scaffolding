@@ -9,6 +9,7 @@ import gulpStringReplace from 'gulp-string-replace';
 import fs from 'node:fs';
 import nodeFetch from 'node-fetch';
 import ora from 'ora';
+import slug from 'slug';
 import through from 'through2';
 
 const gulpStringReplaceOption = {
@@ -49,9 +50,7 @@ async function prepareSetup() {
   project.slug = await input({
     message: 'Project slug (alphabets and underscores only):',
     default: () => {
-      return project.name.replace(/[^0-9|A-Z|a-z]/g, '_')
-          .replace(/_+/g, '_')
-          .toLowerCase();
+      return slug(project.name, '_');
     },
     required: true,
     validate: (value) => {

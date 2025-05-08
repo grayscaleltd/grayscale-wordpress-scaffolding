@@ -39,7 +39,7 @@ registerBlockType( 'client/swiper', {
     },
     effect: {
       type: 'string',
-      deafult: 'slide',
+      default: 'slide',
     },
     navigation: {
       type: 'boolean',

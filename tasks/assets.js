@@ -14,7 +14,7 @@ function assetsDefault(cb) {
     return cb();
   }
 
-  return gulp.src(config.assets.src)
+  return gulp.src(config.assets.src, {encoding: false})
       .pipe(gulpChanged(config.assets.dest))
       .pipe(gulpSharpOptimizeImages({
         jpg_to_jpg: {
@@ -33,7 +33,7 @@ function assetsBlock(cb) {
     return cb();
   }
 
-  return gulp.src(config.assets.blocksSrc)
+  return gulp.src(config.assets.blocksSrc, {encoding: false})
       .pipe(gulpChanged(config.assets.dest))
       .pipe(gulpRename({dirname: ''}))
       .pipe(gulp.dest(config.assets.blocksDest));

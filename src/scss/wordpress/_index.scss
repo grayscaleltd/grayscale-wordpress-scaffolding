@@ -4,7 +4,7 @@ $is-frontend: true !default;
 
 // ==========================================================================
 // Blocks
-// https://github.com/WordPress/gutenberg/tree/wp/6.7/packages/block-library/src
+// https://github.com/WordPress/gutenberg/tree/wp/6.8/packages/block-library/src
 // ==========================================================================
 @use 'a11y' with ($is-frontend: $is-frontend);
 @use 'alignment' with ($is-frontend: $is-frontend);

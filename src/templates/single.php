@@ -2,67 +2,73 @@
 
   <main id="main">
 
-    <?php if ( have_posts() ) : the_post(); ?>
+	<?php if (have_posts()) : ?>
 
-      <div class="content-block">
-        <div class="wrapper">
+		<?php the_post(); ?>
 
-          <article <?php post_class(); ?>>
+		<div class="content-block">
+			<div class="wrapper">
 
-            <header>
+				<article <?php post_class(); ?>>
 
-              <?php the_title( '<h1>', '</h1>' ); ?>
+					<header>
 
-              <p class="article-meta">
-                <small>
-                  <?php
-                    $date = '<time datetime="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</time>';
-                    // translators: %1$s represents the author name, %2$s represents the date
-                    printf( esc_html__( 'Posted by %1$s on %2$s', 'grayscale' ), get_the_author(), $date );
-                  ?>
-                </small>
-              </p>
+						<?php the_title('<h1>', '</h1>'); ?>
 
-            </header>
+						<p class="article-meta">
+							<?php
+								$date = '<time datetime="' . get_the_date('Y-m-d') . '">' . get_the_date() . '</time>';
+								printf(
+									// translators: %1$s: author name, %2$s: post published date.
+									esc_html__('Posted by %1$s on %2$s', 'grayscale'),
+									get_the_author(),
+									wp_kses($date, array('time' => array('datetime' => array())))
+								);
+							?>
+						</p>
 
-            <?php the_content(); ?>
+					</header>
 
-            <?php wp_link_pages(); ?>
+					<?php the_content(); ?>
 
-            <footer>
+					<?php wp_link_pages(); ?>
 
-              <p><?php the_category( ', ' ); ?></p>
+					<footer>
 
-              <p><?php the_tags(); ?></p>
+						<p><?php the_category(', '); ?></p>
 
-              <?php edit_post_link( __( 'Edit', 'grayscale' ), '<ul class="wp-article-links"><li>', '</li></ul>' ); ?>
+						<p><?php the_tags(); ?></p>
 
-              <?php
-                if ( comments_open() || get_comments_number() ) {
-                  comments_template();
-                }
-              ?>
+						<?php
+							edit_post_link(__('Edit', 'grayscale'), '<ul class="wp-article-links"><li>', '</li></ul>');
+						?>
 
-            </footer>
+						<?php
+						if (comments_open() || get_comments_number()) {
+							comments_template();
+						}
+						?>
 
-          </article>
+					</footer>
 
-          <?php if ( get_adjacent_post() ) : ?>
+				</article>
 
-            <nav>
+				<?php if (get_adjacent_post()) : ?>
 
-              <?php previous_post_link(); ?>
+					<nav>
 
-              <?php next_post_link(); ?>
+						<?php previous_post_link(); ?>
 
-            </nav>
+						<?php next_post_link(); ?>
 
-          <?php endif; ?>
+					</nav>
 
-        </div>
-      </div>
+				<?php endif; ?>
 
-    <?php endif; ?>
+			</div>
+		</div>
+
+	<?php endif; ?>
 
   </main>
 

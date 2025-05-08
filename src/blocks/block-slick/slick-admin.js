@@ -39,7 +39,7 @@ registerBlockType( 'client/slick', {
     },
     effect: {
       type: 'string',
-      deafult: 'slide',
+      default: 'slide',
     },
     navigation: {
       type: 'boolean',

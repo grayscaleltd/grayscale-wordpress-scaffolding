@@ -4,7 +4,7 @@ jQuery( function( $ ) {
   if ( $( '.wp-block-client-swiper' ).length ) {
     const $el = $( '.wp-block-client-swiper' );
 
-    // For a list of avaialble parameters,
+    // For a list of available parameters,
     // check https://swiperjs.com/swiper-api#parameters
     new Swiper( $el.get( 0 ), {
       autoplay: $el.data( 'autoplay' ) ? {

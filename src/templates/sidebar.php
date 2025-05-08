@@ -1,9 +1,9 @@
 <?php if ( is_active_sidebar( 'sidebar' ) ) : ?>
 
-  <aside>
+	<aside>
 
-    <?php dynamic_sidebar( 'sidebar' ); ?>
+		<?php dynamic_sidebar('sidebar'); ?>
 
-  </aside>
+	</aside>
 
 <?php endif; ?>

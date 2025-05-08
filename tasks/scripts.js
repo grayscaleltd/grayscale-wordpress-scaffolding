@@ -12,6 +12,10 @@ import {hideBin} from 'yargs/helpers';
 const args = yargs(hideBin(process.argv)).argv;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+function configHasSrc(config, src) {
+  return Object.prototype.hasOwnProperty.call(config, src);
+}
+
 export function scriptsDefault(cb) {
   webpack({
     mode: (args.production || args.p) ? 'production' : 'development',
@@ -26,17 +30,26 @@ export function scriptsDefault(cb) {
     entry: () => {
       const entries = {};
 
-      if (globSync(config.scripts.src).length) {
+      if (
+        configHasSrc(config.scripts, 'src') &&
+        globSync(config.scripts.src).length
+      ) {
         entries[`${config.scripts.dest}/application`] =
             globSync(config.scripts.src, {dotRelative: true});
       }
 
-      if (globSync(config.scripts.blocksSrc).length) {
+      if (
+        configHasSrc(config.scripts, 'blocksSrc') &&
+        globSync(config.scripts.blocksSrc).length
+      ) {
         entries[`${config.scripts.blocksDest}/client-blocks`] =
             globSync(config.scripts.blocksSrc, {dotRelative: true});
       }
 
-      if (globSync(config.scripts.blocksAdminSrc).length) {
+      if (
+        configHasSrc(config.scripts, 'blocksAdminSrc') &&
+        globSync(config.scripts.blocksAdminSrc).length
+      ) {
         entries[`${config.scripts.blocksDest}/client-blocks-editor`] =
             globSync(config.scripts.blocksAdminSrc, {dotRelative: true});
       }

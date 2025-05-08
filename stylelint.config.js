@@ -27,9 +27,15 @@ export default {
   'overrides': [
     {
       'files': [
+        'src/blocks/**/*.scss',
         'src/scss/*.scss',
         'src/scss/admin/*.scss',
         'src/scss/core/*.scss',
+        'src/scss/wordpress/_article.scss',
+        'src/scss/wordpress/_colors.scss',
+        'src/scss/wordpress/_comment.scss',
+        'src/scss/wordpress/_fonts.scss',
+        'src/scss/wordpress/_gform.scss',
       ],
       'extends': [
         'stylelint-config-clean-order',

@@ -55,7 +55,7 @@ $is-frontend: true !default;
 }
 
 :where(.is-layout-flex, .is-layout-grid) {
-  gap: 0.5em;
+  gap: var(--wp--custom--gap, 0.5em);
 }
 
 .is-layout-flow {

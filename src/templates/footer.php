@@ -1,52 +1,56 @@
-    <?php if ( has_nav_menu( 'footer' ) || is_active_sidebar( 'footer' ) ) : ?>
+		<?php if (has_nav_menu('footer') || is_active_sidebar('footer')) : ?>
 
-      <footer class="footer">
-        <div class="wrapper">
+			<footer class="footer">
+				<div class="wrapper">
 
-          <?php
-            if ( has_nav_menu( 'footer' ) ) {
-              wp_nav_menu( array(
-                'menu_class' => 'menu',
-                'menu_id' => 'menu-footer',
-                'container' => false,
-                'walker' => new GS_Header_Nav_Menu(),
-                'theme_location' => 'footer',
-              ) );
-            }
-          ?>
+					<?php
+					if (has_nav_menu('footer')) {
+						wp_nav_menu(
+							array(
+								'menu_class'     => 'menu',
+								'menu_id'        => 'menu-footer',
+								'container'      => false,
+								'walker'         => new ClientWalkers\ClientWalkersNav(),
+								'theme_location' => 'footer',
+							)
+						);
+					}
+					?>
 
-          <?php dynamic_sidebar( 'footer' ); ?>
+					<?php dynamic_sidebar('footer'); ?>
 
-        </div>
-      </footer>
+				</div>
+			</footer>
 
-    <?php endif; ?>
+		<?php endif; ?>
 
-    <?php if ( has_nav_menu( 'offcanvas' ) || is_active_sidebar( 'offcanvas' ) ) : ?>
+		<?php if (has_nav_menu('offcanvas') || is_active_sidebar('offcanvas')) : ?>
 
-      <div class="off-canvas">
+			<div class="off-canvas">
 
-        <?php
-          if ( has_nav_menu( 'offcanvas' ) ) {
-            wp_nav_menu( array(
-              'menu_class' => 'menu',
-              'menu_id' => 'menu-offcanvas',
-              'container' => false,
-              'walker' => new GS_Header_Nav_Menu(),
-              'theme_location' => 'offcanvas',
-            ) );
-          }
-        ?>
+				<?php
+				if (has_nav_menu('offcanvas')) {
+					wp_nav_menu(
+						array(
+							'menu_class'     => 'menu',
+							'menu_id'        => 'menu-offcanvas',
+							'container'      => false,
+							'walker'         => new ClientWalkers\ClientWalkersNav(),
+							'theme_location' => 'offcanvas',
+						)
+					);
+				}
+				?>
 
-        <?php dynamic_sidebar( 'offcanvas' ); ?>
+				<?php dynamic_sidebar('offcanvas'); ?>
 
-      </div>
+			</div>
 
-    <?php endif; ?>
+		<?php endif; ?>
 
-  </div> <?php // end of .view ?>
+	</div>
 
-  <?php wp_footer(); ?>
+	<?php wp_footer(); ?>
 
 </body>
 </html>

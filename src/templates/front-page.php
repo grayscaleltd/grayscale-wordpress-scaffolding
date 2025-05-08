@@ -2,21 +2,23 @@
 
   <main id="main">
 
-    <?php if ( have_posts() ) : the_post(); ?>
+	<?php if (have_posts()) : ?>
 
-      <div class="content-block">
-        <div class="wrapper">
+		<?php the_post(); ?>
 
-          <?php the_title( '<h1>', '</h1>' ); ?>
+		<div class="content-block">
+			<div class="wrapper">
 
-          <?php the_content(); ?>
+			<?php the_title('<h1>', '</h1>'); ?>
 
-          <?php edit_post_link( __( 'Edit', 'grayscale' ), '<ul class="wp-article-links"><li>', '</li></ul>' ); ?>
+			<?php the_content(); ?>
 
-        </div>
-      </div>
+			<?php edit_post_link(__('Edit', 'grayscale'), '<ul class="wp-article-links"><li>', '</li></ul>'); ?>
 
-    <?php endif; ?>
+			</div>
+		</div>
+
+	<?php endif; ?>
 
   </main>
 

@@ -9,11 +9,11 @@ class ClientWalkersNav extends \Walker_Nav_Menu {
 	/**
 	 * Starts the element output for a menu item.
 	 *
-	 * @param string   &$output Used to append additional content.
-	 * @param \WP_Post $item    Menu item data object.
-	 * @param int      $depth   Depth of menu item. Used for padding.
-	 * @param array    $args    An array of arguments. @see wp_nav_menu().
-	 * @param int      $id      ID of the current menu item.
+	 * @param string    &$output Used to append additional content.
+	 * @param \WP_Post  $item    Menu item data object.
+	 * @param int       $depth   Depth of menu item. Used for padding.
+	 * @param \stdClass $args    An object of wp_nav_menu() arguments.
+	 * @param int       $id      ID of the current menu item.
 	 */
 	public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) { // phpcs:ignore Generic.Files.LineLength, PSR1.Methods.CamelCapsMethodName
 		$indent = ($depth) ? str_repeat("\t", $depth) : '';
@@ -56,11 +56,11 @@ class ClientWalkersNav extends \Walker_Nav_Menu {
 			}
 		}
 
-		$item_output  = $args['before'];
+		$item_output  = $args->before;
 		$item_output .= '<a' . $attributes . '>';
-		$item_output .= $args['link_before'] . $title . $args['link_after'];
+		$item_output .= $args->link_before . $title . $args->link_after;
 		$item_output .= '</a>';
-		$item_output .= $args['after'];
+		$item_output .= $args->after;
 		$item_output .= (!empty($item->description)) ?
 				'<p class="menu-item-description">' . $item->description . '</p>' :
 				'';

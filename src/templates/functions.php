@@ -1,5 +1,7 @@
 <?php
 
+require 'class-client-walkers-comment.php';
+require 'class-client-walkers-nav.php';
 require 'functions-core.php';
 require 'functions-gutenberg.php';
 require 'functions-widgets.php';

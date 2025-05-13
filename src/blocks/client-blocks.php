@@ -10,7 +10,7 @@
  * Text Domain: grayscale
  */
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 

@@ -4,7 +4,7 @@ if (post_password_required()) {
 }
 ?>
 
-<?php if ( have_comments() ) : ?>
+<?php if (have_comments()) : ?>
 
 	<div id="comments" class="comments">
 
@@ -32,7 +32,7 @@ if (post_password_required()) {
 
 <?php endif; ?>
 
-<?php if ( comments_open() || pings_open() ) : ?>
+<?php if (comments_open() || pings_open()) : ?>
 
 	<?php
 		comment_form(

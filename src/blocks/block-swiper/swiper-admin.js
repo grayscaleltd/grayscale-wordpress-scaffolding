@@ -59,7 +59,6 @@ registerBlockType( 'client/swiper', {
     },
     multiple: false,
   },
-  parent: null,
   edit: ( props ) => {
     const {
       attributes: {

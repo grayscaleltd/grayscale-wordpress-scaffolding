@@ -50,7 +50,6 @@ registerBlockType( 'client/accordion', {
     align: [],
     multiple: true,
   },
-  parent: null,
   edit: ( props ) => {
     const {
       attributes: {

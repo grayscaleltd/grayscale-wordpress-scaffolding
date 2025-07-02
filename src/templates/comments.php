@@ -10,7 +10,7 @@ if (post_password_required()) {
 
 		<h2>
 			<?php esc_html_e('Comments', 'grayscale'); ?>
-			(<?php esc_html_e(get_comments_number()); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText ?>)
+			(<?php echo wp_kses(get_comments_number(), 'post'); ?>)
 		</h2>
 
 		<ul class="comment-list">

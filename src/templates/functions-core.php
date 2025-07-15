@@ -8,7 +8,7 @@
 					'client-login',
 					get_template_directory_uri() . '/admin/wp-login.css',
 					null,
-					(wp_get_environment_type() === 'production') ? wp_get_theme()->get('Version') : time()
+					wp_get_environment_type() === 'production' ? wp_get_theme()->get('Version') : time()
 				);
 		}
 	);
@@ -19,7 +19,7 @@
 					'client-login',
 					get_template_directory_uri() . '/admin/wp-login.css',
 					null,
-					(wp_get_environment_type() === 'production') ? wp_get_theme()->get('Version') : time()
+					wp_get_environment_type() === 'production' ? wp_get_theme()->get('Version') : time()
 				);
 		}
 	);

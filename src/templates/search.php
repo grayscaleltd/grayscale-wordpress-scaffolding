@@ -7,7 +7,7 @@
 
 			<h1>
 				<?php
-					(get_search_query()) ?
+					get_search_query() ?
 						// translators: %s: the search query.
 						printf(esc_html__('Search Results for “%s”', 'grayscale'), get_search_query()) :
 						esc_html_e('You might be interested in&hellip;', 'grayscale');

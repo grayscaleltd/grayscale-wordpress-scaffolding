@@ -36,14 +36,14 @@ if (!defined('ABSPATH')) {
 				'client-blocks-editor',
 				plugins_url('client-blocks-editor.css', __FILE__),
 				array('client-blocks'),
-				(wp_get_environment_type() === 'production') ? false : time()
+				wp_get_environment_type() === 'production' ? false : time()
 			);
 
 			wp_enqueue_script(
 				'client-blocks-editor',
 				plugins_url('client-blocks-editor.js', __FILE__),
 				array('wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor'),
-				(wp_get_environment_type() === 'production') ? get_file_data(__FILE__, array('Version'))[0] : time(),
+				wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time(),
 				false
 			);
 		}
@@ -59,7 +59,7 @@ if (!defined('ABSPATH')) {
 				'client-blocks',
 				plugins_url('client-blocks.css', __FILE__),
 				null,
-				(wp_get_environment_type() === 'production') ? get_file_data(__FILE__, array('Version'))[0] : time()
+				wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time()
 			);
 
 			if ($block_registry->get_registered('client/slick')) {
@@ -67,7 +67,7 @@ if (!defined('ABSPATH')) {
 					'client-blocks-slick',
 					'//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css',
 					null,
-					(wp_get_environment_type() === 'production') ? get_file_data(__FILE__, array('Version'))[0] : time()
+					wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time()
 				);
 			}
 
@@ -76,7 +76,7 @@ if (!defined('ABSPATH')) {
 					'client-blocks-swiper',
 					'//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
 					null,
-					(wp_get_environment_type() === 'production') ? get_file_data(__FILE__, array('Version'))[0] : time()
+					wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time()
 				);
 			}
 		}
@@ -89,7 +89,7 @@ if (!defined('ABSPATH')) {
 				'client-blocks',
 				plugins_url('client-blocks.js', __FILE__),
 				array('jquery'),
-				(wp_get_environment_type() === 'production') ? get_file_data(__FILE__, array('Version'))[0] : time(),
+				wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time(),
 				array('strategy' => 'defer')
 			);
 
@@ -98,7 +98,7 @@ if (!defined('ABSPATH')) {
 					'client-blocks-slick',
 					'//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
 					array('jquery'),
-					(wp_get_environment_type() === 'production') ? get_file_data(__FILE__, array('Version'))[0] : time(),
+					wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time(),
 					array('strategy' => 'defer')
 				);
 			}
@@ -108,7 +108,7 @@ if (!defined('ABSPATH')) {
 					'client-blocks-swiper',
 					'//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',
 					array('jquery'),
-					(wp_get_environment_type() === 'production') ? get_file_data(__FILE__, array('Version'))[0] : time(),
+					wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time(),
 					array('strategy' => 'defer')
 				);
 			}

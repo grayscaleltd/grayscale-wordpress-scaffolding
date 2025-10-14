@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <main id="main">
+<main id="main">
 
 	<?php if (have_posts()) : ?>
 
@@ -70,8 +70,8 @@
 
 	<?php endif; ?>
 
-  </main>
+</main>
 
-  <?php get_sidebar(); ?>
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <main id="main">
+<main id="main">
 
 	<?php if (have_posts()) : ?>
 
@@ -9,19 +9,19 @@
 		<div class="content-block">
 			<div class="wrapper">
 
-			<?php the_title('<h1>', '</h1>'); ?>
+				<?php the_title('<h1>', '</h1>'); ?>
 
-			<?php the_content(); ?>
+				<?php the_content(); ?>
 
-			<?php edit_post_link(__('Edit', 'grayscale'), '<ul class="wp-article-links"><li>', '</li></ul>'); ?>
+				<?php edit_post_link(__('Edit', 'grayscale'), '<ul class="wp-article-links"><li>', '</li></ul>'); ?>
 
 			</div>
 		</div>
 
 	<?php endif; ?>
 
-  </main>
+</main>
 
-  <?php get_sidebar(); ?>
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

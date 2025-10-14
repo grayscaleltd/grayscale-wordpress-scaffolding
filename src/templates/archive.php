@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <main id="main">
+<main id="main">
 
 	<div class="content-block">
 		<div class="wrapper">
@@ -52,7 +52,13 @@
 							<?php if (comments_open() || get_comments_number()) : ?>
 								<li>
 									<a href="<?php comments_link(); ?>">
-										<?php comments_number('No Comments', '1 Comment', '% Comments'); ?>
+										<?php
+											comments_number(
+												__('No Comments', 'grayscale'),
+												__('1 Comment', 'grayscale'),
+												__('% Comments', 'grayscale')
+											);
+										?>
 									</a>
 								</li>
 							<?php endif; ?>
@@ -81,8 +87,8 @@
 		</div>
 	</div>
 
-  </main>
+</main>
 
-  <?php get_sidebar(); ?>
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

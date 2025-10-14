@@ -27,11 +27,11 @@ class ClientWalkersComment extends \Walker_Comment {
 	/**
 	 * Starts the element output for a comment.
 	 *
-	 * @param string     &$output The HTML output.
-	 * @param WP_Comment $comment The current comment object.
-	 * @param int        $depth   Depth of the current comment.
-	 * @param array      $args    An array of arguments.
-	 * @param int        $id      ID of the current comment.
+	 * @param string      &$output The HTML output.
+	 * @param \WP_Comment $comment The current comment object.
+	 * @param int         $depth   Depth of the current comment.
+	 * @param array       $args    An array of arguments.
+	 * @param int         $id      ID of the current comment.
 	 */
 	public function start_el(&$output, $comment, $depth = 0, $args = array(), $id = 0) { // phpcs:ignore Generic.Files.LineLength, PSR1.Methods.CamelCapsMethodName
 		++$depth;
@@ -70,7 +70,7 @@ class ClientWalkersComment extends \Walker_Comment {
 			$output .= '<p>';
 			$output .= '<span class="comment-author">' . get_comment_author_link($comment) . '</span><br>';
 			$output .= '<time datetime="' . get_comment_time('c') . '">';
-			// translators: %1$s represents the comment date, %2$s represents the comment time.
+			// translators: %1$s: the comment date, %2$s: the comment time.
 			$output .= sprintf(__('%1$s at %2$s', 'grayscale'), get_comment_date('', $comment), get_comment_time());
 			$output .= '</time>';
 			$output .= ' | <a href="' . esc_url(get_comment_link($comment, $args)) . '">#</a>';
@@ -107,10 +107,10 @@ class ClientWalkersComment extends \Walker_Comment {
 	/**
 	 * Ends the element output for a comment.
 	 *
-	 * @param string     &$output The HTML output.
-	 * @param WP_Comment $comment The current comment object.
-	 * @param int        $depth   Depth of the current comment.
-	 * @param array      $args    An array of arguments.
+	 * @param string      &$output The HTML output.
+	 * @param \WP_Comment $comment The current comment object.
+	 * @param int         $depth   Depth of the current comment.
+	 * @param array       $args    An array of arguments.
 	 */
 	public function end_el(&$output, $comment, $depth = 0, $args = array()) { // phpcs:ignore Generic.Files.LineLength, PSR1.Methods.CamelCapsMethodName
 		if (!empty($args['end-callback'])) {

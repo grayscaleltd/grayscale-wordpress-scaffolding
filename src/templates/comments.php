@@ -4,13 +4,13 @@ if (post_password_required()) {
 }
 ?>
 
-<?php if ( have_comments() ) : ?>
+<?php if (have_comments()) : ?>
 
 	<div id="comments" class="comments">
 
 		<h2>
 			<?php esc_html_e('Comments', 'grayscale'); ?>
-			(<?php esc_html_e(get_comments_number()); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText ?>)
+			(<?php echo wp_kses(get_comments_number(), 'post'); ?>)
 		</h2>
 
 		<ul class="comment-list">
@@ -32,7 +32,7 @@ if (post_password_required()) {
 
 <?php endif; ?>
 
-<?php if ( comments_open() || pings_open() ) : ?>
+<?php if (comments_open() || pings_open()) : ?>
 
 	<?php
 		comment_form(

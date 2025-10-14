@@ -1,13 +1,13 @@
 <?php get_header(); ?>
 
-  <main id="main">
+<main id="main">
 
 	<div class="content-block">
 		<div class="wrapper">
 
 			<h1>
 				<?php
-					(get_search_query()) ?
+					get_search_query() ?
 						// translators: %s: the search query.
 						printf(esc_html__('Search Results for “%s”', 'grayscale'), get_search_query()) :
 						esc_html_e('You might be interested in&hellip;', 'grayscale');
@@ -47,7 +47,13 @@
 							<?php if (comments_open() || get_comments_number()) : ?>
 								<li>
 									<a href="<?php comments_link(); ?>">
-										<?php comments_number('No Comments', '1 Comment', '% Comments'); ?>
+										<?php
+											comments_number(
+												__('No Comments', 'grayscale'),
+												__('1 Comment', 'grayscale'),
+												__('% Comments', 'grayscale')
+											);
+										?>
 									</a>
 								</li>
 							<?php endif; ?>
@@ -82,8 +88,8 @@
 		</div>
 	</div>
 
-  </main>
+</main>
 
-  <?php get_sidebar(); ?>
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

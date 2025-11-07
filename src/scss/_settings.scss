@@ -1,5 +1,3 @@
-@use 'sass:color';
-
 $breakpoints: (
   'small':    0,
   'medium':   640,
@@ -11,7 +9,7 @@ $breakpoints: (
 $color-palette: (
   'black': #222,
   'white': #fff,
-  'shade': color.adjust(#222, $lightness: 80%),
+  'shade': hsl(from var(--wp--preset--color--black) h s 93.5%),
   'major': #181231,
   'minor': #7c01fd,
   'background': var(--wp--preset--color--white),

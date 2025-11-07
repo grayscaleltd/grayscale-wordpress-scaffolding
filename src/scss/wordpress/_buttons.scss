@@ -2,7 +2,9 @@
 $blocks-block__margin: 0.5em;
 
 .wp-block-buttons {
-  margin-bottom: 1.5em;
+  &:not(:last-child) {
+    margin-bottom: 1.5em;
+  }
 
   &.is-vertical {
     flex-direction: column;

@@ -1,3 +1,7 @@
+$is-frontend: true !default;
+
+@use '../core/extend';
+
 @if $is-frontend {
   .comment-list {
     @extend %list-reset;
@@ -8,7 +12,7 @@
   }
 
   .bypostauthor {
-    background: $color-shade;
+    background: var(--wp--preset--color--shade);
   }
 
   [name='comment'] {

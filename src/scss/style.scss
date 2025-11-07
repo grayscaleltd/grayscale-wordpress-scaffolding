@@ -12,21 +12,17 @@ Text Domain: grayscale
 // ==========================================================================
 // CORE
 // ==========================================================================
-@use 'normalize';
-@use 'core/base';
+@use 'core/normalize';
 
-@import 'settings';
-@import 'var';
+@use 'settings' as *;
 
 // ==========================================================================
-// WORDPRESS & EDITOR
+// WORDPRESS
 // ==========================================================================
-$is-frontend: true;
-
-@import 'wordpress/wordpress';
+@use 'wordpress' with ($is-frontend: true);
 
 // ==========================================================================
 // PROJECT SPECIFIC
 // ==========================================================================
-@import 'page';
-@import 'typography';
+@use 'page';
+@use 'typography';

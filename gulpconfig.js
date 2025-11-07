@@ -4,7 +4,7 @@ const dist = './app/public';
 
 export default {
   assets: {
-    src: src + '/assets/**',
+    src: src + '/assets/**/*',
     dest: dist + '/wp-content/themes/' + project + '/assets',
     blocksSrc: src + '/blocks/**/*.+(gif|jpg|png|svg)',
     blocksDest: dist + '/wp-content/plugins/client-blocks/assets',
@@ -42,9 +42,6 @@ export default {
   },
 
   styles: {
-    includePaths: [
-      'node_modules/normalize.css',
-    ],
     src: src + '/scss/**/*.scss',
     dest: dist + '/wp-content/themes/' + project,
     adminSrc: src + '/scss/admin/*.scss',

@@ -1,16 +1,20 @@
 import config from '../gulpconfig.js';
 
 import chalk from 'chalk';
-import {fileURLToPath} from 'node:url';
 import {globSync} from 'glob';
 import gulp from 'gulp';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import webpack from 'webpack';
 import yargs from 'yargs';
 import {hideBin} from 'yargs/helpers';
 
 const args = yargs(hideBin(process.argv)).argv;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+function configHasSrc(config, src) {
+  return Object.prototype.hasOwnProperty.call(config, src);
+}
 
 export function scriptsDefault(cb) {
   webpack({
@@ -26,17 +30,26 @@ export function scriptsDefault(cb) {
     entry: () => {
       const entries = {};
 
-      if (globSync(config.scripts.src).length) {
+      if (
+        configHasSrc(config.scripts, 'src') &&
+        globSync(config.scripts.src).length
+      ) {
         entries[`${config.scripts.dest}/application`] =
             globSync(config.scripts.src, {dotRelative: true});
       }
 
-      if (globSync(config.scripts.blocksSrc).length) {
+      if (
+        configHasSrc(config.scripts, 'blocksSrc') &&
+        globSync(config.scripts.blocksSrc).length
+      ) {
         entries[`${config.scripts.blocksDest}/client-blocks`] =
             globSync(config.scripts.blocksSrc, {dotRelative: true});
       }
 
-      if (globSync(config.scripts.blocksAdminSrc).length) {
+      if (
+        configHasSrc(config.scripts, 'blocksAdminSrc') &&
+        globSync(config.scripts.blocksAdminSrc).length
+      ) {
         entries[`${config.scripts.blocksDest}/client-blocks-editor`] =
             globSync(config.scripts.blocksAdminSrc, {dotRelative: true});
       }
@@ -64,7 +77,7 @@ export function scriptsDefault(cb) {
     console.error(`[${chalk.blue('webpack')}]`);
     console.error(stats.toString(statOptions));
 
-    if (!!cb) cb();
+    if (cb) cb();
   });
 }
 

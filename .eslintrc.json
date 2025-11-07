@@ -1,6 +1,7 @@
 {
   "env": {
     "browser": true,
+    "es6": true,
     "jquery": true
   },
   "globals": {
@@ -15,7 +16,7 @@
     "google"
   ],
   "rules": {
-    "require-jsdoc": "off"
+    "require-jsdoc": "off" // TODO: to be removed once WP is compatible with ESLint v9
   },
   "overrides": [
     {

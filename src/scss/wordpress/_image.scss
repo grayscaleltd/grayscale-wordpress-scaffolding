@@ -1,9 +1,25 @@
 .wp-block-image {
+
+  > a,
+  > figure > a {
+    display: inline-block;
+  }
+
   img {
     // height: auto;
     // max-width: 100%;
     vertical-align: bottom;
     // box-sizing: border-box;
+
+    @media not (prefers-reduced-motion) {
+      &.hide {
+        visibility: hidden;
+      }
+
+      &.show {
+        animation: show-content-image 0.4s;
+      }
+    }
   }
 
   // &.has-custom-border {
@@ -14,6 +30,11 @@
 
   &.aligncenter {
     text-align: center;
+  }
+
+  &.alignfull > a,
+  &.alignwide > a {
+    width: 100%;
   }
 
   &.alignfull img,
@@ -67,7 +88,7 @@
   // Supply caption styles to images, even if the theme hasn't opted in.
   // Reason being: the new markup, <figcaptions>, are not likely to be styled in the majority of existing themes,
   // so we supply the styles so as to not appear broken or unstyled in those themes.
-  // figcaption {
+  // :where(figcaption) {
   //   @include caption-style();
   // }
 }
@@ -107,7 +128,10 @@
     text-align: center;
     padding: 0;
     border-radius: 4px;
-    transition: opacity 0.2s ease;
+
+    @media not (prefers-reduced-motion) {
+      transition: opacity 0.2s ease;
+    }
 
     &:focus-visible {
       outline: 3px auto rgba(var(--wp--preset--color--background) / 25%);
@@ -212,7 +236,7 @@
     height: 100%;
     position: absolute;
     z-index: 2000000;
-    // `!important` is added to as we are not using theme.json
+    // `!important` is added as we are not using theme.json
     // https://github.com/WordPress/gutenberg/blob/3c7e4ce75dd3650479e8a673c64663a4757e8afc/packages/block-library/src/image/index.php#L294
     background-color: var(--wp--preset--color--background) !important;
     opacity: 0.9;
@@ -222,21 +246,29 @@
   // or faster than the scrim to give a sense of depth.
   &.active {
     visibility: visible;
-    animation: both turn-on-visibility 0.25s;
+    @media not (prefers-reduced-motion) {
+      animation: both turn-on-visibility 0.25s;
+    }
     img {
-      animation: both turn-on-visibility 0.35s;
+      @media not (prefers-reduced-motion) {
+        animation: both turn-on-visibility 0.35s;
+      }
     }
   }
-  &.hideanimationenabled {
+  &.show-closing-animation {
     &:not(.active) {
-      animation: both turn-off-visibility 0.35s;
+      @media not (prefers-reduced-motion) {
+        animation: both turn-off-visibility 0.35s;
+      }
       img {
-        animation: both turn-off-visibility 0.25s;
+        @media not (prefers-reduced-motion) {
+          animation: both turn-off-visibility 0.25s;
+        }
       }
     }
   }
 
-  @media (prefers-reduced-motion: no-preference) {
+  @media not (prefers-reduced-motion) {
     &.zoom {
       &.active {
         opacity: 1;
@@ -253,7 +285,7 @@
           animation: turn-on-visibility 0.4s forwards;
         }
       }
-      &.hideanimationenabled {
+      &.show-closing-animation {
         &:not(.active) {
           animation: none;
           .lightbox-image-container {
@@ -269,6 +301,19 @@
         }
       }
     }
+  }
+}
+
+
+@keyframes show-content-image {
+  0% {
+    visibility: hidden;
+  }
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
   }
 }
 
@@ -298,7 +343,7 @@
 
 @keyframes lightbox-zoom-in {
   0% {
-    transform: translate(calc(-50vw + var(--wp--lightbox-initial-left-position)), calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));
+    transform: translate(calc((-100vw + var(--wp--lightbox-scrollbar-width)) / 2 + var(--wp--lightbox-initial-left-position)), calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));
   }
   100% {
     transform: translate(-50%, -50%) scale(1, 1);
@@ -315,6 +360,6 @@
   }
   100% {
     visibility: hidden;
-    transform: translate(calc(-50vw + var(--wp--lightbox-initial-left-position)), calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));
+    transform: translate(calc((-100vw + var(--wp--lightbox-scrollbar-width)) / 2 + var(--wp--lightbox-initial-left-position)), calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));
   }
 }

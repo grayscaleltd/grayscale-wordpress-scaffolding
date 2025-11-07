@@ -10,6 +10,10 @@ import setup from './tasks/setup.js';
 import styles from './tasks/styles.js';
 import templates from './tasks/templates.js';
 
+function configHasSrc(config, src) {
+  return Object.prototype.hasOwnProperty.call(config, src);
+}
+
 export {
   assets,
   scripts,
@@ -28,30 +32,38 @@ export const watch = gulp.parallel(
     function monitorFiles() {
       gulp.watch(
           [
-            config.assets.src,
-            config.assets.blocksSrc,
+            configHasSrc(config.assets, 'src') ?
+                config.assets.src : [],
+            configHasSrc(config.assets, 'blocksSrc') ?
+                config.assets.blocksSrc : [],
           ],
           assets
       );
       scriptsDefault();
       gulp.watch(
           [
-            config.scripts.adminSrc,
+            configHasSrc(config.scripts, 'adminSrc') ?
+                config.scripts.adminSrc : [],
           ],
           scriptsAdmin
       );
       gulp.watch(
           [
-            config.styles.src,
-            config.styles.adminSrc,
-            config.styles.blocksSrc,
+            configHasSrc(config.styles, 'src') ?
+                config.styles.src : [],
+            configHasSrc(config.styles, 'adminSrc') ?
+                config.styles.adminSrc : [],
+            configHasSrc(config.styles, 'blocksSrc') ?
+                config.styles.blocksSrc : [],
           ],
           styles
       );
       gulp.watch(
           [
-            config.templates.src,
-            config.templates.blocksSrc,
+            configHasSrc(config.templates, 'src') ?
+                config.templates.src : [],
+            configHasSrc(config.templates, 'blocksSrc') ?
+                config.templates.blocksSrc : [],
           ],
           templates
       );

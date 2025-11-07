@@ -1,5 +1,5 @@
 .wrapper {
-  margin-left: auto;
+  max-width: var(--wp--custom--wrapper--max-width);
   margin-right: auto;
-  max-width: $wrapper-max-width;
+  margin-left: auto;
 }

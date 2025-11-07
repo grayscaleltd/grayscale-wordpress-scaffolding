@@ -2,21 +2,38 @@ import config from '../gulpconfig.js';
 
 import gulp from 'gulp';
 import gulpChanged from 'gulp-changed';
-import gulpIf from 'gulp-if';
-import gulpImagemin from 'gulp-imagemin';
+import gulpSharpOptimizeImages from 'gulp-sharp-optimize-images';
 import gulpRename from 'gulp-rename';
 
-function assetsDefault() {
-  return gulp.src(config.assets.src)
+function configHasSrc(config, src) {
+  return Object.prototype.hasOwnProperty.call(config, src);
+}
+
+function assetsDefault(cb) {
+  if (!configHasSrc(config.assets, 'src')) {
+    return cb();
+  }
+
+  return gulp.src(config.assets.src, {encoding: false})
       .pipe(gulpChanged(config.assets.dest))
-      .pipe(gulpIf((file) => { // prevent changing SVGs
-        file.extname !== '.svg';
-      }, gulpImagemin()))
+      .pipe(gulpSharpOptimizeImages({
+        jpg_to_jpg: {
+          progressive: true,
+          mozjpeg: true,
+        },
+        png_to_png: {
+          progressive: true,
+        },
+      }))
       .pipe(gulp.dest(config.assets.dest));
 }
 
-function assetsBlock() {
-  return gulp.src(config.assets.blocksSrc)
+function assetsBlock(cb) {
+  if (!configHasSrc(config.assets, 'blocksSrc')) {
+    return cb();
+  }
+
+  return gulp.src(config.assets.blocksSrc, {encoding: false})
       .pipe(gulpChanged(config.assets.dest))
       .pipe(gulpRename({dirname: ''}))
       .pipe(gulp.dest(config.assets.blocksDest));

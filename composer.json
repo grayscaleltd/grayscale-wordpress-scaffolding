@@ -30,7 +30,7 @@
     "wpackagist-plugin/imagify": "^2.2.6",
     "wpackagist-plugin/imsanity": "^2.8.7",
     "wpackagist-plugin/svg-support": "^2.5.14",
-    "wpackagist-plugin/wordpress-seo": "^26.1.1",
+    "wpackagist-plugin/wordpress-seo": "^26.3.0",
     "wpackagist-plugin/wp-sweep": "^1.1.8"
   },
   "type": "project"

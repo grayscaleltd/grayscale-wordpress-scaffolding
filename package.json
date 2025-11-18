@@ -30,7 +30,7 @@
     "download": "^8.0.0",
     "eslint": "^8.57.1",
     "eslint-config-google": "^0.14.0",
-    "glob": "^11.0.3",
+    "glob": "^11.1.0",
     "gulp": "^5.0.1",
     "gulp-changed": "^5.0.4",
     "gulp-if": "^3.0.0",

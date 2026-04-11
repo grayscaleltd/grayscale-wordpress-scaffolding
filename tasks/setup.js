@@ -49,9 +49,7 @@ async function prepareSetup() {
 
   project.slug = await input({
     message: 'Project slug (alphabets and underscores only):',
-    default: () => {
-      return slug(project.name, '_');
-    },
+    default: slug(project.name, '_'),
     required: true,
     validate: (value) => {
       if (/[^A-Za-z_]/.test(value)) {
@@ -64,9 +62,7 @@ async function prepareSetup() {
 
   project.url = await input({
     message: 'Project URL:',
-    default: () => {
-      return 'https://' + project.slug + '.com';
-    },
+    default: 'https://' + project.slug + '.com',
     required: true,
     validate: (value) => {
       if (/[^A-Za-z:/\-.]/.test(value)) {

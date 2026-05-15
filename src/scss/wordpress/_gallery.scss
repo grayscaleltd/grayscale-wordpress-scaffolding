@@ -5,7 +5,7 @@
 @use 'settings' as *;
 
 // Import styles for rendering the static content of deprecated gallery versions.
-// @import "./deprecated.scss";
+// @use "./deprecated.scss" as *;
 
 // The following is a temporary override until flex layout supports
 // an align items setting of normal.
@@ -64,6 +64,7 @@ figure.wp-block-gallery.has-nested-images {
       content: '';
       height: 100%;
       max-height: 40%;
+      pointer-events: none;
 
       // Blur the background under the gradient scrim.
       backdrop-filter: blur(3px);

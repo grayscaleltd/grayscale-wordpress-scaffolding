@@ -3,7 +3,7 @@ $is-frontend: true !default;
 @if $is-frontend {
   // ==========================================================================
   // Text alignments; Block alignments; Justification.
-  // https://github.com/WordPress/gutenberg/blob/wp/6.8/packages/block-library/src/common.scss
+  // https://github.com/WordPress/gutenberg/blob/wp/6.9/packages/block-library/src/common.scss
   // ==========================================================================
   .has-text-align-center {
     text-align: center;
@@ -17,6 +17,11 @@ $is-frontend: true !default;
   .has-text-align-right {
     /*rtl:ignore*/
     text-align: right;
+  }
+
+  .has-fit-text {
+    white-space: nowrap;
+    margin-bottom: var(--wp--custom--gap, 1rem);
   }
 
   .aligncenter {

@@ -39,6 +39,17 @@ export default [
       },
     },
   },
+  {
+    files: ['**/*.{js,jsx}'],
+    rules: {
+      'max-len': [
+        'warn',
+        {
+          code: 120,
+        },
+      ],
+    },
+  },
   ...wordpress.configs['recommended-with-formatting'].map((config) => ({
     ...config,
     files: ['src/blocks/**/*.js'],

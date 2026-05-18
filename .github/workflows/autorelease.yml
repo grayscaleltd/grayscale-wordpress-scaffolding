@@ -4,6 +4,15 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 jobs:
   release:
     name: Release
@@ -12,16 +21,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
+          cache: npm
 
-      - name: Install extra plugins
-        run: npm install -D @semantic-release/git
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
 
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release@23
+        run: npx semantic-release

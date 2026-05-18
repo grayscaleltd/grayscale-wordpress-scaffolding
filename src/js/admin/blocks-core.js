@@ -38,6 +38,8 @@ wp.domReady(function() {
     ['core/group', 'group-row'],
     ['core/group', 'group-stack'],
     ['core/group', 'group-grid'],
+    ['core/heading', 'stretchy-heading'],
+    ['core/paragraph', 'stretchy-paragraph'],
   ];
 
   // Display statuses of Core Blocks, Styles, and Variations

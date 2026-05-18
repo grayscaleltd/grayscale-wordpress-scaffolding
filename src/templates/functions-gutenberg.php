@@ -89,3 +89,4 @@
 // _fonts.scss
 // ==========================================================================
 	remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles');
+	add_filter('should_load_separate_core_block_assets', '__return_false');

@@ -23,7 +23,15 @@ export function scriptsDefault(cb) {
     module: {
       rules: [{
         test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'jsx',
+          target: 'es2020',
+          // JSX tags compile to calls of this function (Gutenberg uses wp.element, not React).
+          jsxFactory: 'wp.element.createElement',
+          // Fragment shorthand <>...</> uses this as the element type (WordPress’s Fragment).
+          jsxFragment: 'wp.element.Fragment',
+        },
       }],
     },
     context: path.resolve(__dirname, '../'),

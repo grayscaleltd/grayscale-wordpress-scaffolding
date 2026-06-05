@@ -59,26 +59,23 @@ require 'functions-widgets.php';
 	);
 
 /* ENVIRONMENT DECLARATION */
-	add_action(
-		'admin_init',
-		function () {
-			global $wp_rewrite;
-
-			insert_with_markers(
-				get_home_path() . '.htaccess',
-				'WordPress',
-				array_merge(
-					array(
-						'<IfModule mod_rewrite.c>',
-						'RewriteEngine On',
-						'RewriteCond %{HTTP_HOST} .local$',
-						'RewriteRule .? - [E=WP_ENVIRONMENT_TYPE:local]',
-						'RewriteCond %{HTTP_HOST} (stg)|(staging)',
-						'RewriteRule .? - [E=WP_ENVIRONMENT_TYPE:staging]',
-						'</IfModule>',
-					),
-					explode("\n", $wp_rewrite->mod_rewrite_rules())
+	add_filter(
+		'mod_rewrite_rules',
+		function ($rules) {
+			$env_rules = implode(
+				"\n",
+				array(
+					'RewriteCond %{HTTP_HOST} \.local$ [NC]',
+					'RewriteRule ^ - [E=WP_ENVIRONMENT_TYPE:local]',
+					'RewriteCond %{HTTP_HOST} (^|\.)stg\.|staging [NC]',
+					'RewriteRule ^ - [E=WP_ENVIRONMENT_TYPE:staging]',
 				)
+			) . "\n";
+
+			return str_replace(
+				"RewriteEngine On\n",
+				"RewriteEngine On\n" . $env_rules,
+				$rules
 			);
 		}
 	);

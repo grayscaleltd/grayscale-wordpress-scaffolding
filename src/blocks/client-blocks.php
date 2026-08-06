@@ -28,28 +28,21 @@ if (!defined('ABSPATH')) {
 		}
 	);
 
-/* BACK-END CLIENT BLOCKS ASSETS */
+/* BLOCK EDITOR SCRIPT */
 	add_action(
 		'enqueue_block_editor_assets',
 		function () {
-			wp_enqueue_style(
-				'client-blocks-editor',
-				plugins_url('client-blocks-editor.css', __FILE__),
-				array('client-blocks'),
-				wp_get_environment_type() === 'production' ? false : time()
-			);
-
 			wp_enqueue_script(
 				'client-blocks-editor',
 				plugins_url('client-blocks-editor.js', __FILE__),
-				array('wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor'),
+				array('wp-i18n', 'wp-element', 'wp-blocks', 'wp-block-editor', 'wp-components'),
 				wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time(),
 				false
 			);
 		}
 	);
 
-/* FRONT-END CLIENT BLOCKS ASSETS */
+/* BLOCK CONTENT ASSETS */
 	$block_registry = WP_Block_Type_Registry::get_instance();
 
 	add_action(
@@ -61,6 +54,15 @@ if (!defined('ABSPATH')) {
 				null,
 				wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time()
 			);
+
+			if (is_admin()) {
+				wp_enqueue_style(
+					'client-blocks-editor',
+					plugins_url('client-blocks-editor.css', __FILE__),
+					array('client-blocks'),
+					wp_get_environment_type() === 'production' ? false : time()
+				);
+			}
 
 			if ($block_registry->get_registered('client/slick')) {
 				wp_enqueue_style(

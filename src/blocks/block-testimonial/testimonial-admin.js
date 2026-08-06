@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import classnames from 'classnames';
-
-/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -15,6 +10,7 @@ const {
 	MediaUpload,
 	MediaUploadCheck,
 	RichText,
+	useBlockProps,
 } = wp.blockEditor;
 const {
 	Button,
@@ -24,6 +20,7 @@ const {
  * Register block
  */
 registerBlockType( 'client/testimonial', {
+	apiVersion: 3,
 	title: __( 'Testimonial', 'grayscale' ),
 	description: __(
 		'Show the good words you received.',
@@ -66,16 +63,16 @@ registerBlockType( 'client/testimonial', {
 		align: [],
 		multiple: true,
 	},
-	edit: ( props ) => {
+	edit: function Edit( props ) {
 		const {
 			attributes: {
 				testimonialContent,
 				testimonialEndorser,
 				testimonialImgID, testimonialImgURL, testimonialImgAlt,
 			},
-			className,
 			setAttributes,
 		} = props;
+		const blockProps = useBlockProps();
 
 		const setImage = ( img ) => setAttributes( {
 			testimonialImgID: img.id,
@@ -93,7 +90,7 @@ registerBlockType( 'client/testimonial', {
 		const ACCEPT_MEDIA_TYPES = 'image/*';
 
 		return (
-			<div className={ classnames( className ) }>
+			<div { ...blockProps }>
 				<BlockControls>
 					{
 						! testimonialImgID ? (
@@ -187,9 +184,10 @@ registerBlockType( 'client/testimonial', {
 			testimonialEndorser,
 			testimonialImgID, testimonialImgURL, testimonialImgAlt,
 		} = props.attributes;
+		const blockProps = useBlockProps.save();
 
 		return (
-			<div>
+			<div { ...blockProps }>
 				<div className="block-content">
 					<RichText.Content value={ testimonialContent } />
 				</div>

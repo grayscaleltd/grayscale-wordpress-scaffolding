@@ -11,6 +11,7 @@ const { registerBlockType } = wp.blocks;
 const {
 	InspectorControls,
 	InnerBlocks,
+	useBlockProps,
 } = wp.blockEditor;
 const {
 	PanelBody,
@@ -23,6 +24,7 @@ const {
  * Register block
  */
 registerBlockType( 'client/swiper', {
+	apiVersion: 3,
 	title: __( 'Swiper Slider', 'grayscale' ),
 	description: __(
 		'Slideshow of items using Swiper.',
@@ -60,7 +62,7 @@ registerBlockType( 'client/swiper', {
 		},
 		multiple: false,
 	},
-	edit: ( props ) => {
+	edit: function Edit( props ) {
 		const {
 			attributes: {
 				autoplay,
@@ -68,9 +70,9 @@ registerBlockType( 'client/swiper', {
 				navigation,
 				pagination,
 			},
-			className,
 			setAttributes,
 		} = props;
+		const blockProps = useBlockProps();
 
 		return (
 			<>
@@ -123,7 +125,7 @@ registerBlockType( 'client/swiper', {
 						</PanelRow>
 					</PanelBody>
 				</InspectorControls>
-				<div className={ classnames( className ) }>
+				<div { ...blockProps }>
 					<InnerBlocks allowedBlocks={ [ 'client/swiper-item' ] } />
 				</div>
 			</>
@@ -136,14 +138,15 @@ registerBlockType( 'client/swiper', {
 			navigation,
 			pagination,
 		} = props.attributes;
+		const blockProps = useBlockProps.save( {
+			className: classnames( 'swiper' ),
+			'data-autoplay': autoplay ? 'true' : 'false',
+			'data-effect': effect,
+			'data-navigation': navigation ? 'true' : 'false',
+			'data-pagination': pagination ? 'true' : 'false',
+		} );
 		return (
-			<div
-				className={ classnames( 'swiper' ) }
-				data-autoplay={ autoplay ? 'true' : 'false' }
-				data-effect={ effect }
-				data-navigation={ navigation ? 'true' : 'false' }
-				data-pagination={ pagination ? 'true' : 'false' }
-			>
+			<div { ...blockProps }>
 				<div className="swiper-wrapper">
 					<InnerBlocks.Content />
 				</div>
@@ -166,6 +169,7 @@ registerBlockType( 'client/swiper', {
 } );
 
 registerBlockType( 'client/swiper-item', {
+	apiVersion: 3,
 	title: __( 'Swiper Slider Item', 'grayscale' ),
 	description: __(
 		'Slide within the Swiper Slider.',
@@ -183,20 +187,20 @@ registerBlockType( 'client/swiper-item', {
 		multiple: true,
 	},
 	parent: [ 'client/swiper' ],
-	edit: ( props ) => {
-		const {
-			className,
-		} = props;
-
+	edit: function Edit() {
+		const blockProps = useBlockProps();
 		return (
-			<div className={ classnames( className ) }>
+			<div { ...blockProps }>
 				<InnerBlocks />
 			</div>
 		);
 	},
 	save: () => {
+		const blockProps = useBlockProps.save( {
+			className: classnames( 'swiper-slide' ),
+		} );
 		return (
-			<div className={ classnames( 'swiper-slide' ) }>
+			<div { ...blockProps }>
 				<InnerBlocks.Content />
 			</div>
 		);

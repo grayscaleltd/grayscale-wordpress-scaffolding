@@ -14,6 +14,7 @@ wp.domReady(function() {
     'core/gallery',
     'core/group',
     'core/heading',
+    'core/icon',
     'core/image',
     'core/list',
     'core/list-item',

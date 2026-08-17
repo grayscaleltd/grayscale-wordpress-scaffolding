@@ -11,6 +11,7 @@ const { registerBlockType } = wp.blocks;
 const {
 	InspectorControls,
 	InnerBlocks,
+	useBlockProps,
 } = wp.blockEditor;
 const {
 	PanelBody,
@@ -23,6 +24,7 @@ const {
  * Register block
  */
 registerBlockType( 'client/slick', {
+	apiVersion: 3,
 	title: __( 'Slick Slider', 'grayscale' ),
 	description: __(
 		'Slideshow of items using Slick.',
@@ -59,7 +61,7 @@ registerBlockType( 'client/slick', {
 		},
 		multiple: true,
 	},
-	edit: ( props ) => {
+	edit: function Edit( props ) {
 		const {
 			attributes: {
 				autoplay,
@@ -67,9 +69,9 @@ registerBlockType( 'client/slick', {
 				navigation,
 				pagination,
 			},
-			className,
 			setAttributes,
 		} = props;
+		const blockProps = useBlockProps();
 
 		return (
 			<>
@@ -119,7 +121,7 @@ registerBlockType( 'client/slick', {
 						</PanelRow>
 					</PanelBody>
 				</InspectorControls>
-				<div className={ classnames( className ) }>
+				<div { ...blockProps }>
 					<InnerBlocks allowedBlocks={ [ 'client/slick-item' ] } />
 				</div>
 			</>
@@ -132,13 +134,14 @@ registerBlockType( 'client/slick', {
 			navigation,
 			pagination,
 		} = props.attributes;
+		const blockProps = useBlockProps.save( {
+			'data-autoplay': autoplay ? 'true' : 'false',
+			'data-effect': effect,
+			'data-navigation': navigation ? 'true' : 'false',
+			'data-pagination': pagination ? 'true' : 'false',
+		} );
 		return (
-			<div
-				data-autoplay={ autoplay ? 'true' : 'false' }
-				data-effect={ effect }
-				data-navigation={ navigation ? 'true' : 'false' }
-				data-pagination={ pagination ? 'true' : 'false' }
-			>
+			<div { ...blockProps }>
 				<InnerBlocks.Content />
 			</div>
 		);
@@ -146,6 +149,7 @@ registerBlockType( 'client/slick', {
 } );
 
 registerBlockType( 'client/slick-item', {
+	apiVersion: 3,
 	title: __( 'Slick Slider Item', 'grayscale' ),
 	description: __(
 		'Slide within the Slick Slider.',
@@ -163,20 +167,20 @@ registerBlockType( 'client/slick-item', {
 		multiple: true,
 	},
 	parent: [ 'client/slick' ],
-	edit: ( props ) => {
-		const {
-			className,
-		} = props;
-
+	edit: function Edit() {
+		const blockProps = useBlockProps();
 		return (
-			<div className={ classnames( className ) }>
+			<div { ...blockProps }>
 				<InnerBlocks />
 			</div>
 		);
 	},
 	save: () => {
+		const blockProps = useBlockProps.save( {
+			className: classnames( 'slick-slide' ),
+		} );
 		return (
-			<div className={ classnames( 'slick-slide' ) }>
+			<div { ...blockProps }>
 				<InnerBlocks.Content />
 			</div>
 		);

@@ -13,6 +13,7 @@ const {
 	InspectorControls,
 	InnerBlocks,
 	RichText,
+	useBlockProps,
 } = wp.blockEditor;
 const {
 	PanelBody,
@@ -25,6 +26,7 @@ const {
  * Register block
  */
 registerBlockType( 'client/accordion', {
+	apiVersion: 3,
 	title: __( 'Accordion', 'grayscale' ),
 	description: __(
 		'Show information in a condensed way that can be expanded or collapsed.',
@@ -50,15 +52,18 @@ registerBlockType( 'client/accordion', {
 		align: [],
 		multiple: true,
 	},
-	edit: ( props ) => {
+	edit: function Edit( props ) {
 		const {
 			attributes: {
 				multiExpand,
 				allowAllClosed,
 			},
-			className,
 			setAttributes,
 		} = props;
+		const blockProps = useBlockProps( {
+			className: 'accordion',
+			'data-accordion': true,
+		} );
 
 		return (
 			<>
@@ -84,7 +89,7 @@ registerBlockType( 'client/accordion', {
 						</PanelRow>
 					</PanelBody>
 				</InspectorControls>
-				<div className={ classnames( 'accordion', className ) } data-accordion>
+				<div { ...blockProps }>
 					<InnerBlocks allowedBlocks={ [ 'client/accordion-item' ] } />
 				</div>
 			</>
@@ -95,16 +100,17 @@ registerBlockType( 'client/accordion', {
 			multiExpand,
 			allowAllClosed,
 		} = props.attributes;
+		const blockProps = useBlockProps.save( {
+			className: 'accordion',
+			'data-accordion': true,
+			'data-multi-expand': multiExpand ? 'true' : 'false',
+			'data-allow-all-closed': allowAllClosed ? 'true' : 'false',
+			'data-deep-link': 'true',
+			'data-deep-link-smudge': 'true',
+			'data-update-history': 'true',
+		} );
 		return (
-			<ul
-				className={ classnames( 'accordion' ) }
-				data-accordion
-				data-multi-expand={ multiExpand ? 'true' : 'false' }
-				data-allow-all-closed={ allowAllClosed ? 'true' : 'false' }
-				data-deep-link="true"
-				data-deep-link-smudge="true"
-				data-update-history="true"
-			>
+			<ul { ...blockProps }>
 				<InnerBlocks.Content />
 			</ul>
 		);
@@ -112,6 +118,7 @@ registerBlockType( 'client/accordion', {
 } );
 
 registerBlockType( 'client/accordion-item', {
+	apiVersion: 3,
 	title: __( 'Accordion Item', 'grayscale' ),
 	description: __(
 		'Content within the Accordion.',
@@ -142,14 +149,17 @@ registerBlockType( 'client/accordion-item', {
 		multiple: true,
 	},
 	parent: [ 'client/accordion' ],
-	edit: ( props ) => {
+	edit: function Edit( props ) {
 		const {
 			attributes: {
 				title, isOpen, anchor,
 			},
-			className,
 			setAttributes,
 		} = props;
+		const blockProps = useBlockProps( {
+			className: classnames( 'accordion-item', 'is-active' ),
+			'data-accordion-item': true,
+		} );
 
 		return (
 			<>
@@ -175,10 +185,7 @@ registerBlockType( 'client/accordion-item', {
 						</PanelRow>
 					</PanelBody>
 				</InspectorControls>
-				<div
-					className={ classnames( 'accordion-item', 'is-active', className ) }
-					data-accordion-item
-				>
+				<div { ...blockProps }>
 					<RichText
 						className="accordion-title"
 						value={ title }
@@ -214,14 +221,16 @@ registerBlockType( 'client/accordion-item', {
 			return;
 		}
 
+		const blockProps = useBlockProps.save( {
+			className: classnames(
+				'accordion-item',
+				{ 'is-active': isOpen },
+			),
+			'data-accordion-item': true,
+		} );
+
 		return (
-			<li
-				className={ classnames(
-					'accordion-item',
-					{ 'is-active': isOpen },
-				) }
-				data-accordion-item
-			>
+			<li { ...blockProps }>
 				<a
 					href={ '#' + slug( anchor || title ) }
 					className="accordion-title"

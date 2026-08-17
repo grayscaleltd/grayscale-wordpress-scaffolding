@@ -1,16 +1,31 @@
 @use '../core/mixins';
 
-.gform_ajax_spinner {
+.gform-loader {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 5px;
+  inset: 0;
+  transform: translateZ(0);
+  display: inline-block;
+  align-self: center;
+  inline-size: 8em;
+  block-size: 8em;
+  margin: auto;
+  border-block-start: 1.1em solid transparent;
+  border-block-end: 1.1em solid currentcolor;
+  border-inline-start: 1.1em solid currentcolor;
+  border-inline-end: 1.1em solid transparent;
   border-radius: 50%;
-  background: var(--wp--preset--color--white);
+  font-size: 2px;
+  vertical-align: middle;
+  animation: gformLoader 1.1s infinite linear;
 
-  @at-root .gform_wrapper {
+  @keyframes gformLoader {
+    0% {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+  }
+
+  @at-root .gform_wrapper:has(.gform-loader) {
     position: relative;
+    opacity: 0.5;
   }
 }
 
@@ -28,12 +43,11 @@
     font-size: 2rem;
   }
 
-  @at-root .validation_message {
+  @at-root .gfield_validation_message {
     color: var(--wp--preset--color--alert);
   }
 }
 
-// Complex Field (e.g. Name, Address)
 .ginput_complex {
   display: flex;
   flex-wrap: nowrap;
@@ -42,6 +56,14 @@
 
   > * {
     flex: 1 1 auto;
+  }
+
+  [name*='input_'] {
+    width: 100%;
+  }
+
+  .gf_clear_complex {
+    display: none;
   }
 
   &.ginput_container_address {

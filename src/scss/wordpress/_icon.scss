@@ -1,0 +1,20 @@
+.wp-block-icon {
+  line-height: 0;
+
+  &.aligncenter {
+    display: flex;
+    justify-content: center;
+  }
+
+  svg {
+    box-sizing: border-box;
+    fill: currentcolor;
+  }
+}
+
+// Use :where() so these defaults have zero specificity and can be overridden
+// by global styles, which target `.wp-block-icon svg` at higher specificity.
+:where(.wp-block-icon) svg {
+  width: 1.5em;
+  height: 1.5em;
+}

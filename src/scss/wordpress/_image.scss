@@ -113,7 +113,7 @@
   button {
     opacity: 0;
     border: none;
-    background-color: rgba(var(--wp--preset--color--background) / 25%);
+    background-color: rgb(var(--wp--preset--color--background) / 25%);
     backdrop-filter: blur(1rem) saturate(180%);
     cursor: zoom-in;
     display: flex;
@@ -134,7 +134,7 @@
     }
 
     &:focus-visible {
-      outline: 3px auto rgba(var(--wp--preset--color--background) / 25%);
+      outline: 3px auto rgb(var(--wp--preset--color--background) / 25%);
       outline: 3px auto -webkit-focus-ring-color;
       outline-offset: 3px;
     }
@@ -151,7 +151,7 @@
     &:hover,
     &:focus,
     &:not(:hover):not(:active):not(.has-background) {
-      background-color: rgba(var(--wp--preset--color--background) / 25%);
+      background-color: rgb(var(--wp--preset--color--background) / 25%);
       border: none;
     }
   }
@@ -169,18 +169,21 @@
   visibility: hidden;
   cursor: zoom-out;
 
-  .close-button {
+  .wp-lightbox-close-button {
+    font-family: inherit;
     position: absolute;
     top: calc(env(safe-area-inset-top) + 16px); // equivalent to $grid-unit-20
     right: calc(env(safe-area-inset-right) + 16px); // equivalent to $grid-unit-20
-    padding: 0;
+    padding: 0 4px;
     cursor: pointer;
     z-index: 5000000;
     min-width: 40px; // equivalent to $button-size-next-default-40px
     min-height: 40px; // equivalent to $button-size-next-default-40px
     display: flex;
+    gap: 8px;
     align-items: center;
     justify-content: center;
+    line-height: 1;
 
     &:hover,
     &:focus,
@@ -188,6 +191,67 @@
       background: none;
       border: none;
     }
+
+    &:has(.wp-lightbox-close-text:not([hidden])) .wp-lightbox-close-icon svg {
+      height: 1em;
+      width: 1em;
+    }
+  }
+
+  .wp-lightbox-close-icon svg {
+    display: block;
+  }
+
+  .wp-lightbox-navigation-button-prev,
+  .wp-lightbox-navigation-button-next {
+    position: absolute;
+    padding: 0 8px;
+    z-index: 2000002;
+    font-family: inherit;
+    min-width: 40px; // equivalent to $button-size-next-default-40px
+    min-height: 40px; // equivalent to $button-size-next-default-40px;
+    gap: 4px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    bottom: 16px;
+    line-height: 1;
+
+    &[hidden] {
+      display: none;
+    }
+
+    @include mixins.gs-breakpoint(large, up) {
+      bottom: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:hover,
+    &:focus,
+    &:not(:hover):not(:active):not(.has-background) {
+      background: none;
+      border: none;
+      padding: 0 8px;
+    }
+
+    &:has(.wp-lightbox-navigation-text:not([hidden])) .wp-lightbox-navigation-icon svg {
+      width: 1.5em;
+      height: 1.5em;
+      display: block;
+    }
+  }
+
+  .wp-lightbox-navigation-button-prev {
+    left: calc(env(safe-area-inset-left) + 16px);
+  }
+
+  .wp-lightbox-navigation-button-next {
+    right: calc(env(safe-area-inset-right) + 16px);
+  }
+
+  .wp-lightbox-navigation-icon svg {
+    vertical-align: middle;
   }
 
   .lightbox-image-container {
@@ -199,7 +263,7 @@
     transform: translate(-50%, -50%);
     width: var(--wp--lightbox-container-width);
     height: var(--wp--lightbox-container-height);
-    z-index: 9999999999;
+    z-index: 2000001;
   }
 
   .wp-block-image {
@@ -303,7 +367,6 @@
     }
   }
 }
-
 
 @keyframes show-content-image {
   0% {

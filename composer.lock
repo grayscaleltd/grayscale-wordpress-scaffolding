@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b20282764565f224402d62dda8f440e",
+    "content-hash": "aa67ec6dd8f1b84906599597837803d6",
     "packages": [
         {
             "name": "composer/installers",
@@ -190,15 +190,15 @@
         },
         {
             "name": "wpackagist-plugin/imagify",
-            "version": "2.3.2",
+            "version": "2.3.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/imagify/",
-                "reference": "tags/2.3.2"
+                "reference": "tags/2.3.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/imagify.2.3.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/imagify.2.3.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -208,15 +208,15 @@
         },
         {
             "name": "wpackagist-plugin/imsanity",
-            "version": "2.9.3",
+            "version": "2.9.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/imsanity/",
-                "reference": "tags/2.9.3"
+                "reference": "tags/2.9.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/imsanity.2.9.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/imsanity.2.9.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -244,15 +244,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "28.2",
+            "version": "28.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/28.2"
+                "reference": "tags/28.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.28.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.28.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -262,15 +262,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-sweep",
-            "version": "1.2.0",
+            "version": "2.0.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-sweep/",
-                "reference": "tags/1.2.0"
+                "reference": "tags/2.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-sweep.1.2.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-sweep.2.0.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"

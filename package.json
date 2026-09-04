@@ -21,6 +21,7 @@
     "browser-sync": "^3.0.4",
     "chalk": "^6.0.0",
     "classnames": "^2.5.1",
+    "conventional-changelog-writer": "^9.2.1",
     "cssnano": "^9.0.2",
     "del": "^8.0.1",
     "download": "^8.0.0",

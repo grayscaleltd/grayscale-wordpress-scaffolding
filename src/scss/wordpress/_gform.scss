@@ -24,6 +24,7 @@
   }
 
   @at-root .gform_wrapper:has(.gform-loader) {
+    cursor: progress;
     position: relative;
     opacity: 0.5;
   }

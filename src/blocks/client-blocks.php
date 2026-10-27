@@ -69,7 +69,7 @@ if (!defined('ABSPATH')) {
 					'client-blocks-slick',
 					'//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css',
 					null,
-					wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time()
+					'1.8.1'
 				);
 			}
 
@@ -100,7 +100,7 @@ if (!defined('ABSPATH')) {
 					'client-blocks-slick',
 					'//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
 					array('jquery'),
-					wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time(),
+					'1.8.1',
 					array('strategy' => 'defer')
 				);
 			}

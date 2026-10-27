@@ -60,7 +60,7 @@ if (!defined('ABSPATH')) {
 					'client-blocks-editor',
 					plugins_url('client-blocks-editor.css', __FILE__),
 					array('client-blocks'),
-					wp_get_environment_type() === 'production' ? false : time()
+					wp_get_environment_type() === 'production' ? get_file_data(__FILE__, array('Version'))[0] : time()
 				);
 			}
 

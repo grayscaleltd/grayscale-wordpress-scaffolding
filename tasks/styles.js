@@ -62,7 +62,7 @@ function stylesDefault(cb) {
         $version: packageJSON.version,
       }))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
-      .pipe(sass.sync({
+      .pipe(sass({
         style: 'compressed',
       }))
       .pipe(gulpPostCSS(postcssPlugins))
@@ -78,7 +78,7 @@ function stylesAdmin(cb) {
 
   return gulp.src(config.styles.adminSrc)
       .pipe(gulpPlumber({errorHandler: playErrorSound}))
-      .pipe(sass.sync({
+      .pipe(sass({
         style: 'compressed',
       }))
       .pipe(gulpPostCSS(postcssPlugins))
@@ -94,7 +94,7 @@ function stylesBlocks(cb) {
   return gulp.src(config.styles.blocksSrc)
       .pipe(gulpPlumber({errorHandler: playErrorSound}))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
-      .pipe(sass.sync({
+      .pipe(sass({
         style: 'compressed',
       }))
       .pipe(gulpPostCSS(postcssPlugins))

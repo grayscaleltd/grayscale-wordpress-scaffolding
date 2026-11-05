@@ -10,6 +10,8 @@
 // The following is a temporary override until flex layout supports
 // an align items setting of normal.
 figure.wp-block-gallery.has-nested-images {
+  --wp--style--gallery-gap-default: var(--wp--custom--gap);
+
   align-items: normal;
 }
 // Styles for current version of gallery block.

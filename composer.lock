@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89832b74f01b67fb000205dfd7fcf0df",
+    "content-hash": "796d01dd4123d10b6bc2eae3fb7d5107",
     "packages": [
         {
             "name": "composer/installers",
@@ -150,7 +150,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-24T20:46:46+00:00"
+            "time": "2024-06-24T20:46:46+00:00",
+            "published-time": "2024-06-24T21:01:36+00:00"
         },
         {
             "name": "wpackagist-plugin/duplicate-post",
@@ -190,15 +191,15 @@
         },
         {
             "name": "wpackagist-plugin/imagify",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/imagify/",
-                "reference": "tags/2.3.4"
+                "reference": "tags/2.3.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/imagify.2.3.4.zip"
+                "url": "https://downloads.wordpress.org/plugin/imagify.2.3.5.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -226,15 +227,15 @@
         },
         {
             "name": "wpackagist-plugin/svg-support",
-            "version": "2.6.1",
+            "version": "2.6.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/svg-support/",
-                "reference": "tags/2.6.1"
+                "reference": "tags/2.6.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/svg-support.2.6.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/svg-support.2.6.4.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -244,15 +245,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "28.8",
+            "version": "28.9",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/28.8"
+                "reference": "tags/28.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.28.8.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.28.9.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -330,7 +331,8 @@
                 "issues": "https://github.com/php-stubs/wordpress-stubs/issues",
                 "source": "https://github.com/php-stubs/wordpress-stubs/tree/v7.1.2"
             },
-            "time": "2026-10-06T06:59:21+00:00"
+            "time": "2026-10-06T06:59:21+00:00",
+            "published-time": "2026-10-06T07:32:21+00:00"
         },
         {
             "name": "wpackagist-plugin/debug-bar",
@@ -358,5 +360,5 @@
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }

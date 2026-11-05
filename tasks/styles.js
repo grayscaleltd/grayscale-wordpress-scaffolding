@@ -62,9 +62,20 @@ function stylesDefault(cb) {
         $version: packageJSON.version,
       }))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
-      .pipe(sass({
-        style: 'compressed',
-      }))
+      .pipe(gulpIf(
+        !args.s,
+        sass({
+          style: 'compressed',
+        }),
+        sass({
+          silenceDeprecations: [
+            'global-builtin',
+            'if-function',
+            'import',
+          ],
+          style: 'compressed',
+        })
+      ))
       .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.dest))
@@ -94,9 +105,20 @@ function stylesBlocks(cb) {
   return gulp.src(config.styles.blocksSrc)
       .pipe(gulpPlumber({errorHandler: playErrorSound}))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
-      .pipe(sass({
-        style: 'compressed',
-      }))
+      .pipe(gulpIf(
+        !args.s,
+        sass({
+          style: 'compressed',
+        }),
+        sass({
+          silenceDeprecations: [
+            'global-builtin',
+            'if-function',
+            'import',
+          ],
+          style: 'compressed',
+        })
+      ))
       .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.blocksDest))

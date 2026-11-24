@@ -21,8 +21,8 @@
     }
   ],
   "require-dev": {
-    "wpackagist-plugin/debug-bar": "^1.2.0",
-    "php-stubs/wordpress-stubs": "^7.1.2"
+    "php-stubs/wordpress-stubs": "^7.1.2",
+    "wpackagist-plugin/debug-bar": "^1.2.0"
   },
   "require": {
     "wpackagist-plugin/duplicate-post": "^4.7",

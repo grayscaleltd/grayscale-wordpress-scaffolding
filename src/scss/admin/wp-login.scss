@@ -46,7 +46,7 @@
     }
   }
 
-  .notice {
+  .notice:not(#login_error) {
     border-left-color: var(--wp-admin-theme-color);
 
     a {
@@ -72,6 +72,10 @@
 }
 
 #wp-auth-check-wrap {
+  #wp-auth-check {
+    background: var(--wp-admin-theme-color-darker-20);
+  }
+
   a,
   .wp-auth-check-close {
     color: inherit;

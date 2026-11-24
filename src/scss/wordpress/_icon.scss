@@ -9,6 +9,18 @@
   svg {
     box-sizing: border-box;
     fill: currentcolor;
+
+    &.is-flip-horizontal {
+      transform: scaleX(-1);
+    }
+
+    &.is-flip-vertical {
+      transform: scaleY(-1);
+    }
+
+    &.is-flip-horizontal.is-flip-vertical {
+      transform: scaleX(-1) scaleY(-1);
+    }
   }
 }
 

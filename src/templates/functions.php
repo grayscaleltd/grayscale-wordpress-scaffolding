@@ -83,6 +83,20 @@ require 'functions-widgets.php';
 /* GRAVITY FORMS */
 	add_filter('gform_disable_form_theme_css', '__return_true');
 
+/* MENUS */
+	add_action(
+		'init',
+		function () {
+			register_nav_menus(
+				array(
+					'main'      => __('Main Menu', 'grayscale'),
+					'footer'    => __('Footer Menu', 'grayscale'),
+					'offcanvas' => __('Off-canvas Menu', 'grayscale'),
+				)
+			);
+		}
+	);
+
 /* PRINT QR CODE */
 	add_action(
 		'wp_enqueue_scripts',
@@ -121,5 +135,13 @@ require 'functions-widgets.php';
 			$headers['X-Frame-Options']           = 'SAMEORIGIN';
 
 			return $headers;
+		}
+	);
+
+/* THEME SUPPORT (https://developer.wordpress.org/reference/functions/add_theme_support/) */
+	add_action(
+		'after_setup_theme',
+		function () {
+			load_theme_textdomain('grayscale');
 		}
 	);

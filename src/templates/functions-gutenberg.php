@@ -84,9 +84,19 @@
 
 // ==========================================================================
 // WordPress comes with a bunch of presets which is not always applicable.
-// To reduce load, we remove the action but this will also remove other useful
+// To reduce load, we empty the output but this will also remove other useful
 // CSS variables, so we need to manually compensate that with _colors.scss and
 // _fonts.scss
 // ==========================================================================
-	remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles');
+	add_action(
+		'wp_print_styles',
+		function () {
+			global $wp_styles;
+
+			if (isset($wp_styles->registered['global-styles'])) {
+				$wp_styles->registered['global-styles']->extra['after'] = array();
+			}
+		},
+		999
+	);
 	add_filter('should_load_separate_core_block_assets', '__return_false');

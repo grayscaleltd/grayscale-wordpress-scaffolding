@@ -5,13 +5,14 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import gulp from 'gulp';
 import gulpIf from 'gulp-if';
-import gulpNotify from 'gulp-notify';
 import gulpPlumber from 'gulp-plumber';
 import gulpPostCSS from 'gulp-postcss';
 import gulpSass from 'gulp-sass';
 import gulpSassVariables from 'gulp-sass-variables';
 import gulpSourcemaps from 'gulp-sourcemaps';
 import gulpTouchCmd from 'gulp-touch-cmd';
+import {spawn} from 'node:child_process';
+
 import postcssCalc from 'postcss-calc';
 import * as dartSass from 'sass-embedded';
 import yargs from 'yargs';
@@ -33,31 +34,51 @@ function configHasSrc(config, src) {
   return Object.prototype.hasOwnProperty.call(config, src);
 }
 
+function playErrorSound(error) {
+  console.error(error.toString());
+
+  if (process.platform === 'darwin') {
+    const sound = spawn(
+        '/usr/bin/afplay',
+        ['/System/Library/Sounds/Frog.aiff'],
+        {detached: true, stdio: 'ignore'},
+    );
+
+    sound.on('error', () => {});
+    sound.unref();
+  }
+
+  this.emit('end');
+}
+
 function stylesDefault(cb) {
   if (!configHasSrc(config.styles, 'src')) {
     return cb();
   }
 
   return gulp.src(config.styles.src, {ignore: config.styles.adminSrc})
-      .pipe(gulpPlumber({
-        errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
-      }))
+      .pipe(gulpPlumber({errorHandler: playErrorSound}))
       .pipe(gulpSassVariables({
         $version: packageJSON.version,
       }))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
-      .pipe(sass.sync({
-        style: 'compressed',
-      }))
+      .pipe(gulpIf(
+        !args.s,
+        sass({
+          style: 'compressed',
+        }),
+        sass({
+          silenceDeprecations: [
+            'global-builtin',
+            'if-function',
+            'import',
+          ],
+          style: 'compressed',
+        })
+      ))
       .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.dest))
-      .pipe(gulpIf((args.notify), gulpNotify({
-        actions: 'Dismiss',
-        message: 'CSS compilation done.',
-        onLast: true,
-        sound: 'Ping',
-      })))
       .pipe(gulpTouchCmd());
 }
 
@@ -67,10 +88,8 @@ function stylesAdmin(cb) {
   }
 
   return gulp.src(config.styles.adminSrc)
-      .pipe(gulpPlumber({
-        errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
-      }))
-      .pipe(sass.sync({
+      .pipe(gulpPlumber({errorHandler: playErrorSound}))
+      .pipe(sass({
         style: 'compressed',
       }))
       .pipe(gulpPostCSS(postcssPlugins))
@@ -84,13 +103,22 @@ function stylesBlocks(cb) {
   }
 
   return gulp.src(config.styles.blocksSrc)
-      .pipe(gulpPlumber({
-        errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
-      }))
+      .pipe(gulpPlumber({errorHandler: playErrorSound}))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.init()))
-      .pipe(sass.sync({
-        style: 'compressed',
-      }))
+      .pipe(gulpIf(
+        !args.s,
+        sass({
+          style: 'compressed',
+        }),
+        sass({
+          silenceDeprecations: [
+            'global-builtin',
+            'if-function',
+            'import',
+          ],
+          style: 'compressed',
+        })
+      ))
       .pipe(gulpPostCSS(postcssPlugins))
       .pipe(gulpIf(!(args.production || args.p), gulpSourcemaps.write('./')))
       .pipe(gulp.dest(config.styles.blocksDest))

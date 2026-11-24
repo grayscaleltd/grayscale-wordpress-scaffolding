@@ -115,7 +115,7 @@
   button {
     opacity: 0;
     border: none;
-    background-color: rgb(var(--wp--preset--color--background) / 25%);
+    background-color: color-mix(in srgb, var(--wp--preset--color--background) 25%, transparent);
     backdrop-filter: blur(1rem) saturate(180%);
     cursor: zoom-in;
     display: flex;
@@ -136,7 +136,7 @@
     }
 
     &:focus-visible {
-      outline: 3px auto rgb(var(--wp--preset--color--background) / 25%);
+      outline: 3px auto color-mix(in srgb, var(--wp--preset--color--background) 25%, transparent);
       outline: 3px auto -webkit-focus-ring-color;
       outline-offset: 3px;
     }
@@ -153,7 +153,7 @@
     &:hover,
     &:focus,
     &:not(:hover):not(:active):not(.has-background) {
-      background-color: rgb(var(--wp--preset--color--background) / 25%);
+      background-color: color-mix(in srgb, var(--wp--preset--color--background) 25%, transparent);
       border: none;
     }
   }

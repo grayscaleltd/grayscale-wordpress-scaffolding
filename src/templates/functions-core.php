@@ -59,20 +59,6 @@
 		}
 	);
 
-/* MENUS */
-	add_action(
-		'init',
-		function () {
-			register_nav_menus(
-				array(
-					'main'      => __('Main Menu', 'grayscale'),
-					'footer'    => __('Footer Menu', 'grayscale'),
-					'offcanvas' => __('Off-canvas Menu', 'grayscale'),
-				)
-			);
-		}
-	);
-
 /* THEME SUPPORT (https://developer.wordpress.org/reference/functions/add_theme_support/) */
 	add_action(
 		'after_setup_theme',
@@ -96,7 +82,6 @@
 			add_theme_support('post-thumbnails');
 			add_theme_support('responsive-embeds');
 			add_theme_support('title-tag');
-			load_theme_textdomain('grayscale');
 		}
 	);
 

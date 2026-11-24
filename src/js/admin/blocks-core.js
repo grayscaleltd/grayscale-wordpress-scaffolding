@@ -23,6 +23,7 @@ wp.domReady(function() {
     'core/paragraph',
     'core/post-featured-image',
     'core/quote',
+    'core/tabs',
   ];
 
   const whitelistedCoreStyles = [

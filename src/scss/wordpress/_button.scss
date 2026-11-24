@@ -52,35 +52,19 @@ $blocks-block__margin: 0.5em;
     }
   }
 
-  &.wp-block-button__width-25 {
-    width: calc(25% - (var(--wp--style--block-gap, #{$blocks-block__margin}) * 0.75));
-  }
-
-  &.wp-block-button__width-50 {
-    width: calc(50% - (var(--wp--style--block-gap, #{$blocks-block__margin}) * 0.5));
-  }
-
-  &.wp-block-button__width-75 {
-    width: calc(75% - (var(--wp--style--block-gap, #{$blocks-block__margin}) * 0.25));
-  }
-
-  &.wp-block-button__width-100 {
-    width: 100%;
-    flex-basis: 100%;
+  &[class*='wp-block-button__width'] {
+    width:
+      calc(var(--wp--block-button--width) * 1% -
+      (
+        var(--wp--style--block-gap, #{$blocks-block__margin}) *
+        (1 - var(--wp--block-button--width) / 100)
+      ));
   }
 }
 
 // For vertical buttons, gap is not factored into width calculations.
 .wp-block-buttons.is-vertical > .wp-block-button {
-  &.wp-block-button__width-25 {
-    width: 25%;
-  }
-
-  &.wp-block-button__width-50 {
-    width: 50%;
-  }
-
-  &.wp-block-button__width-75 {
-    width: 75%;
+  &[class*='wp-block-button__width'] {
+    width: calc(var(--wp--block-button--width) * 1%);
   }
 }
